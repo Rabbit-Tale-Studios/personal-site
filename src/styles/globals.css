@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;450;600;700&family=Urbanist:wght@100;200;300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent-hue: 223;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+html {
+  @apply font-rubik;
+  font-weight: 400;
+}
+
+/* body {
+  user-select: none;
+} */
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+img.emoji {
+  height: 1em;
+  width: 1em;
+  margin: 0 0.1em 0 0.25em;
+  vertical-align: -0.1em;
+  display: inline-block;
+  row-gap: 4px;
+}
+
+img.emoji ~ img.emoji {
+  margin: 0 0.125em 0 0.1em;
+}
+
+img.emoji:not(:last-of-type) {
+  margin: 0 0.125em 0 0.1em;
+}
+
+.light {
+  @apply bg-shark-50 text-shark-900;
+}
+
+.dark {
+  @apply bg-shark-900 text-shark-50;
+}
+
+.dark ::selection {
+  background: rgba(255, 255, 255, 0.2);
+  /* @apply text-shark-950; */
+}
+
+::selection {
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.fade {
+  opacity: 0;
+
+  @media (prefers-reduced-motion) {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+
+  @media (prefers-reduced-motion) {
+    transform: translateY(0px);
+    opacity: 1;
+    animation: none;
+  }
+}
+
+.scaleFade {
+  opacity: 0;
+  transform: scale(0.75);
+
+  @media (prefers-reduced-motion) {
+    transform: scale(1);
+    opacity: 1;
+    animation: none;
+  }
+}
+
+[data-hover] {
+  position: relative;
+
+  [data-hover-bounds] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    inset: 0;
+  }
+
+  &:hover {
+    [data-hover-bounds] {
+      transform: scale(4);
+    }
+  }
+}
