@@ -17,7 +17,7 @@ const Page = () => (
         <header>
           <BackButton />
           <h1 className="animate-fade">My Design Journey</h1>
-          <p className="animate-fadeMd">March 3, 2024</p>
+          <p className="animate-fadeMd">March 26, 2024</p>
         </header>
         <section className="animate-fadeLg">
           <Twemoji options={{ className: 'emoji' }}>
