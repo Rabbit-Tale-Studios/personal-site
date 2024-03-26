@@ -1,9 +1,8 @@
 import Layout from 'components/Layout'
 import Section from 'components/Section'
-import TextLink from 'components/TextLink'
+//import TextLink from 'components/TextLink'
 import BackButton from 'components/blog/BackButton'
-import Image from 'next/image'
-import idea from 'public/images/blog/thanks-for-stopping-by/idea.jpg'
+//import Image from 'next/image'
 import Twemoji from 'react-twemoji'
 
 const Page = () => (
