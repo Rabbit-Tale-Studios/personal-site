@@ -25,18 +25,14 @@ const MetaTags = ({
       content={description}
     />
 
-    <meta
-      property="og:image"
-      key="og:image"
-      content="https://www.loganliffick.com/og.jpg"
-    />
+    <meta property="og:image" key="og:image" content="/images/og.webp" />
     <meta property="og:type" key="og:type" content="website" />
     <meta property="og:site_name" key="og:site_name" content="Kris German" />
-    <meta property="og:url" key="og:url" content="#" />
+    <meta property="og:url" key="og:url" content="/images/og.webp" />
     <meta
       name="twitter:image:alt"
       key="twitter:image:alt"
-      content="© hasiradoo"
+      content="© Poker Cats Creations"
     />
     <meta
       name="twitter:card"
