@@ -25,10 +25,10 @@ const MetaTags = ({
       content={description}
     />
 
-    <meta property="og:image" key="og:image" content="/images/og.png" />
+    <meta property="og:image" key="og:image" content="/og.png" />
     <meta property="og:type" key="og:type" content="website" />
     <meta property="og:site_name" key="og:site_name" content="Kris German" />
-    <meta property="og:url" key="og:url" content="/images/og.png" />
+    <meta property="og:url" key="og:url" content="/og.png" />
     <meta
       name="twitter:image:alt"
       key="twitter:image:alt"
