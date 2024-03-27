@@ -6,6 +6,9 @@ import Link, { LinkProps } from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { cn } from 'utils/tw'
 import gsap from 'gsap'
+import Splt from 'react-spltjs'
+
+const myArray = [['text-blue-500'], ['text-indigo-500'], ['text-violet-500']]
 
 type MenuItemProps = {
   aria?: string
@@ -21,7 +24,7 @@ const MenuItem = ({ aria, external, href, text, onClick }: MenuItemProps) => {
       <li>
         <button
           className={
-            'text-shark-500 sm:hover:bg-shark-50 sm:hover:text-shark-950 dark:text-shark-300 dark:sm:hover:bg-shark-900 dark:hover:text-shark-50 block w-full rounded-xl px-4 py-2 text-start font-medium transition-colors'
+            'block w-full rounded-xl px-4 py-2 text-start font-medium text-shark-500 transition-colors dark:text-shark-300 dark:hover:text-shark-50 sm:hover:bg-shark-50 sm:hover:text-shark-950 dark:sm:hover:bg-shark-900'
           }
           onClick={onClick}
           aria-label={aria}
@@ -37,7 +40,7 @@ const MenuItem = ({ aria, external, href, text, onClick }: MenuItemProps) => {
       <Link
         href={href || '#'}
         className={
-          'text-shark-500 sm:hover:bg-shark-50 sm:hover:text-shark-950 dark:text-shark-300 dark:sm:hover:bg-shark-900 dark:hover:text-shark-50 block w-full rounded-xl px-4 py-2 text-start font-medium transition-colors'
+          'block w-full rounded-xl px-4 py-2 text-start font-medium text-shark-500 transition-colors dark:text-shark-300 dark:hover:text-shark-50 sm:hover:bg-shark-50 sm:hover:text-shark-950 dark:sm:hover:bg-shark-900'
         }
         rel={external ? 'noopener noreferrer' : undefined}
         target={!external ? '_self' : '_blank'}
@@ -109,7 +112,14 @@ const Nav = () => {
       <nav className="flex w-full max-w-lg items-center justify-between">
         {/* <SplitLink /> */}
         <Link className="text-xl" href={'/'}>
-          Kris German
+          <Splt
+            //array={myArray}
+            text="Kris German"
+            className="inline-block animate-revealSm"
+            speed={0.05}
+            offset={0.1}
+            ease="bounce"
+          />
         </Link>
         <nav className="flex space-x-2">
           <Button text="Blog" type="secondary" as="a" href={'/blog'} />
@@ -124,7 +134,7 @@ const Nav = () => {
             />
             <ul
               className={cn(
-                'bg-white-50 dark:bg-shark-950 invisible absolute right-0 top-14 block w-36 min-w-max origin-top-right scale-75 rounded-2xl p-1 opacity-0 duration-150 ease-in-out',
+                'invisible absolute right-0 top-14 block w-36 min-w-max origin-top-right scale-75 rounded-2xl bg-white-50 p-1 opacity-0 duration-150 ease-in-out dark:bg-shark-950',
                 {
                   'visible scale-100 opacity-100': openContact,
                 },
@@ -154,7 +164,7 @@ const Nav = () => {
             </Button>
             <ul
               className={cn(
-                'bg-white-50 dark:bg-shark-950 invisible absolute right-0 top-14 block w-36 min-w-max origin-top-right scale-75 rounded-2xl p-1 opacity-0 duration-150 ease-in-out',
+                'invisible absolute right-0 top-14 block w-36 min-w-max origin-top-right scale-75 rounded-2xl bg-white-50 p-1 opacity-0 duration-150 ease-in-out dark:bg-shark-950',
                 {
                   'visible scale-100 opacity-100': openTheme,
                 },

@@ -32,8 +32,8 @@ const Item = (props: {
       <h2 className="font-medium duration-300 ease-bounce">{props.title}</h2>
       <div
         className={cn(
-          'flex translate-x-6 items-center gap-2 transition-transform duration-300 ease-bounce sm:group-hover:translate-x-0',
-          { 'sm:group-hover:translate-x-6': props.comingSoon },
+          'flex items-center gap-2 transition-transform duration-300 ease-bounce lg:translate-x-6 lg:group-hover:translate-x-0',
+          { 'translate-x-6 lg:group-hover:translate-x-6': props.comingSoon }, //lg:group-hover:translate-x-6
         )}
       >
         <p className="text-sm opacity-70">
@@ -44,9 +44,10 @@ const Item = (props: {
         <OutlineChevronRight
           size={20}
           className={cn(
-            'translate-x-4 opacity-0 transition duration-300 ease-bounce sm:group-hover:translate-x-0 sm:group-hover:opacity-70',
+            'transition duration-300 ease-bounce lg:translate-x-4 lg:opacity-0 lg:group-hover:translate-x-0 lg:group-hover:opacity-70',
             {
-              'sm:group-hover:translate-x-4 sm:group-hover:opacity-0':
+              //lg:group-hover:opacity-0
+              'opacity-0 lg:group-hover:translate-x-4 lg:group-hover:opacity-0':
                 props.comingSoon,
             },
           )}

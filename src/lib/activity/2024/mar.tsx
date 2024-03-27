@@ -9,7 +9,7 @@ export const marchData: MonthDataType[] = [
     days: [
       {
         day: 14,
-        type: 'Side Project',
+        type: 'Work',
         content: [
           { type: 'Image', image: tinyBudiesMock },
 

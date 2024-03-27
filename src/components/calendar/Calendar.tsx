@@ -11,7 +11,6 @@ import placeholder from 'public/images/placeholder.jpg'
 import { Fragment, useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { cn } from 'utils/tw'
-import { ThemeProvider } from 'next-themes'
 
 const Calendar = (props: { data: MonthDataType[] }) => {
   const [calBgColor, setCalBgColor] = useState('none')
@@ -19,6 +18,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
   const [clip, setClip] = useState(false)
   const [loadIn, setLoadIn] = useState(true)
   const [modal, setModal] = useState(false)
+  const [isTileActive, setIsTileActive] = useState(false)
 
   const [modalImage, setModalImage] = useState<string | StaticImageData>(
     placeholder,
@@ -31,6 +31,12 @@ const Calendar = (props: { data: MonthDataType[] }) => {
 
   const monthDays = moment().month(props.data[0].month).daysInMonth()
   const tiles = Array.from({ length: monthDays })
+
+  const nextMonthStartDay = moment(currentMonth)
+    .add(1, 'months')
+    .startOf('month')
+    .isoWeekday()
+  const nextMonthBlankTiles = Array.from({ length: 8 - nextMonthStartDay })
 
   const clickOutsideRef = useClickOutside(() => {
     if (modal) {
@@ -62,12 +68,24 @@ const Calendar = (props: { data: MonthDataType[] }) => {
   const bgColors = (arg: string | undefined) => {
     return cn({
       'bg-emerald-400 dark:bg-emerald-600': arg === 'Misc',
-      'bg-teal-400 dark:bg-teal-600': arg === 'Life',
-      'bg-sky-400 dark:bg-sky-600': arg === 'Work',
+      'bg-yellow-400 dark:bg-yellow-600': arg === 'Life',
+      'bg-orange-400 dark:bg-orange-600': arg === 'Work',
       'bg-blue-400 dark:bg-blue-600': arg === 'Blog',
       'bg-violet-400 dark:bg-violet-600': arg === 'Side Project',
-      'bg-fuchsia-400 dark:bg-fuchsia-600': arg === 'Feature',
+      'bg-rose-400 dark:bg-rose-600': arg === 'Feature',
       'bg-shark-950 dark:bg-shark-700': arg === undefined,
+    })
+  }
+
+  const textColor = (arg: string | undefined) => {
+    return cn({
+      'text-emerald-900 dark:text-emerald-100': arg === 'Misc',
+      'text-yellow-900 dark:text-yellow-100': arg === 'Life',
+      'text-orange-900 dark:text-orange-100': arg === 'Work',
+      'text-blue-100': arg === 'Blog',
+      'text-violet-100': arg === 'Side Project',
+      'text-rose-100': arg === 'Feature',
+      'text-shark-100': arg === undefined,
     })
   }
 
@@ -92,17 +110,29 @@ const Calendar = (props: { data: MonthDataType[] }) => {
         </h2>
         <div className="grid w-full grid-cols-7 gap-2">
           {/* Map days of previous month */}
-          {blankTiles.map((_, index) => (
-            <div
-              className={cn(
-                'h-8 w-full rounded-lg bg-shark-700/15 transition-all duration-300 dark:bg-white-300/15 min-[400px]:h-10',
-                {
-                  'invisible opacity-0 delay-0 duration-0': takeover,
-                },
-              )}
-              key={index}
-            />
-          ))}
+          {blankTiles.map((_, index) => {
+            const lastMonth = moment().subtract(1, 'months')
+            const lastMonthDays = lastMonth.daysInMonth()
+            const day = lastMonthDays - blankTiles.length + index + 1
+
+            return (
+              <div
+                className={cn(
+                  'relative h-8 w-full rounded-[10px] bg-shark-700/15 transition-all duration-300 dark:bg-white-300/15 min-[400px]:h-10',
+                  {
+                    'invisible opacity-0 delay-0 duration-0': takeover,
+                  },
+                )}
+                key={index}
+              >
+                <span
+                  className={`pointer-events-none absolute left-1/2 top-1/2 z-50 -translate-x-1/2  -translate-y-1/2 justify-center text-shark-100 opacity-50 dark:text-shark-950 ${isTileActive ? 'hidden' : ''}`}
+                >
+                  {day}
+                </span>
+              </div>
+            )
+          })}
 
           {/* Map days of current month */}
           {tiles.map((_, index) => {
@@ -114,32 +144,43 @@ const Calendar = (props: { data: MonthDataType[] }) => {
             useEffect(() => {
               if (takeover === false) {
                 setActive(false)
+                setIsTileActive(false)
               }
             }, [takeover])
 
             return (
               <div
                 key={index}
-                className={cn({
-                  'scaleFade animate-scaleFade': loadIn,
-                })}
+                className={cn(
+                  {
+                    'scaleFade animate-scaleFade': loadIn,
+                  },
+                  'group/tile',
+                )}
                 style={{
                   animationDelay: `${index / 50 + 0.04}s`,
+                  position: 'relative',
                 }}
               >
+                <span
+                  className={`pointer-events-none absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 justify-center  transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 dark:text-shark-950 ${isTileActive && 'hidden'} ${textColor(dayData?.type)}`}
+                >
+                  {dayData?.day || index + 1}
+                </span>
                 {takeover && active && (
                   <div
                     className={cn(
-                      'absolute left-0 top-0 z-50 flex h-max min-h-full w-full animate-fadeSm flex-col',
+                      'fixed left-0 top-0 z-50 flex h-max min-h-full w-full animate-fadeSm flex-col',
                       bgColors(dayData?.type),
                     )}
                   >
                     <div className="sticky -top-7 z-10 animate-revealSm pl-2 pt-2">
                       <button
-                        className="z-50 block w-max rounded-full bg-white-50 px-3 py-1.5 font-bold tracking-wide text-shark-950 shadow-md transition-transform active:scale-90 dark:bg-shark-950 dark:text-white-50 dark:ring-1 dark:ring-shark-800 sm:hover:scale-90 sm:active:scale-75"
+                        className={`z-50 block w-max rounded-full bg-white-50 px-3 py-1.5 font-bold tracking-wide text-shark-950 shadow-md transition-transform active:scale-90 dark:bg-shark-950 dark:text-white-50  sm:hover:scale-90 sm:active:scale-75 ${['Work', 'Life', 'Misc'].includes(dayData?.type ?? '') ? '!bg-shark-950 !text-white-50   ring-1 !ring-shark-800 dark:!bg-white-50 dark:!text-shark-950 dark:ring-0' : '!ring-shark-800 dark:ring-1'}`}
                         onClick={() => {
                           setTakeover(false)
                           setActive(false)
+                          setIsTileActive(false)
                           setClip(false)
                           setCalBgColor('none')
                         }}
@@ -153,7 +194,10 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                         (contentItem, contentIndex: number) => (
                           <Fragment key={contentIndex}>
                             {contentItem.type === 'TextBlock' && (
-                              <TextBlock data={contentItem.text} />
+                              <TextBlock
+                                data={contentItem.text}
+                                themeData={dayData?.type}
+                              />
                             )}
                             {contentItem.type === 'Image' && (
                               <Gallery
@@ -188,12 +232,13 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                         setTakeover(true)
                         handleClip()
                         setActive(true)
+                        setIsTileActive(true)
                         setTimeout(() => {
                           setCalBgColor(dayData.type)
                         }, 400)
                       }}
                       className={cn(
-                        'block h-8 w-full rounded-[10px] transition-all duration-150 hover:scale-90 active:scale-75 min-[400px]:h-10',
+                        'block h-8 w-full rounded-[10px] transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 min-[400px]:h-10',
                         bgColors(dayData.type),
                         {
                           'scale-[20] cursor-default duration-300 hover:scale-[20] active:scale-[20]':
@@ -205,7 +250,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                 ) : (
                   <div
                     className={cn(
-                      'h-8 w-full rounded-[10px] bg-shark-900/50 transition-all delay-100 duration-300 dark:bg-white-300/50 min-[400px]:h-10',
+                      'h-8 w-full rounded-[10px] bg-shark-800/50 transition-all delay-100 duration-300 dark:bg-white-200/50 min-[400px]:h-10',
                       {
                         'invisible opacity-0 delay-0 duration-0': takeover,
                       },
@@ -215,6 +260,39 @@ const Calendar = (props: { data: MonthDataType[] }) => {
               </div>
             )
           })}
+          {(blankTiles.length === 0 && monthDays === 31) ||
+          (blankTiles.length > 0 && monthDays !== 31)
+            ? nextMonthBlankTiles.map((_, index) => {
+                const day = index + 1
+
+                return (
+                  <div
+                    key={index}
+                    className={cn({
+                      'scaleFade animate-scaleFade': loadIn,
+                    })}
+                    style={{
+                      animationDelay: `${index / 50 + 0.04}s`,
+                      position: 'relative',
+                    }}
+                  >
+                    <span
+                      className={`pointer-events-none absolute left-1/2 top-1/2 z-50 -translate-x-1/2  -translate-y-1/2 justify-center text-shark-100 opacity-50 dark:text-shark-950 ${isTileActive ? 'hidden' : ''}`}
+                    >
+                      {day}
+                    </span>
+                    <div
+                      className={cn(
+                        'h-8 w-full rounded-[10px] bg-shark-700/15 transition-all delay-100 duration-300 dark:bg-white-300/15 min-[400px]:h-10',
+                        {
+                          'invisible opacity-0 delay-0 duration-0': takeover,
+                        },
+                      )}
+                    />
+                  </div>
+                )
+              })
+            : null}
         </div>
       </section>
     </section>

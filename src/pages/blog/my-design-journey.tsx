@@ -66,8 +66,8 @@ const Page = () => (
               me. Here's to many more milestones, creations, and discoveries
               together!
             </p>
-            <p>With love,</p>
-            <p>— Kris</p>
+            <p>With ❤️,</p>
+            <p>— Kris 🐱</p>
           </Twemoji>
         </section>
       </article>
