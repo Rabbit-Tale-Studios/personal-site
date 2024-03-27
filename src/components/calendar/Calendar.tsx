@@ -264,7 +264,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                       )}
                     />
                     <span
-                      className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 justify-center transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 dark:text-shark-950 ${isTileActive && 'hidden'} ${textColor(dayData?.type)}`}
+                      className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 justify-center transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 ${isTileActive && 'hidden'} ${textColor(dayData?.type)}`}
                     >
                       {dayData?.day || index + 1}
                     </span>
