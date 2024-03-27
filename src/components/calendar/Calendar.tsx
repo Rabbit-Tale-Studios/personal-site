@@ -124,21 +124,44 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                   },
                 )}
                 key={index}
-              />
-              /* <span
+              >
+                <span
                   className={`pointer-events-none absolute left-1/2 top-1/2 z-50 -translate-x-1/2  -translate-y-1/2 justify-center text-shark-100 opacity-50 dark:text-shark-950 ${isTileActive ? 'hidden' : ''}`}
                 >
                   {day}
                 </span>
-              </div> /*/
+              </div>
             )
           })}
 
+          {/* {blankTiles.map((_, index) => (
+            <div
+              className={cn(
+                'h-8 w-full rounded-lg bg-zinc-700/15 transition-all duration-300 min-[400px]:h-10',
+                {
+                  'invisible opacity-0 delay-0 duration-0': takeover,
+                },
+              )}
+              key={index}
+            />
+          ))} */}
+
           {/* Map days of current month */}
           {tiles.map((_, index) => {
+            // const dayData: DayData | undefined = props.data[0].days.find(
+            //   (data) => data.day === index + 1,
+            // )
+            interface DayData {
+              type: string
+              day: number
+              // Add other properties of DayData here
+            }
             const dayData = props.data[0].days.find(
-              (data) => data.day === index + 1,
+              (data: DayData) => data.day === index + 1,
             )
+            // const dayData = props.data[0].days.find(
+            //   (data) => data.day === index + 1,
+            // )
             const [active, setActive] = useState(false)
 
             useEffect(() => {
@@ -159,18 +182,12 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                 )}
                 style={{
                   animationDelay: `${index / 50 + 0.04}s`,
-                  //position: 'relative',
                 }}
               >
-                {/* <span
-                  className={`pointer-events-none absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 justify-center  transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 dark:text-shark-950 ${isTileActive && 'hidden'} ${textColor(dayData?.type)}`}
-                >
-                  {dayData?.day || index + 1}
-                </span> */}
                 {takeover && active && (
                   <div
                     className={cn(
-                      'fixed left-0 top-0 z-50 flex h-max min-h-full w-full animate-fadeSm flex-col',
+                      'absolute left-0 top-0 z-50 flex h-max min-h-full w-full animate-fadeSm flex-col',
                       bgColors(dayData?.type),
                     )}
                   >
@@ -246,21 +263,33 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                         },
                       )}
                     />
+                    <span
+                      className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 justify-center transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 dark:text-shark-950 ${isTileActive && 'hidden'} ${textColor(dayData?.type)}`}
+                    >
+                      {dayData?.day || index + 1}
+                    </span>
                   </div>
                 ) : (
-                  <div
-                    className={cn(
-                      'h-8 w-full rounded-[10px] bg-shark-800/50 transition-all delay-100 duration-300 dark:bg-white-200/50 min-[400px]:h-10',
-                      {
-                        'invisible opacity-0 delay-0 duration-0': takeover,
-                      },
-                    )}
-                  />
+                  <div className="relative">
+                    <span
+                      className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 justify-center transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 dark:text-shark-950 ${isTileActive && 'hidden'} ${textColor(dayData)}`}
+                    >
+                      {dayData || index + 1}
+                    </span>
+                    <div
+                      className={cn(
+                        'h-8 w-full rounded-[10px] bg-shark-800/50 transition-all delay-100 duration-300 dark:bg-white-200/50 min-[400px]:h-10',
+                        {
+                          'invisible opacity-0 delay-0 duration-0': takeover,
+                        },
+                      )}
+                    />
+                  </div>
                 )}
               </div>
             )
           })}
-          {/* {(blankTiles.length === 0 && monthDays === 31) ||
+          {(blankTiles.length === 0 && monthDays === 31) ||
           (blankTiles.length > 0 && monthDays !== 31)
             ? nextMonthBlankTiles.map((_, index) => {
                 const day = index + 1
@@ -292,7 +321,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                   </div>
                 )
               })
-            : null} */}
+            : null}
         </div>
       </section>
     </section>
