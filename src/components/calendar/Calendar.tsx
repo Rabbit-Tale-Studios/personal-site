@@ -159,7 +159,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                 )}
                 style={{
                   animationDelay: `${index / 50 + 0.04}s`,
-                  position: 'relative',
+                  // position: 'relative',
                 }}
               >
                 <span
