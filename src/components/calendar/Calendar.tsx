@@ -82,9 +82,9 @@ const Calendar = (props: { data: MonthDataType[] }) => {
       'text-emerald-900 dark:text-emerald-100': arg === 'Misc',
       'text-yellow-900 dark:text-yellow-100': arg === 'Life',
       'text-orange-900 dark:text-orange-100': arg === 'Work',
-      'text-blue-100': arg === 'Blog',
-      'text-violet-100': arg === 'Side Project',
-      'text-rose-100': arg === 'Feature',
+      'text-blue-100 dark:text-blue-950': arg === 'Blog',
+      'text-violet-100 dark:text-violet-950': arg === 'Side Project',
+      'text-rose-100 dark:text-rose-950': arg === 'Feature',
       'text-shark-100 dark:text-shark-950': arg === undefined,
     })
   }
