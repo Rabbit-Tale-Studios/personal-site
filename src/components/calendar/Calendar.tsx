@@ -260,7 +260,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
               </div>
             )
           })}
-          {(blankTiles.length === 0 && monthDays === 31) ||
+          {/* {(blankTiles.length === 0 && monthDays === 31) ||
           (blankTiles.length > 0 && monthDays !== 31)
             ? nextMonthBlankTiles.map((_, index) => {
                 const day = index + 1
@@ -276,11 +276,11 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                       position: 'relative',
                     }}
                   >
-                    {/* <span
+                    <span
                       className={`pointer-events-none absolute left-1/2 top-1/2 z-50 -translate-x-1/2  -translate-y-1/2 justify-center text-shark-100 opacity-50 dark:text-shark-950 ${isTileActive ? 'hidden' : ''}`}
                     >
                       {day}
-                    </span> */}
+                    </span>
                     <div
                       className={cn(
                         'h-8 w-full rounded-[10px] bg-shark-700/15 transition-all delay-100 duration-300 dark:bg-white-300/15 min-[400px]:h-10',
@@ -292,7 +292,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                   </div>
                 )
               })
-            : null}
+            : null} */}
         </div>
       </section>
     </section>
