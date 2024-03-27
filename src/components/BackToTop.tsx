@@ -47,7 +47,7 @@ const BackToTop = () => {
       className={`fixed bottom-12 left-0 z-20 mt-6 ${isHidden ? 'hidden' : 'flex'} w-full items-center justify-center px-4 sm:mt-16 sm:px-10`}
     >
       <nav className="flex w-full max-w-2xl items-center justify-end">
-        <div className="group/tooltip relative transition-transform hover:scale-90 active:scale-75">
+        <div className="group/tooltip relative transition-transform hover:scale-90">
           <Tooltip text="Back To Top" position="right" />
           <Button
             ref={buttonRef}
