@@ -20,7 +20,7 @@ const Item = (props: {
     <Link
       aria-description={props.title}
       className={cn(
-        'text-white-200 bg-shark-950 group flex w-full justify-between rounded-[14px] px-4 py-4 align-baseline shadow-sm transition duration-100',
+        'group flex w-full justify-between rounded-[14px] bg-shark-950 px-4 py-4 align-baseline text-white-200 shadow-sm transition duration-100 dark:bg-white-50 dark:text-shark-800',
         {
           'cursor-not-allowed': props.comingSoon,
         },

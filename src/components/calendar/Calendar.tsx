@@ -11,6 +11,7 @@ import placeholder from 'public/images/placeholder.jpg'
 import { Fragment, useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { cn } from 'utils/tw'
+import { ThemeProvider } from 'next-themes'
 
 const Calendar = (props: { data: MonthDataType[] }) => {
   const [calBgColor, setCalBgColor] = useState('none')
@@ -58,25 +59,26 @@ const Calendar = (props: { data: MonthDataType[] }) => {
 
   handleLoadIn()
 
-  const bgColors = (arg: string | undefined) =>
-    cn({
-      'bg-emerald-400': arg === 'Misc',
-      'bg-teal-400': arg === 'Life',
-      'bg-sky-400': arg === 'Work',
-      'bg-blue-400': arg === 'Blog',
-      'bg-violet-400': arg === 'Side Project',
-      'bg-fuchsia-400': arg === 'Feature',
-      'bg-zinc-800': arg === undefined,
+  const bgColors = (arg: string | undefined) => {
+    return cn({
+      'bg-emerald-400 dark:bg-emerald-600': arg === 'Misc',
+      'bg-teal-400 dark:bg-teal-600': arg === 'Life',
+      'bg-sky-400 dark:bg-sky-600': arg === 'Work',
+      'bg-blue-400 dark:bg-blue-600': arg === 'Blog',
+      'bg-violet-400 dark:bg-violet-600': arg === 'Side Project',
+      'bg-fuchsia-400 dark:bg-fuchsia-600': arg === 'Feature',
+      'bg-shark-950 dark:bg-shark-700': arg === undefined,
     })
+  }
 
   return (
     <section ref={ref} className="w-full">
       <Modal open={modal} setOpen={setModal}>
-        <Image src={modalImage} alt="image" />
+        <Image src={modalImage} alt="image" quality={100} />
       </Modal>
       <section
         className={cn(
-          'reveal bg-shark-950 mx-auto my-10 flex w-full max-w-sm flex-col gap-4 overflow-y-scroll rounded-3xl p-7 shadow-xl',
+          'reveal mx-auto my-10 flex w-full max-w-sm flex-col gap-4 overflow-y-scroll rounded-3xl bg-shark-950 p-7 shadow-xl dark:bg-white-50',
           bgColors(calBgColor),
           {
             'animate-rotate': props.data[0].month % 2 !== 0 && inView,
@@ -85,7 +87,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
         )}
         ref={clickOutsideRef}
       >
-        <h2 className="reveal text-white-200 animate-revealSm text-sm font-bold tracking-wider">
+        <h2 className="reveal animate-revealSm text-sm font-bold tracking-wider text-white-200 dark:text-shark-800">
           {moment().month(props.data[0].month).format('MMMM')}
         </h2>
         <div className="grid w-full grid-cols-7 gap-2">
@@ -93,7 +95,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
           {blankTiles.map((_, index) => (
             <div
               className={cn(
-                'bg-shark-700/15 h-8 w-full rounded-lg transition-all duration-300 min-[400px]:h-10',
+                'h-8 w-full rounded-lg bg-shark-700/15 transition-all duration-300 dark:bg-white-300/15 min-[400px]:h-10',
                 {
                   'invisible opacity-0 delay-0 duration-0': takeover,
                 },
@@ -134,7 +136,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                   >
                     <div className="sticky -top-7 z-10 animate-revealSm pl-2 pt-2">
                       <button
-                        className="bg-white-50 text-shark-950 z-50 block w-max rounded-full px-3 py-1.5 font-bold tracking-wide shadow-md transition-transform active:scale-90 sm:hover:scale-90 sm:active:scale-75"
+                        className="z-50 block w-max rounded-full bg-white-50 px-3 py-1.5 font-bold tracking-wide text-shark-950 shadow-md transition-transform active:scale-90 dark:bg-shark-950 dark:text-white-50 dark:ring-1 dark:ring-shark-800 sm:hover:scale-90 sm:active:scale-75"
                         onClick={() => {
                           setTakeover(false)
                           setActive(false)
@@ -203,7 +205,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                 ) : (
                   <div
                     className={cn(
-                      'bg-shark-900/50 h-8 w-full rounded-[10px] transition-all delay-100 duration-300 min-[400px]:h-10',
+                      'h-8 w-full rounded-[10px] bg-shark-900/50 transition-all delay-100 duration-300 dark:bg-white-300/50 min-[400px]:h-10',
                       {
                         'invisible opacity-0 delay-0 duration-0': takeover,
                       },

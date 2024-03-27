@@ -7,7 +7,7 @@ const Button = (props: { data: any }) => {
     <li className="mx-2">
       <Link
         // className="bg-white-50 text-shark-950 sm:hover:bg-white-50 group flex w-full items-center justify-between rounded-[14px] px-4 py-1 text-base font-bold tracking-wide transition-[letter-spacing,transform] duration-200 ease-bounce sm:hover:tracking-widest sm:active:scale-x-95"
-        className="bg-white-50 text-shark-950 sm:hover:bg-white-50 group flex w-full items-center justify-between rounded-2xl bg-white py-2 pl-6 pr-1 text-base font-bold tracking-wide transition-[letter-spacing,transform] duration-200 ease-bounce sm:hover:bg-white sm:hover:tracking-widest sm:active:scale-x-95"
+        className="sm bg-white sm:hover:bg-white group flex w-full items-center justify-between rounded-2xl bg-white-50 py-2 pl-6 pr-1 text-base font-bold tracking-wide text-shark-950 transition-[letter-spacing,transform] duration-200 ease-bounce dark:bg-shark-950 dark:text-white-50 sm:hover:tracking-widest sm:active:scale-x-95"
         href={props.data.href || ''}
         aria-label={props.data.text}
         rel={props.data.external ? 'no-opener no-referrer' : ''}

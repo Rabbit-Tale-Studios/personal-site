@@ -8,7 +8,7 @@ const Tooltip = (props: {
   return (
     <div
       className={cn(
-        'bg-shark-950 text-white-200 pointer-events-none absolute w-max rounded-lg px-2.5 py-1 text-sm font-semibold opacity-0 shadow-lg transition sm:group-hover/tooltip:opacity-100',
+        'pointer-events-none absolute hidden w-max rounded-lg bg-shark-950 px-2.5 py-1 text-sm font-semibold text-white-200 opacity-0 shadow-lg transition dark:bg-white-50 dark:text-shark-800 sm:flex sm:group-hover/tooltip:opacity-100',
         {
           '-top-8 left-1/2 z-50 origin-bottom -translate-x-1/2 translate-y-2 sm:group-hover/tooltip:-translate-y-0':
             props.position === 'top' || !props.position,
