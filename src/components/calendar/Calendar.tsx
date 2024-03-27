@@ -85,7 +85,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
       'text-blue-100': arg === 'Blog',
       'text-violet-100': arg === 'Side Project',
       'text-rose-100': arg === 'Feature',
-      'text-shark-100': arg === undefined,
+      'text-shark-100 dark:text-shark-950': arg === undefined,
     })
   }
 
@@ -272,7 +272,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                 ) : (
                   <div className="relative">
                     <span
-                      className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 justify-center transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 dark:text-shark-950 ${isTileActive && 'hidden'} ${textColor(dayData)}`}
+                      className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 justify-center transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 ${isTileActive && 'hidden'} ${textColor(dayData)}`}
                     >
                       {dayData || index + 1}
                     </span>
