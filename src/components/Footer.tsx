@@ -1,3 +1,4 @@
+import { SolidLogoText } from 'icons/Icons'
 import moment from 'moment'
 import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
@@ -17,14 +18,21 @@ const Footer = () => {
 
   return (
     <footer
-      className="text-shark-500 dark:text-white-300 flex w-full items-center justify-center px-6 pb-12 pt-40 sm:px-10"
+      className="flex w-full items-center justify-center px-6 pb-12 pt-40 text-shark-500 dark:text-white-300 sm:px-10"
       ref={ref}
     >
       <div
-        className={cn('fade flex w-full max-w-lg items-center justify-center', {
-          'animate-fade': inView && date !== undefined,
-        })}
+        className={cn(
+          'flex w-full max-w-lg animate-fade flex-col items-center justify-center',
+          {
+            'animate-fade': inView && date !== undefined,
+          },
+        )}
       >
+        <SolidLogoText
+          size={112}
+          className="mt-10 text-shark-950 dark:text-white-50"
+        />
         <p>{date}</p>
       </div>
     </footer>

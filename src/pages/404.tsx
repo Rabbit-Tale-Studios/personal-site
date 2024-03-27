@@ -18,7 +18,7 @@ const Page = () => (
           ease="cubic-bezier(0,-1,0,3)"
         />
       </h1>
-      <h2 className="mb-12 animate-revealSm text-shark-500">
+      <h2 className="mb-12 animate-revealSm text-shark-500 dark:text-white-400">
         Bruh, how did you get here?
       </h2>
       <div className="animate-rotate">

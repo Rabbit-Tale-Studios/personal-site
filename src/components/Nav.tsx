@@ -1,6 +1,6 @@
 import Button from 'components/Button'
 import useClickOutside from 'hooks/useClickOutside'
-import { OutlineClearNight } from 'icons/Icons'
+import { OutlineClearNight, SolidLogoText } from 'icons/Icons'
 import { useTheme } from 'next-themes'
 import Link, { LinkProps } from 'next/link'
 import { useEffect, useRef, useState } from 'react'
@@ -120,6 +120,10 @@ const Nav = () => {
             offset={0.1}
             ease="bounce"
           />
+          {/* <SolidLogoText
+            size={96}
+            className="text-shark-950 dark:text-white-50"
+          /> */}
         </Link>
         <nav className="flex space-x-2">
           <Button text="Blog" type="secondary" as="a" href={'/blog'} />

@@ -6,7 +6,7 @@ import MetaTags from 'components/MetaTags'
 import Nav from 'components/Nav'
 import { ThemeProvider, useTheme } from 'next-themes'
 import CursorComponent from './Cursor'
-import Twemoji from 'react-twemoji'
+import BackToTop from './BackToTop'
 
 function ThemeWatcher() {
   let { resolvedTheme, setTheme } = useTheme()
@@ -46,6 +46,7 @@ const Layout = (props: {
           {props.children}
         </main>
         <Footer />
+        <BackToTop />
         <CursorComponent children={undefined} />
       </FontProvider>
     </ThemeProvider>

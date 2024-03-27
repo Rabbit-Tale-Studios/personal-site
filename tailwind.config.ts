@@ -75,6 +75,17 @@ const config: Config = {
           },
         },
 
+        scaleOutFade: {
+          from: {
+            opacity: '100%',
+            transform: 'scale(1)',
+          },
+          to: {
+            opacity: '0%',
+            transform: 'scale(0.75)',
+          },
+        },
+
         reveal: {
           from: {
             opacity: '0%',
@@ -141,6 +152,7 @@ const config: Config = {
         fadeXl: 'fade 2s forwards',
 
         scaleFade: 'scaleFade 0.4s cubic-bezier(0.7,0,0.5,2) forwards',
+        scaleOutFade: 'scaleOutFade 0.4s cubic-bezier(0.7,0,0.5,2) forwards',
 
         revealSm: 'reveal 0.8s cubic-bezier(0.5,-0.2,0.1,1.2) forwards',
         reveal: 'reveal 1.2s cubic-bezier(0.5,-0.2,0.1,1.3) forwards',
