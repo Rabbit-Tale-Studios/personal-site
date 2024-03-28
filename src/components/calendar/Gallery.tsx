@@ -20,7 +20,6 @@ const Gallery = (props: {
         <Image
           src={props.image}
           alt="Image"
-          fill
           className="rounded-2xl"
           placeholder="blur"
         />

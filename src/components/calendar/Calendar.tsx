@@ -111,7 +111,8 @@ const Calendar = (props: { data: MonthDataType[] }) => {
         <div className="grid w-full grid-cols-7 gap-2">
           {/* Map days of previous month */}
           {blankTiles.map((_, index) => {
-            const lastMonth = moment().subtract(1, 'months')
+            const displayedMonth = moment(currentMonth, 'MMMM')
+            const lastMonth = displayedMonth.subtract(1, 'months')
             const lastMonthDays = lastMonth.daysInMonth()
             const day = lastMonthDays - blankTiles.length + index + 1
 
@@ -148,9 +149,6 @@ const Calendar = (props: { data: MonthDataType[] }) => {
 
           {/* Map days of current month */}
           {tiles.map((_, index) => {
-            // const dayData: DayData | undefined = props.data[0].days.find(
-            //   (data) => data.day === index + 1,
-            // )
             interface DayData {
               type: string
               day: number
@@ -159,9 +157,6 @@ const Calendar = (props: { data: MonthDataType[] }) => {
             const dayData = props.data[0].days.find(
               (data: DayData) => data.day === index + 1,
             )
-            // const dayData = props.data[0].days.find(
-            //   (data) => data.day === index + 1,
-            // )
             const [active, setActive] = useState(false)
 
             useEffect(() => {

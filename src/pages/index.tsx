@@ -3,7 +3,6 @@ import Tag from 'components/Tag'
 import Calendar from 'components/calendar/Calendar'
 import { marchData } from 'lib/activity/2024/mar'
 import { februaryData } from 'lib/activity/2024/feb'
-import { SolidLogoText } from 'icons/Icons'
 
 const Page = () => (
   <Layout>
@@ -15,8 +14,8 @@ const Page = () => (
     <Calendar data={marchData} />
     {/* <Calendar data={februaryData} /> */}
     <Calendar data={februaryData} />
-    {/* <Tag year="2023" /> */}
-    {/* <Calendar data={decemberData} /> */}
+    {/* <Tag year="2023" />
+    <Calendar data={decemberData} /> */}
   </Layout>
 )
 
