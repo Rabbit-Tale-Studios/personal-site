@@ -92,7 +92,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
   return (
     <section ref={ref} className="w-full">
       <Modal open={modal} setOpen={setModal}>
-        <Image src={modalImage} alt="image" quality={100} />
+        <Image src={modalImage} alt="image" />
       </Modal>
       <section
         className={cn(
