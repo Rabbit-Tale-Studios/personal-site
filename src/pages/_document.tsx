@@ -1,9 +1,9 @@
 import { Head, Html, Main, NextScript } from 'next/document'
 
 const Document = () => (
-  <Html lang="en" data-overlayscrollbars-initialize>
+  <Html lang="en">
     <Head />
-    <body data-overlayscrollbars-initialize>
+    <body>
       <Main />
       <NextScript />
     </body>
