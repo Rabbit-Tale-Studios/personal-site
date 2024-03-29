@@ -181,6 +181,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
               >
                 {takeover && active && (
                   <div
+                    data-overlayscrollbars-initialize
                     className={cn(
                       'absolute left-0 top-0 z-50 flex h-max min-h-full w-full animate-fadeSm flex-col',
                       bgColors(dayData?.type),

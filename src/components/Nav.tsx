@@ -24,7 +24,7 @@ const MenuItem = ({ aria, external, href, text, onClick }: MenuItemProps) => {
       <li>
         <button
           className={
-            'block w-full rounded-xl px-4 py-2 text-start font-medium text-shark-500 transition-colors dark:text-shark-300 dark:hover:text-shark-50 sm:hover:bg-shark-50 sm:hover:text-shark-950 dark:sm:hover:bg-shark-900'
+            'block w-full rounded-xl px-4 py-2 text-start font-medium text-shark-500 transition-colors dark:text-shark-300 dark:hover:text-shark-50 sm:hover:bg-shark-950/5 sm:hover:text-shark-950 dark:sm:hover:bg-shark-50/5'
           }
           onClick={onClick}
           aria-label={aria}
@@ -40,7 +40,7 @@ const MenuItem = ({ aria, external, href, text, onClick }: MenuItemProps) => {
       <Link
         href={href || '#'}
         className={
-          'block w-full rounded-xl px-4 py-2 text-start font-medium text-shark-500 transition-colors dark:text-shark-300 dark:hover:text-shark-50 sm:hover:bg-shark-50 sm:hover:text-shark-950 dark:sm:hover:bg-shark-900'
+          'block w-full rounded-xl px-4 py-2 text-start font-medium text-shark-500 transition-colors dark:text-shark-300 dark:hover:text-shark-50 sm:hover:bg-shark-950/5 sm:hover:text-shark-950 dark:sm:hover:bg-shark-50/5'
         }
         rel={external ? 'noopener noreferrer' : undefined}
         target={!external ? '_self' : '_blank'}
@@ -138,7 +138,7 @@ const Nav = () => {
             />
             <ul
               className={cn(
-                'invisible absolute right-0 top-14 block w-36 min-w-max origin-top-right scale-75 rounded-2xl bg-white-50 p-1 opacity-0 duration-150 ease-in-out dark:bg-shark-950',
+                'invisible absolute right-0 top-14 block w-36 min-w-max origin-top-right scale-75 rounded-2xl bg-white-50 p-1 opacity-0 shadow-md duration-150 ease-in-out dark:bg-[#2b2b2b]',
                 {
                   'visible scale-100 opacity-100': openContact,
                 },
@@ -168,7 +168,7 @@ const Nav = () => {
             </Button>
             <ul
               className={cn(
-                'invisible absolute right-0 top-14 block w-36 min-w-max origin-top-right scale-75 rounded-2xl bg-white-50 p-1 opacity-0 duration-150 ease-in-out dark:bg-shark-950',
+                'invisible absolute right-0 top-14 block w-36 min-w-max origin-top-right scale-75 rounded-2xl bg-white-50 p-1 opacity-0 shadow-md duration-150 ease-in-out dark:bg-[#2b2b2b]',
                 {
                   'visible scale-100 opacity-100': openTheme,
                 },

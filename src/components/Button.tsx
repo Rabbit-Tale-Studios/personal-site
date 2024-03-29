@@ -29,9 +29,9 @@ const Button = React.forwardRef<
 
       '!px-2 sm:hover:bg-white': props.type === 'icon',
 
-      'bg-transparent text-shark-500 dark:text-shark-300 sm:hover:bg-white-50 dark:sm:hover:bg-shark-950':
+      'bg-transparent text-shark-500 dark:text-shark-300 sm:hover:bg-shark-950/5 dark:sm:hover:bg-shark-50/5':
         props.type === 'secondary' || props.type === 'icon',
-      'bg-white-50 dark:bg-shark-950 text-shark-950 dark:text-shark-50':
+      'bg-white-950/5 dark:bg-shark-50/5 text-shark-950 dark:text-shark-50':
         (props.type === 'secondary' || props.type === 'icon') && props.state,
 
       'flex items-center justify-center gap-2.5 pl-3 pr-4': props.children,
