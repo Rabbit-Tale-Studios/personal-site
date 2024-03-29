@@ -23,9 +23,9 @@ const Button = React.forwardRef<
   const style = cn(
     'overflow-hidden relative w-max rounded-full px-4 py-2 font-medium sm:transition-all active:scale-95 block',
     {
-      'bg-white-50 dark:bg-shark-950 text-shark-950 dark:text-white-50 sm:hover:bg-shark-100 dark:sm:hover:bg-shark-800':
+      'bg-shark-950/5 dark:bg-shark-50/5 text-shark-950 dark:text-white-50 sm:hover:bg-shark-100 dark:sm:hover:bg-shark-50/10':
         props.type === 'primary',
-      'bg-white-50': props.type === 'primary' && props.state,
+      'bg-shark-950/5': props.type === 'primary' && props.state,
 
       '!px-2 sm:hover:bg-white': props.type === 'icon',
 
