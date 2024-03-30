@@ -28,14 +28,14 @@ const MetaTags = ({
     <meta
       property="og:image"
       key="og:image"
-      content="https://personal-site-seven-mocha.vercel.app/og.png"
+      content="https://kris.starowl.social/og.png"
     />
     <meta property="og:type" key="og:type" content="website" />
     <meta property="og:site_name" key="og:site_name" content="Kris German" />
     <meta
       property="og:url"
       key="og:url"
-      content="https://personal-site-seven-mocha.vercel.app/og.png"
+      content="https://kris.starowl.social/og.png"
     />
     <meta
       name="twitter:image:alt"
