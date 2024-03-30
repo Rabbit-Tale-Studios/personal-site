@@ -138,7 +138,7 @@ const Nav = () => {
             />
             <ul
               className={cn(
-                'invisible absolute right-0 top-14 block w-36 min-w-max origin-top-right scale-75 rounded-2xl bg-white-50 p-1 opacity-0 shadow-md duration-150 ease-in-out dark:bg-[#2b2b2b]',
+                'invisible absolute right-0 top-14 block w-36 min-w-max origin-top-right scale-75 rounded-2xl bg-white-50 p-1 opacity-0 shadow-lg duration-150 ease-in-out dark:bg-[#2b2b2b]',
                 {
                   'visible scale-100 opacity-100': openContact,
                 },
@@ -168,7 +168,7 @@ const Nav = () => {
             </Button>
             <ul
               className={cn(
-                'invisible absolute right-0 top-14 block w-36 min-w-max origin-top-right scale-75 rounded-2xl bg-white-50 p-1 opacity-0 shadow-md duration-150 ease-in-out dark:bg-[#2b2b2b]',
+                'invisible absolute right-0 top-14 block w-36 min-w-max origin-top-right scale-75 rounded-2xl bg-white-50 p-1 opacity-0 shadow-lg duration-150 ease-in-out dark:bg-[#2b2b2b]',
                 {
                   'visible scale-100 opacity-100': openTheme,
                 },
