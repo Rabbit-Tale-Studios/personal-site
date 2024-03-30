@@ -8,6 +8,7 @@ import { ThemeProvider, useTheme } from 'next-themes'
 import CursorComponent from './Cursor'
 import BackToTop from './BackToTop'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from '@vercel/analytics/react'
 
 function ThemeWatcher() {
   let { resolvedTheme, setTheme } = useTheme()
@@ -50,6 +51,7 @@ const Layout = (props: {
         <BackToTop />
         <CursorComponent children={undefined} />
         <SpeedInsights />
+        <Analytics />
       </FontProvider>
     </ThemeProvider>
   )
