@@ -9,7 +9,7 @@ export const marchData: MonthDataType[] = [
     days: [
       {
         day: 14,
-        type: 'Work',
+        type: 'Side Project',
         content: [
           { type: 'Image', image: tinyBudiesMock },
 
@@ -63,6 +63,40 @@ export const marchData: MonthDataType[] = [
               external: false,
               href: '/404',
               text: 'Check 404 page',
+            },
+          },
+        ],
+      },
+      {
+        day: 29,
+        type: 'Misc',
+        content: [
+          {
+            type: 'TextBlock',
+            text: {
+              title: 'Strange activity on the website',
+              body: `In the last few hours, I've noticed a huge amount of traffic on my website from various countries. I'm surprised because it's a lot of traffic, considering I only shared the link with a few friends. `,
+            },
+          },
+        ],
+      },
+      {
+        day: 30,
+        type: 'Blog',
+        content: [
+          {
+            type: 'TextBlock',
+            text: {
+              title: 'Reflecting on Quiet Holidays',
+              body: `This holiday season, I find joy in the simplicity of being with someone special. It's a time for reflection, gratitude, and embracing the quiet moments that bring us closer. No traditional celebrations required, just the warmth of companionship and shared experiences.`,
+            },
+          },
+          {
+            type: 'LinkButton',
+            link: {
+              external: false,
+              href: '/blog/embracing-quiet-holidays',
+              text: 'Read more',
             },
           },
         ],

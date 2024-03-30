@@ -135,18 +135,6 @@ const Calendar = (props: { data: MonthDataType[] }) => {
             )
           })}
 
-          {/* {blankTiles.map((_, index) => (
-            <div
-              className={cn(
-                'h-8 w-full rounded-lg bg-zinc-700/15 transition-all duration-300 min-[400px]:h-10',
-                {
-                  'invisible opacity-0 delay-0 duration-0': takeover,
-                },
-              )}
-              key={index}
-            />
-          ))} */}
-
           {/* Map days of current month */}
           {tiles.map((_, index) => {
             interface DayData {
@@ -267,7 +255,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                 ) : (
                   <div className="relative">
                     <span
-                      className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 justify-center transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 ${isTileActive && 'hidden'} ${textColor(dayData)}`}
+                      className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 justify-center ${isTileActive && 'hidden'} ${textColor(dayData)}`}
                     >
                       {dayData || index + 1}
                     </span>

@@ -65,7 +65,9 @@ const Page = () => (
         <Item title="The Cats Brand" comingSoon />
       </div>
 
-      <Item title="My Design Journey" date="2024-03-26" offset="0.2" />
+      <Item title="Embracing Quiet Holidays" date="2024-03-30" offset="0.2" />
+
+      <Item title="My Design Journey" date="2024-03-26" offset="0.4" />
     </Section>
   </Layout>
 )
