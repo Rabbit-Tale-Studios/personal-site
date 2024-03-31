@@ -44,7 +44,7 @@ const Layout = (props: {
         <MetaTags {...(props.metaTagsProps ?? {})} />
         <ThemeWatcher />
         <Nav />
-        <main className="flex w-full flex-col items-center justify-center px-6 sm:px-10">
+        <main className="flex w-full flex-col items-center justify-center px-4 sm:px-10">
           {props.children}
         </main>
         <Footer />

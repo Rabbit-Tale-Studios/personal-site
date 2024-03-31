@@ -119,7 +119,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
             return (
               <div
                 className={cn(
-                  'relative h-8 w-full rounded-[10px] bg-shark-700/15 transition-all duration-300 dark:bg-white-300/15 min-[400px]:h-10',
+                  'relative h-8 w-8 rounded-lg bg-shark-700/15 transition-all duration-300 dark:bg-white-300/15 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
                   {
                     'invisible opacity-0 delay-0 duration-0': takeover,
                   },
@@ -238,7 +238,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                         }, 400)
                       }}
                       className={cn(
-                        'block h-8 w-full rounded-[10px] transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 min-[400px]:h-10',
+                        'block h-8 w-8 rounded-lg transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
                         bgColors(dayData.type),
                         {
                           'scale-[20] cursor-default duration-300 hover:scale-[20] active:scale-[20]':
@@ -261,7 +261,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                     </span>
                     <div
                       className={cn(
-                        'h-8 w-full rounded-[10px] bg-shark-800/50 transition-all delay-100 duration-300 dark:bg-white-200/50 min-[400px]:h-10',
+                        'h-8 w-8 rounded-lg bg-shark-800/50 transition-all delay-100 duration-300 dark:bg-white-200/50 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
                         {
                           'invisible opacity-0 delay-0 duration-0': takeover,
                         },
@@ -295,7 +295,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                     </span>
                     <div
                       className={cn(
-                        'h-8 w-full rounded-[10px] bg-shark-700/15 transition-all delay-100 duration-300 dark:bg-white-300/15 min-[400px]:h-10',
+                        'h-8 w-8 rounded-lg bg-shark-700/15 transition-all delay-100 duration-300 dark:bg-white-300/15 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
                         {
                           'invisible opacity-0 delay-0 duration-0': takeover,
                         },

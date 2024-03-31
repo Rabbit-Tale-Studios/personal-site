@@ -141,6 +141,11 @@ const config: Config = {
             transform: 'translateY(-4px)',
           },
         },
+
+        marquee: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
       },
 
       animation: {
@@ -162,6 +167,8 @@ const config: Config = {
 
         rotate: 'rotate 1s cubic-bezier(0.5,-0.5,0.1,1.8) forwards',
         rotateAlt: 'rotateAlt 1s cubic-bezier(0.5,1,0.1,1.8) forwards',
+
+        marquee: 'marquee 10s linear infinite',
       },
     },
   },

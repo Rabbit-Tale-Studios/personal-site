@@ -29,10 +29,18 @@ const Item = (props: {
         props.comingSoon ? '' : '/blog/' + slugify(props.title, { lower: true })
       }
     >
-      <h2 className="font-medium duration-300 ease-bounce">{props.title}</h2>
+      <div className="flex w-fit overflow-hidden">
+        <h2 className="truncate whitespace-nowrap font-medium duration-300 ease-bounce">
+          {/* animate-marquee truncate */}
+          {props.title}
+        </h2>
+      </div>
+      {/* <h2 className="truncate font-medium duration-300 ease-bounce">
+        {props.title}
+      </h2> */}
       <div
         className={cn(
-          'flex items-center gap-2 transition-transform duration-300 ease-bounce lg:translate-x-6 lg:group-hover:translate-x-0',
+          'flex w-1/2 items-center justify-end gap-2 transition-transform duration-300 ease-bounce lg:translate-x-6 lg:group-hover:translate-x-0',
           { 'translate-x-6 lg:group-hover:translate-x-6': props.comingSoon }, //lg:group-hover:translate-x-6
         )}
       >
