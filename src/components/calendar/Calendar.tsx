@@ -127,7 +127,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                 key={index}
               >
                 <span
-                  className={`pointer-events-none absolute left-1/2 top-1/2 z-50 -translate-x-1/2  -translate-y-1/2 justify-center text-shark-100 opacity-50 dark:text-shark-950 ${isTileActive ? 'hidden' : ''}`}
+                  className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-shark-100 opacity-50 dark:text-shark-950 ${isTileActive ? 'hidden' : ''}`}
                 >
                   {day}
                 </span>
@@ -238,35 +238,35 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                         }, 400)
                       }}
                       className={cn(
-                        'block h-8 w-8 rounded-lg transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
+                        'relative block h-8 w-8 rounded-lg transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
                         bgColors(dayData.type),
                         {
                           'scale-[20] cursor-default duration-300 hover:scale-[20] active:scale-[20]':
                             active && takeover,
                         },
                       )}
-                    />
-                    <span
-                      className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 justify-center transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 ${isTileActive && 'hidden'} ${textColor(dayData?.type)}`}
                     >
-                      {dayData?.day || index + 1}
-                    </span>
+                      <span
+                        className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sm transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 ${isTileActive && 'hidden'} ${textColor(dayData?.type)}`}
+                      >
+                        {dayData?.day || index + 1}
+                      </span>
+                    </button>
                   </div>
                 ) : (
-                  <div className="relative">
+                  <div
+                    className={cn(
+                      'relative h-8 w-8 rounded-lg bg-shark-800/50 transition-all delay-100 duration-300 dark:bg-white-200/50 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
+                      {
+                        'invisible opacity-0 delay-0 duration-0': takeover,
+                      },
+                    )}
+                  >
                     <span
-                      className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 justify-center ${isTileActive && 'hidden'} ${textColor(dayData)}`}
+                      className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sm ${isTileActive && 'hidden'} ${textColor(dayData)}`}
                     >
                       {dayData || index + 1}
                     </span>
-                    <div
-                      className={cn(
-                        'h-8 w-8 rounded-lg bg-shark-800/50 transition-all delay-100 duration-300 dark:bg-white-200/50 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
-                        {
-                          'invisible opacity-0 delay-0 duration-0': takeover,
-                        },
-                      )}
-                    />
                   </div>
                 )}
               </div>
@@ -285,22 +285,22 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                     })}
                     style={{
                       animationDelay: `${index / 50 + 0.04}s`,
-                      position: 'relative',
                     }}
                   >
-                    <span
-                      className={`pointer-events-none absolute left-1/2 top-1/2 z-50 -translate-x-1/2  -translate-y-1/2 justify-center text-shark-100 opacity-50 dark:text-shark-950 ${isTileActive ? 'hidden' : ''}`}
-                    >
-                      {day}
-                    </span>
                     <div
                       className={cn(
-                        'h-8 w-8 rounded-lg bg-shark-700/15 transition-all delay-100 duration-300 dark:bg-white-300/15 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
+                        'relative h-8 w-8 rounded-lg bg-shark-700/15 transition-all delay-100 duration-300 dark:bg-white-300/15 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
                         {
                           'invisible opacity-0 delay-0 duration-0': takeover,
                         },
                       )}
-                    />
+                    >
+                      <span
+                        className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-shark-100 opacity-50 dark:text-shark-950 ${isTileActive ? 'hidden' : ''}`}
+                      >
+                        {day}
+                      </span>
+                    </div>
                   </div>
                 )
               })
