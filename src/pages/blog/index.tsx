@@ -52,7 +52,7 @@ const Item = (props: {
         <OutlineChevronRight
           size={20}
           className={cn(
-            'transition duration-300 ease-bounce lg:translate-x-4 lg:opacity-0 lg:group-hover:translate-x-0 lg:group-hover:opacity-70',
+            'opacity-70 transition duration-300 ease-bounce lg:translate-x-4 lg:opacity-0 lg:group-hover:translate-x-0 lg:group-hover:opacity-70',
             {
               //lg:group-hover:opacity-0
               'opacity-0 lg:group-hover:translate-x-4 lg:group-hover:opacity-0':
