@@ -223,13 +223,10 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                   )}
                   {dayData ? (
                     <div
-                      className={cn(
-                        'group/tooltip group/tile relative delay-100',
-                        {
-                          'invisible opacity-0 delay-0': takeover && !active,
-                          'overflow-clip': clip,
-                        },
-                      )}
+                      className={cn('group/tooltip relative delay-100', {
+                        'invisible opacity-0 delay-0': takeover && !active,
+                        'overflow-clip': clip,
+                      })}
                     >
                       <Tooltip text={dayData.type} state={takeover} />
                       <button
@@ -243,16 +240,16 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                           }, 400)
                         }}
                         className={cn(
-                          'block h-9 w-9 rounded-[9px] transition-all duration-150 group-hover/tile:scale-90 group-focus/tile:scale-75 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
+                          'block h-9 w-9 rounded-[9px] transition-all duration-150 hover:scale-90 active:scale-75 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
                           bgColors(dayData.type),
                           {
-                            'scale-[20] cursor-default duration-300 hover:!scale-[20] active:!scale-[20]':
+                            'scale-[20] cursor-default duration-300 hover:scale-[20] active:scale-[20]':
                               active && takeover,
                           },
                         )}
                       >
                         <span
-                          className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 ${active && 'opacity-0'} ${textColor(dayData?.type)}`}
+                          className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${active && 'opacity-0'} ${textColor(dayData?.type)}`}
                         >
                           {dayData?.day || index + 1}
                         </span>
