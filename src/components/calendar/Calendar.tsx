@@ -32,11 +32,9 @@ const Calendar = (props: { data: MonthDataType[] }) => {
   const monthDays = moment().month(props.data[0].month).daysInMonth()
   const tiles = Array.from({ length: monthDays })
 
-  const nextMonthStartDay = moment(currentMonth)
-    .add(1, 'months')
-    .startOf('month')
-    .isoWeekday()
-  const nextMonthBlankTiles = Array.from({ length: 8 - nextMonthStartDay })
+  const totalTiles = 35
+  const usedTiles = blankTiles.length + tiles.length
+  const nextMonthBlankTiles = totalTiles - usedTiles
 
   const clickOutsideRef = useClickOutside(() => {
     if (modal) {
@@ -272,39 +270,37 @@ const Calendar = (props: { data: MonthDataType[] }) => {
               </div>
             )
           })}
-          {(blankTiles.length === 0 && monthDays === 31) ||
-          (blankTiles.length > 0 && monthDays !== 31)
-            ? nextMonthBlankTiles.map((_, index) => {
-                const day = index + 1
+          {tiles[tiles.length - 1] !== 31 &&
+            Array.from({ length: nextMonthBlankTiles }).map((_, index) => {
+              const day = index + 1
 
-                return (
+              return (
+                <div
+                  key={index}
+                  className={cn({
+                    'scaleFade animate-scaleFade': loadIn,
+                  })}
+                  style={{
+                    animationDelay: `${index / 50 + 0.04}s`,
+                  }}
+                >
                   <div
-                    key={index}
-                    className={cn({
-                      'scaleFade animate-scaleFade': loadIn,
-                    })}
-                    style={{
-                      animationDelay: `${index / 50 + 0.04}s`,
-                    }}
+                    className={cn(
+                      'relative h-8 w-8 rounded-lg bg-shark-700/15 transition-all delay-100 duration-300 dark:bg-white-300/15 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
+                      {
+                        'invisible opacity-0 delay-0 duration-0': takeover,
+                      },
+                    )}
                   >
-                    <div
-                      className={cn(
-                        'relative h-8 w-8 rounded-lg bg-shark-700/15 transition-all delay-100 duration-300 dark:bg-white-300/15 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
-                        {
-                          'invisible opacity-0 delay-0 duration-0': takeover,
-                        },
-                      )}
+                    <span
+                      className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-shark-100 opacity-75 dark:text-shark-950 ${isTileActive ? 'hidden' : ''}`}
                     >
-                      <span
-                        className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-shark-100 opacity-75 dark:text-shark-950 ${isTileActive ? 'hidden' : ''}`}
-                      >
-                        {day}
-                      </span>
-                    </div>
+                      {day}
+                    </span>
                   </div>
-                )
-              })
-            : null}
+                </div>
+              )
+            })}
         </div>
       </section>
     </section>
