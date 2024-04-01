@@ -24,6 +24,7 @@ const MetaTags = ({
       key="og:description"
       content={description}
     />
+    <meta name="theme-color"></meta>
 
     <meta
       property="og:image"

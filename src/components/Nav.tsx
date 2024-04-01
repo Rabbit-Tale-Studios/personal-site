@@ -126,9 +126,16 @@ const Nav = () => {
           /> */}
         </Link>
         <nav className="flex space-x-2">
-          <Button text="Blog" type="secondary" as="a" href={'/blog'} />
+          <Button
+            aria="Blog"
+            text="Blog"
+            type="secondary"
+            as="a"
+            href={'/blog'}
+          />
           <div className="relative z-50" ref={menuContactRef}>
             <Button
+              aria="Contact"
               onClick={() => {
                 setOpenContact(!openContact)
               }}
@@ -155,6 +162,7 @@ const Nav = () => {
           </div>
           <div className={'relative z-50'} ref={menuThemeRef}>
             <Button
+              aria="Change theme"
               dataHover
               onClick={() => {
                 setOpenTheme(!openTheme)
