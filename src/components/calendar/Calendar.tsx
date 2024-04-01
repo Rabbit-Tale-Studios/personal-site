@@ -67,13 +67,13 @@ const Calendar = (props: { data: MonthDataType[] }) => {
 
   const bgColors = (arg: string | undefined) => {
     return cn({
-      'bg-emerald-400 dark:bg-emerald-600': arg === 'Misc',
-      'bg-yellow-400 dark:bg-yellow-600': arg === 'Life',
-      'bg-orange-400 dark:bg-orange-600': arg === 'Work',
-      'bg-blue-400 dark:bg-blue-600': arg === 'Blog',
-      'bg-violet-400 dark:bg-violet-600': arg === 'Side Project',
-      'bg-rose-400 dark:bg-rose-600': arg === 'Feature',
-      'bg-shark-950 dark:bg-shark-700': arg === undefined,
+      'bg-emerald-500 dark:bg-emerald-600': arg === 'Misc',
+      'bg-yellow-500 dark:bg-yellow-600': arg === 'Life',
+      'bg-orange-500 dark:bg-orange-600': arg === 'Work',
+      'bg-blue-500 dark:bg-blue-600': arg === 'Blog',
+      'bg-violet-500 dark:bg-violet-600': arg === 'Side Project',
+      'bg-rose-500 dark:bg-rose-600': arg === 'Feature',
+      'bg-shark-950 dark:bg-shark-600': arg === undefined,
     })
   }
 
@@ -127,7 +127,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                 key={index}
               >
                 <span
-                  className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-shark-100 opacity-50 dark:text-shark-950 ${isTileActive ? 'hidden' : ''}`}
+                  className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-shark-100 opacity-75 dark:text-shark-950 ${isTileActive ? 'hidden' : ''}`}
                 >
                   {day}
                 </span>
@@ -247,7 +247,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                       )}
                     >
                       <span
-                        className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sm transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 ${isTileActive && 'hidden'} ${textColor(dayData?.type)}`}
+                        className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 ${isTileActive && 'hidden'} ${textColor(dayData?.type)}`}
                       >
                         {dayData?.day || index + 1}
                       </span>
@@ -263,7 +263,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                     )}
                   >
                     <span
-                      className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sm ${isTileActive && 'hidden'} ${textColor(dayData)}`}
+                      className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${isTileActive && 'hidden'} ${textColor(dayData)}`}
                     >
                       {dayData || index + 1}
                     </span>
@@ -296,7 +296,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                       )}
                     >
                       <span
-                        className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-shark-100 opacity-50 dark:text-shark-950 ${isTileActive ? 'hidden' : ''}`}
+                        className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-shark-100 opacity-75 dark:text-shark-950 ${isTileActive ? 'hidden' : ''}`}
                       >
                         {day}
                       </span>
