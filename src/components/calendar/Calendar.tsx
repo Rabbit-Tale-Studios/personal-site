@@ -240,10 +240,10 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                           }, 400)
                         }}
                         className={cn(
-                          'relative block h-8 w-8 rounded-lg transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
+                          'relative block h-8 w-8 rounded-lg transition-all duration-150 group-hover/tile:scale-90 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
                           bgColors(dayData.type),
                           {
-                            'scale-[20] cursor-default duration-300 hover:scale-[20] active:scale-[20]':
+                            'w-full scale-[20] cursor-default duration-300 hover:scale-[20] active:scale-[20]':
                               active && takeover,
                           },
                         )}
