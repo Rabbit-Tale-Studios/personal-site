@@ -96,7 +96,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
       </Modal>
       <section
         className={cn(
-          'reveal mx-auto my-10 flex w-full max-w-sm flex-col gap-4 overflow-y-scroll rounded-3xl bg-shark-950 p-6 shadow-xl dark:bg-white-50 min-[400px]:p-7',
+          'reveal relative mx-auto my-10 flex w-full max-w-sm flex-col gap-4 overflow-y-scroll rounded-3xl bg-shark-950 p-6 shadow-xl dark:bg-white-50 min-[400px]:p-7',
           bgColors(calBgColor),
           {
             'animate-rotate': props.data[0].month % 2 !== 0 && inView,
@@ -221,58 +221,59 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                       </ul>
                     </div>
                   )}
-                  <div className="group/tile">
-                    {dayData ? (
-                      <div
-                        className={cn('group/tooltip relative delay-100', {
+                  {dayData ? (
+                    <div
+                      className={cn(
+                        'group/tooltip group/tile relative delay-100',
+                        {
                           'invisible opacity-0 delay-0': takeover && !active,
                           'overflow-clip': clip,
-                        })}
-                      >
-                        <Tooltip text={dayData.type} state={takeover} />
-                        <button
-                          onClick={() => {
-                            setTakeover(true)
-                            handleClip()
-                            setActive(true)
-                            setIsTileActive(true)
-                            setTimeout(() => {
-                              setCalBgColor(dayData.type)
-                            }, 400)
-                          }}
-                          className={cn(
-                            'block h-9 w-9 rounded-[9px] transition-all duration-150 group-hover/tile:scale-90 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
-                            bgColors(dayData.type),
-                            {
-                              'scale-[20] cursor-default duration-300 hover:scale-[20] active:scale-[20]':
-                                active && takeover,
-                            },
-                          )}
-                        >
-                          <span
-                            className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 ${isTileActive && 'hidden'} ${textColor(dayData?.type)}`}
-                          >
-                            {dayData?.day || index + 1}
-                          </span>
-                        </button>
-                      </div>
-                    ) : (
-                      <div
+                        },
+                      )}
+                    >
+                      <Tooltip text={dayData.type} state={takeover} />
+                      <button
+                        onClick={() => {
+                          setTakeover(true)
+                          handleClip()
+                          setActive(true)
+                          setIsTileActive(true)
+                          setTimeout(() => {
+                            setCalBgColor(dayData.type)
+                          }, 400)
+                        }}
                         className={cn(
-                          'relative h-9 w-9 rounded-[9px] bg-shark-800/50 transition-all delay-100 duration-300 dark:bg-white-200/50 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
+                          'block h-9 w-9 rounded-[9px] transition-all duration-150 group-hover/tile:scale-90 group-focus/tile:scale-75 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
+                          bgColors(dayData.type),
                           {
-                            'invisible opacity-0 delay-0 duration-0': takeover,
+                            'scale-[20] cursor-default duration-300 hover:!scale-[20] active:!scale-[20]':
+                              active && takeover,
                           },
                         )}
                       >
                         <span
-                          className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${isTileActive && 'hidden'} ${textColor(dayData)}`}
+                          className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-150 group-hover/tile:scale-90 group-active/tile:scale-75 ${active && 'opacity-0'} ${textColor(dayData?.type)}`}
                         >
-                          {dayData || index + 1}
+                          {dayData?.day || index + 1}
                         </span>
-                      </div>
-                    )}
-                  </div>
+                      </button>
+                    </div>
+                  ) : (
+                    <div
+                      className={cn(
+                        'relative h-9 w-9 rounded-[9px] bg-shark-800/50 transition-all delay-100 duration-300 dark:bg-white-200/50 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
+                        {
+                          'invisible opacity-0 delay-0 duration-0': takeover,
+                        },
+                      )}
+                    >
+                      <span
+                        className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${isTileActive && 'hidden'} ${textColor(dayData)}`}
+                      >
+                        {dayData || index + 1}
+                      </span>
+                    </div>
+                  )}
                 </div>
               )
             })}
