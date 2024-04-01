@@ -32,6 +32,8 @@ const Calendar = (props: { data: MonthDataType[] }) => {
   const monthDays = moment().month(props.data[0].month).daysInMonth()
   const tiles = Array.from({ length: monthDays })
 
+  let tileIndex = 0
+
   const totalTiles = 35
   const usedTiles = blankTiles.length + tiles.length
   const nextMonthBlankTiles = totalTiles - usedTiles
@@ -119,9 +121,13 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                 className={cn(
                   'relative h-8 w-8 rounded-lg bg-shark-700/15 transition-all duration-300 dark:bg-white-300/15 min-[400px]:h-10 min-[400px]:w-full min-[400px]:rounded-[10px]',
                   {
+                    'scaleFade animate-scaleFade': loadIn,
                     'invisible opacity-0 delay-0 duration-0': takeover,
                   },
                 )}
+                style={{
+                  animationDelay: `${tileIndex++ / 50 + 0.04}s`,
+                }}
                 key={index}
               >
                 <span
@@ -162,7 +168,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                   'group/tile',
                 )}
                 style={{
-                  animationDelay: `${index / 50 + 0.04}s`,
+                  animationDelay: `${tileIndex++ / 50 + 0.04}s`,
                 }}
               >
                 {takeover && active && (
@@ -281,7 +287,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
                     'scaleFade animate-scaleFade': loadIn,
                   })}
                   style={{
-                    animationDelay: `${index / 50 + 0.04}s`,
+                    animationDelay: `${tileIndex++ / 50 + 0.04}s`,
                   }}
                 >
                   <div
