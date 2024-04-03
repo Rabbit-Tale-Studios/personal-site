@@ -82,7 +82,7 @@ const GooeyBubbles = () => {
   ))
 
   return (
-    <div className="fixed left-0 top-0 h-full w-full mix-blend-difference">
+    <div className="pointer-events-none fixed left-0 top-0 h-full w-full mix-blend-difference">
       <Goo>{bubbles}</Goo>
     </div>
   )
