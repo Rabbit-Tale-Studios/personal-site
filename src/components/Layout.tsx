@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import FontProvider from 'components/FontProvider'
 import Footer from 'components/Footer'
@@ -9,6 +9,13 @@ import CursorComponent from './Cursor'
 import BackToTop from './BackToTop'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/react'
+import ThemeSwitchBubble from './ThemeSwitchBubble'
+import React from 'react'
+
+export const BubbleContext = React.createContext({
+  showBubble: false,
+  toggleBubble: () => {},
+})
 
 function ThemeWatcher() {
   let { resolvedTheme, setTheme } = useTheme()
@@ -38,22 +45,29 @@ const Layout = (props: {
   children?: React.ReactNode
   metaTagsProps?: React.ComponentProps<typeof MetaTags>
 }) => {
+  const [showBubble, setShowBubble] = useState(false)
+
   return (
-    <ThemeProvider attribute="class" defaultTheme="light">
-      <FontProvider>
-        <MetaTags {...(props.metaTagsProps ?? {})} />
-        <ThemeWatcher />
-        <Nav />
-        <main className="flex w-full flex-col items-center justify-center px-4 sm:px-10">
-          {props.children}
-        </main>
-        <Footer />
-        <BackToTop />
-        <CursorComponent children={undefined} />
-        <SpeedInsights />
-        <Analytics />
-      </FontProvider>
-    </ThemeProvider>
+    <BubbleContext.Provider
+      value={{ showBubble, toggleBubble: () => setShowBubble(!showBubble) }}
+    >
+      <ThemeProvider attribute="class" defaultTheme="light">
+        <FontProvider>
+          <MetaTags {...(props.metaTagsProps ?? {})} />
+          <ThemeWatcher />
+          <Nav />
+          <main className="flex w-full flex-col items-center justify-center px-4 sm:px-10">
+            {props.children}
+          </main>
+          <Footer />
+          <BackToTop />
+          <CursorComponent children={undefined} />
+          {showBubble && <ThemeSwitchBubble />}
+          <SpeedInsights />
+          <Analytics />
+        </FontProvider>
+      </ThemeProvider>
+    </BubbleContext.Provider>
   )
 }
 

@@ -3,10 +3,11 @@ import useClickOutside from 'hooks/useClickOutside'
 import { OutlineClearNight, SolidLogoText } from 'icons/Icons'
 import { useTheme } from 'next-themes'
 import Link, { LinkProps } from 'next/link'
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { cn } from 'utils/tw'
 import gsap from 'gsap'
 import Splt from 'react-spltjs'
+import { BubbleContext } from './Layout'
 
 const myArray = [['text-blue-500'], ['text-indigo-500'], ['text-violet-500']]
 
@@ -54,6 +55,7 @@ const MenuItem = ({ aria, external, href, text, onClick }: MenuItemProps) => {
 const Nav = () => {
   let [openContact, setOpenContact] = useState(false)
   let [openTheme, setOpenTheme] = useState(false)
+  const { toggleBubble } = useContext(BubbleContext)
 
   const menuContactRef = useClickOutside(() => {
     setOpenContact(false)
@@ -202,6 +204,7 @@ const Nav = () => {
                 onClick={() => setTheme('system')}
                 href={'#'}
               />
+              <MenuItem text={'Bubbles!'} onClick={toggleBubble} href={'#'} />
             </ul>
           </div>
         </nav>
