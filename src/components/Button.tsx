@@ -52,7 +52,7 @@ const Button = React.forwardRef<
     >
       {props.children}
       {props.text}
-      <div data-hover-bounds></div>
+      {props.dataHover && <div data-hover-bounds></div>}
     </Link>
   ) : (
     <button
@@ -64,7 +64,7 @@ const Button = React.forwardRef<
     >
       {props.children}
       {props.text}
-      <div data-hover-bounds></div>
+      {props.dataHover && <div data-hover-bounds></div>}
     </button>
   )
 })

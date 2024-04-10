@@ -29,6 +29,29 @@ export const aprilData: MonthDataType[] = [
           },
         ],
       },
+      {
+        day: 10,
+        type: 'Blog',
+        content: [
+          //  { type: 'Image', image: tinyBudiesMock },
+          {
+            type: 'TextBlock',
+            text: {
+              title: 'Blog Update',
+              body: [
+                "I've just updated my blog page with a new features and improvements. I've added a new filter option that allows you to filter blogs by category. I've also made some design changes to make the page more user-friendly. Check it out and let me know what you think!",
+              ],
+            },
+          },
+          {
+            type: 'LinkButton',
+            link: {
+              href: '/blog',
+              text: 'Check it out',
+            },
+          },
+        ],
+      },
     ],
   },
 ]

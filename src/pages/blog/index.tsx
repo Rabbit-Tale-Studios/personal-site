@@ -1,9 +1,12 @@
+import Button from 'components/Button'
 import Layout from 'components/Layout'
 import Section from 'components/Section'
 import Tooltip from 'components/Tooltip'
 import { OutlineChevronRight } from 'icons/Icons'
 import moment from 'moment'
 import Link from 'next/link'
+import React, { useEffect } from 'react'
+import { useState } from 'react'
 import slugify from 'slugify'
 import { cn } from 'utils/tw'
 
@@ -14,7 +17,7 @@ const Item = (props: {
   title: string
 }) => (
   <article
-    className="reveal w-full animate-revealSm pb-2"
+    className="reveal not-prose w-full animate-revealSm pb-2"
     style={{ animationDelay: props.offset + 's' }}
   >
     <Link
@@ -65,19 +68,123 @@ const Item = (props: {
   </article>
 )
 
-const Page = () => (
-  <Layout>
-    <Section>
-      <div className="group/tooltip relative w-full">
-        <Tooltip text="Coming soon" position="right" />
-        <Item title="The Cats Brand" comingSoon />
-      </div>
+const Page = () => {
+  const [filter, setFilter] = useState('all')
+  // const [lastFilter, setLastFilter] = useState('all')
 
-      <Item title="Embracing Quiet Holidays" date="2024-03-30" offset="0.2" />
+  // useEffect(() => {
+  //   setLastFilter(filter)
+  // }, [filter])
 
-      <Item title="My Design Journey" date="2024-03-26" offset="0.4" />
-    </Section>
-  </Layout>
-)
+  const blogs = [
+    {
+      title: 'Life Blogs',
+      type: 'life',
+      content: (
+        <React.Fragment>
+          <div className="group/tooltip relative w-full">
+            <Tooltip text="Coming soon" position="right" />
+            <Item title="The Cats Brand" comingSoon />
+          </div>
+
+          <Item
+            title="Embracing Quiet Holidays"
+            date="2024-03-30"
+            offset="0.2"
+          />
+
+          <Item title="My Design Journey" date="2024-03-26" offset="0.4" />
+        </React.Fragment>
+      ),
+    },
+    {
+      title: 'Dev Blogs',
+      type: 'dev',
+      content: (
+        <React.Fragment>
+          <div className="group/tooltip relative w-full">
+            <Tooltip text="Coming soon" position="right" />
+            <Item
+              title="Tiny Buddies"
+              comingSoon
+              // offset={
+              //   filter === 'all' && lastFilter === 'life' ? undefined : '0.6'
+              // }
+
+              offset={'0.6'}
+            />
+          </div>
+          {/* <Item
+            title="My Design Journey"
+            date="2024-03-26"
+            offset={filter === 'dev' ? '0' : '0.6'}
+          /> */}
+        </React.Fragment>
+      ),
+    },
+  ]
+
+  const filteredBlogs = blogs.filter(
+    (blog) => filter === 'all' || blog.type === filter,
+  )
+
+  return (
+    <Layout>
+      <Section>
+        <div className="mb-6 flex w-full space-x-2 self-start">
+          <Button
+            onClick={() => setFilter('all')}
+            type={filter === 'all' ? 'primary' : 'secondary'}
+          >
+            All Blogs
+          </Button>
+          <Button
+            onClick={() => setFilter('life')}
+            type={filter === 'life' ? 'primary' : 'secondary'}
+          >
+            Life Blogs
+          </Button>
+          <Button
+            onClick={() => setFilter('dev')}
+            type={filter === 'dev' ? 'primary' : 'secondary'}
+          >
+            Dev Blogs
+          </Button>
+        </div>
+        {filteredBlogs.map((blog, index) => (
+          <article key={index} className="prose-headings: prose mb-6 w-full">
+            <h3 className="self-start">{blog.title}</h3>
+            {blog.content}
+          </article>
+        ))}
+      </Section>
+    </Layout>
+  )
+}
+
+// const Page = () => (
+//   <Layout>
+//     <Section>
+//       <article className="prose mb-6 w-full dark:prose-invert prose-headings:font-semibold">
+//         <h3 className="self-start">Life Blogs</h3>
+//       </article>
+
+//       <div className="group/tooltip relative w-full">
+//         <Tooltip text="Coming soon" position="right" />
+//         <Item title="The Cats Brand" comingSoon />
+//       </div>
+
+//       <Item title="Embracing Quiet Holidays" date="2024-03-30" offset="0.2" />
+
+//       <Item title="My Design Journey" date="2024-03-26" offset="0.4" />
+
+//       <article className="prose my-6 w-full dark:prose-invert prose-headings:font-semibold">
+//         <h3 className="self-start">Dev Blogs</h3>
+//       </article>
+
+//       <Item title="My Design Journey" date="2024-03-26" offset="0.6" />
+//     </Section>
+//   </Layout>
+// )
 
 export default Page
