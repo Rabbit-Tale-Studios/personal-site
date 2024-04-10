@@ -131,7 +131,7 @@ const Page = () => {
   return (
     <Layout>
       <Section>
-        <div className="mb-6 flex w-full space-x-2 self-start">
+        <div className="mb-6 flex w-full animate-revealSm space-x-2 self-start">
           <Button
             onClick={() => setFilter('all')}
             type={filter === 'all' ? 'primary' : 'secondary'}
@@ -153,7 +153,7 @@ const Page = () => {
         </div>
         {filteredBlogs.map((blog, index) => (
           <article key={index} className="prose-headings: prose mb-6 w-full">
-            <h3 className="self-start">{blog.title}</h3>
+            <h3 className="animate-revealSm self-start">{blog.title}</h3>
             {blog.content}
           </article>
         ))}
