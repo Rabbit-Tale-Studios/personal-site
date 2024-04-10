@@ -152,7 +152,7 @@ const Page = () => {
           </Button>
         </div>
         {filteredBlogs.map((blog, index) => (
-          <article key={index} className="prose-headings: prose mb-6 w-full">
+          <article key={index} className="prose mb-6 w-full dark:prose-invert">
             <h3 className="animate-revealSm self-start">{blog.title}</h3>
             {blog.content}
           </article>
