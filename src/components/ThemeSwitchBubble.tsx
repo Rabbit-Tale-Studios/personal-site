@@ -55,7 +55,7 @@ const Bubble = () => {
   }, [])
 
   return (
-    <svg style={{ position: 'fixed', ...style }}>
+    <svg style={{ position: 'fixed', zIndex: -1, ...style }}>
       <circle
         cx={style.width / 2}
         cy={style.height / 2}
