@@ -5,10 +5,11 @@ import Tooltip from 'components/Tooltip'
 import { OutlineChevronRight } from 'icons/Icons'
 import moment from 'moment'
 import Link from 'next/link'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useState } from 'react'
 import slugify from 'slugify'
 import { cn } from 'utils/tw'
+import { Skeleton, ScrollShadow } from '@nextui-org/react'
 
 const Item = (props: {
   comingSoon?: boolean
@@ -70,11 +71,6 @@ const Item = (props: {
 
 const Page = () => {
   const [filter, setFilter] = useState('all')
-  // const [lastFilter, setLastFilter] = useState('all')
-
-  // useEffect(() => {
-  //   setLastFilter(filter)
-  // }, [filter])
 
   const blogs = [
     {
@@ -131,26 +127,40 @@ const Page = () => {
   return (
     <Layout>
       <Section>
-        <div className="mb-6 flex w-full animate-revealSm space-x-2 self-start">
-          <Button
-            onClick={() => setFilter('all')}
-            type={filter === 'all' ? 'primary' : 'secondary'}
-          >
-            All Blogs
-          </Button>
-          <Button
-            onClick={() => setFilter('life')}
-            type={filter === 'life' ? 'primary' : 'secondary'}
-          >
-            Life Blogs
-          </Button>
-          <Button
-            onClick={() => setFilter('dev')}
-            type={filter === 'dev' ? 'primary' : 'secondary'}
-          >
-            Dev Blogs
-          </Button>
-        </div>
+        {/* <div className="mb-6 flex w-full animate-revealSm space-x-3 self-start overflow-hidden"> */}
+        <ScrollShadow
+          orientation="horizontal"
+          hideScrollBar
+          className="mb-6 max-w-lg animate-revealSm self-start"
+        >
+          <div className="inline-flex space-x-3 whitespace-nowrap">
+            <Button
+              onClick={() => setFilter('all')}
+              type={filter === 'all' ? 'accent' : 'primary'}
+              size="sm"
+            >
+              All
+            </Button>
+            <Button
+              onClick={() => setFilter('life')}
+              type={filter === 'life' ? 'accent' : 'primary'}
+              size="sm"
+            >
+              Life Blogs
+            </Button>
+            <Button
+              onClick={() => setFilter('dev')}
+              type={filter === 'dev' ? 'accent' : 'primary'}
+              size="sm"
+            >
+              Dev Blogs
+            </Button>
+            {/* <Skeleton className="h-9 w-24 rounded-full bg-shark-950/5" />
+            <Skeleton className="h-9 w-24 rounded-full bg-shark-950/5" />
+            <Skeleton className="h-9 w-24 rounded-full bg-shark-950/5" /> */}
+          </div>
+        </ScrollShadow>
+        {/* </div> */}
         {filteredBlogs.map((blog, index) => (
           <article key={index} className="prose mb-6 w-full dark:prose-invert">
             <h3 className="animate-revealSm self-start">{blog.title}</h3>
@@ -161,30 +171,5 @@ const Page = () => {
     </Layout>
   )
 }
-
-// const Page = () => (
-//   <Layout>
-//     <Section>
-//       <article className="prose mb-6 w-full dark:prose-invert prose-headings:font-semibold">
-//         <h3 className="self-start">Life Blogs</h3>
-//       </article>
-
-//       <div className="group/tooltip relative w-full">
-//         <Tooltip text="Coming soon" position="right" />
-//         <Item title="The Cats Brand" comingSoon />
-//       </div>
-
-//       <Item title="Embracing Quiet Holidays" date="2024-03-30" offset="0.2" />
-
-//       <Item title="My Design Journey" date="2024-03-26" offset="0.4" />
-
-//       <article className="prose my-6 w-full dark:prose-invert prose-headings:font-semibold">
-//         <h3 className="self-start">Dev Blogs</h3>
-//       </article>
-
-//       <Item title="My Design Journey" date="2024-03-26" offset="0.6" />
-//     </Section>
-//   </Layout>
-// )
 
 export default Page
