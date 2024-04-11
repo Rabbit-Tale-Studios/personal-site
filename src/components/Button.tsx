@@ -13,7 +13,8 @@ interface ButtonProps {
   state?: boolean
   text?: string
   className?: string
-  type: 'primary' | 'secondary' | 'icon'
+  type: 'primary' | 'secondary' | 'icon' | 'accent'
+  size?: 'sm' | 'lg'
 }
 
 const Button = React.forwardRef<
@@ -25,16 +26,24 @@ const Button = React.forwardRef<
     {
       'bg-shark-950/5 dark:bg-shark-50/5 text-shark-950 dark:text-white-50 sm:hover:bg-shark-100 dark:sm:hover:bg-shark-50/10':
         props.type === 'primary',
+
       'bg-shark-950/5': props.type === 'primary' && props.state,
 
       '!px-2 sm:hover:bg-white': props.type === 'icon',
 
       'bg-transparent text-shark-500 dark:text-shark-300 sm:hover:bg-shark-950/5 dark:sm:hover:bg-shark-50/5':
         props.type === 'secondary' || props.type === 'icon',
+
       'bg-white-950/5 dark:bg-shark-50/5 text-shark-950 dark:text-shark-50':
         (props.type === 'secondary' || props.type === 'icon') && props.state,
 
-      'flex items-center justify-center gap-2.5 pl-3 pr-4': props.children,
+      'bg-shark-950 text-shark-50 dark:bg-shark-50 dark:text-shark-950 sm:hover:bg-shark-900 dark:sm:hover:bg-shark-100':
+        props.type === 'accent',
+
+      'flex items-center justify-center gap-2.5': props.children,
+
+      'text-xs sm:text-sm': props.size === 'sm',
+      'text-base sm:text-lg': props.size === 'lg',
     },
   )
 
