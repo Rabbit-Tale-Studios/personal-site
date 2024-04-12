@@ -1,10 +1,11 @@
 // Tremor Raw Badge [v0.0.0]
 
 import React from 'react'
+import { tv, type VariantProps } from 'tailwind-variants'
 
 import { cn } from 'utils/tw'
 
-const badgeVariants = cn({
+const badgeVariants = tv({
   base: cn(
     'inline-flex items-center gap-x-1 whitespace-nowrap rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset',
   ),
