@@ -128,13 +128,7 @@ const Nav = () => {
           /> */}
         </Link>
         <nav className="flex space-x-2">
-          <Button
-            aria="Blog"
-            text="Blog"
-            type="secondary"
-            as="a"
-            href={'/blog'}
-          />
+          <Button aria="Blog" text="Blog" type="ghost" as="a" href={'/blog'} />
           <div className="relative z-50" ref={menuContactRef}>
             <Button
               aria="Contact"
@@ -143,7 +137,7 @@ const Nav = () => {
               }}
               state={openContact}
               text="Contact"
-              type="secondary"
+              type="ghost"
             />
             <ul
               className={cn(
