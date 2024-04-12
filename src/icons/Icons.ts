@@ -90,6 +90,12 @@ export {
 } from './assets/user_interface/EyeOff'
 
 export {
+  OutlineNestAlt,
+  SolidNestAlt,
+  DuotoneNestAlt,
+} from './assets/user_interface/NestAlt'
+
+export {
   OutlineMail,
   SolidMail,
   DuotoneMail,
@@ -106,6 +112,12 @@ export {
   SolidExpand,
   DuotoneExpand,
 } from './assets/user_interface/Expand'
+
+export {
+  OutlineChevronLeft,
+  SolidChevronLeft,
+  DuotoneChevronLeft,
+} from './assets/user_interface/ChevronLeft'
 
 export {
   OutlineChevronRight,
@@ -174,3 +186,11 @@ export {
   SolidArrowLeft,
   DuotoneArrowLeft,
 } from './assets/arrows/ArrowLeft'
+
+// Navigation and Travel
+
+export {
+  OutlineCompass,
+  SolidCompass,
+  DuotoneCompass,
+} from './assets/navigation_and_travel/Compass'
