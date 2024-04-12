@@ -15,7 +15,7 @@
 }
 
 html {
-  @apply font-rubik;
+  @apply font-rubik !text-shark-950;
   font-weight: 400;
 }
 
