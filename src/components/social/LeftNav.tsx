@@ -148,7 +148,7 @@ const LeftNav = () => {
             )}
           </Button> */}
         </section>
-        <section className="flex overflow-hidden rounded-2xl bg-shark-950/5 p-3">
+        <section className="bg-shark-950/5: flex overflow-hidden rounded-2xl lg:p-3">
           {/* <div className="flex space-x-4">
             <Avatar
               className="!size-12 ring-1 ring-shark-950/30"
@@ -180,7 +180,7 @@ const LeftNav = () => {
               fallback: <SolidNestAlt size={24} />,
             }}
           />
-          <Button type={'icon'}>
+          <Button type={'icon'} className="hidden lg:inline">
             <OutlineMore size={24} />
           </Button>
         </section>

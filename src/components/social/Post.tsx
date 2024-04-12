@@ -1,4 +1,5 @@
 import { Image, User } from '@nextui-org/react'
+import placeholder from 'public/images/placeholder.jpg'
 import Button from 'components/Button'
 import {
   OutlineBookmark,
@@ -13,6 +14,10 @@ import {
 import { formatNumber } from 'lib/formatNumber'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import useClickOutside from 'hooks/useClickOutside'
+import { useInView } from 'react-intersection-observer'
+import { StaticImageData } from 'next/image'
+import Modal from 'components/social/Modal'
 
 // function getRandomNumber(min: number, max: number): number {
 //   return Math.floor(Math.random() * (max - min + 1) + min)
@@ -39,10 +44,10 @@ const postData = [
     },
     images: [
       'https://kris.starowl.social/og.png',
-      'public/images/placeholder.jpg',
-      'public/images/jan-2024/spltjs.jpg',
-      'public/images/feb-2024/solarpunk.jpg',
-      'public/images/feb-2024/ob-theme-switcher.jpg',
+      '/public/images/placeholder.jpg',
+      '/public/images/jan-2024/spltjs.jpg',
+      '/public/images/feb-2024/solarpunk.jpg',
+      '/public/images/feb-2024/ob-theme-switcher.jpg',
     ],
   },
   {
@@ -92,7 +97,22 @@ const postData = [
 ]
 
 const Posts = () => {
-  return postData.map((post, index) => <Post key={index} {...post} />)
+  const [modalImages, setModalImages] = useState<string[]>([])
+  const [modalOpen, setModalOpen] = useState(false)
+
+  const handleImageClick = (images: string[]) => {
+    setModalImages(images)
+    setModalOpen(true)
+  }
+
+  return (
+    <React.Fragment>
+      {postData.map((post, index) => (
+        <Post key={index} {...post} onImageClick={handleImageClick} />
+      ))}
+      <Modal images={modalImages} open={modalOpen} setOpen={setModalOpen} />
+    </React.Fragment>
+  )
 }
 
 interface PostStatsProps {
@@ -100,14 +120,19 @@ interface PostStatsProps {
   data: { likes: number; comments: number; reposts: number; views: number }
 }
 
-const Post = ({ user, content, stats, images }: (typeof postData)[0]) => {
+const Post = ({
+  user,
+  content,
+  stats,
+  images,
+  onImageClick,
+}: (typeof postData)[0] & { onImageClick: (image: string[]) => void }) => {
   return (
-    <article className="w-full cursor-pointer space-y-4 rounded-2xl p-3 transition-colors hover:bg-shark-950/5">
+    <article className="w-full cursor-pointer space-y-4 p-3 transition-colors hover:bg-shark-950/5 max-sm:border-b sm:rounded-2xl">
       <header className="flex items-center">
         <User
           classNames={{
             base: 'flex-1 justify-start',
-            wrapper: 'max-xl:hidden',
             name: 'text-sm font-bold',
             description: 'text-sm',
           }}
@@ -128,10 +153,12 @@ const Post = ({ user, content, stats, images }: (typeof postData)[0]) => {
           <OutlineMore size={24} />
         </Button>
       </header>
-      <main>
-        <PostContent content={content} images={images} />
-        <PostStats hasLiked={stats.hasLiked} data={stats.data} />
-      </main>
+      <PostContent
+        content={content}
+        images={images}
+        onImageClick={onImageClick}
+      />
+      <PostStats hasLiked={stats.hasLiked} data={stats.data} />
     </article>
   )
 }
@@ -139,36 +166,29 @@ const Post = ({ user, content, stats, images }: (typeof postData)[0]) => {
 const PostContent = ({
   content,
   images,
+  onImageClick,
 }: {
   content: string
   images: string[]
+  onImageClick: (images: string[]) => void
 }) => {
   const [currentImage, setCurrentImage] = useState(images[0])
-  // const [aspectRatio, setAspectRatio] = useState('16/9')
-
-  // useEffect(() => {
-  //   const img = new window.Image()
-  //   img.onload = () => {
-  //     setAspectRatio(`${img.width}/${img.height}`)
-  //   }
-  //   img.src = currentImage
-  // }, [currentImage])
 
   return (
     <div className="mb-2 flex flex-col space-y-2">
       <div className="relative mb-2 overflow-hidden rounded-2xl">
         {images.length > 1 && (
           <React.Fragment>
-            <div className="absolute left-0 right-0 top-0 z-10 flex h-8 items-center bg-gradient-to-b from-shark-950/50 to-transparent px-4">
+            <div className="pointer-events-none absolute left-0 right-0 top-0 z-20 flex h-6 items-center bg-gradient-to-b from-shark-950/50 to-transparent px-4">
               {images.map((image, index) => (
                 <div
                   key={index}
-                  className={`mx-1 h-1 flex-1 rounded-full backdrop-blur-xl ${currentImage === image ? 'bg-shark-50' : 'bg-shark-50/50'}`}
-                  onClick={() => setCurrentImage(image)}
+                  className={`mx-1 h-0.5 flex-1 rounded-full backdrop-blur-xl ${currentImage === image ? 'bg-shark-50' : 'bg-shark-50/50'}`}
+                  // onClick={() => setCurrentImage(image)}
                 />
               ))}
             </div>
-            <div className="absolute left-0 right-0 top-1/2 z-10 flex items-center justify-between px-4">
+            <div className="pointer-events-none absolute left-0 right-0 top-1/2 z-20 flex -translate-y-1/2 items-center justify-between px-4">
               <Button
                 onClick={() =>
                   setCurrentImage(
@@ -178,7 +198,7 @@ const PostContent = ({
                     ],
                   )
                 }
-                className="bg-shark-950/30 text-shark-50 backdrop-blur-xl"
+                className={`pointer-events-auto bg-shark-950/30 text-shark-50 backdrop-blur-xl ${images.indexOf(currentImage) <= 0 ? 'invisible' : ''}`}
                 type={'icon'}
               >
                 <OutlineChevronLeft size={24} />
@@ -190,7 +210,7 @@ const PostContent = ({
                   )
                 }
                 type={'icon'}
-                className="bg-shark-950/30 text-shark-50 backdrop-blur-xl"
+                className={`pointer-events-auto bg-shark-950/30 text-shark-50 backdrop-blur-xl ${images.indexOf(currentImage) >= images.length - 1 ? 'invisible' : ''}`}
               >
                 <OutlineChevronRight size={24} />
               </Button>
@@ -202,8 +222,9 @@ const PostContent = ({
           alt="Post image"
           width={1920}
           height={1080}
-          fallbackSrc="public/images/placeholder.jpg"
-          className={`-z-10 w-full object-cover`} //aspect-[${aspectRatio}]
+          fallbackSrc={placeholder.src}
+          onClick={() => onImageClick(images)}
+          className={`user-select-none w-full object-cover`} //aspect-[${aspectRatio}]
         />
       </div>
       <p>{content}</p>
@@ -238,7 +259,7 @@ const PostStats = ({ hasLiked, data }: PostStatsProps) => {
           className="group relative w-full justify-start overflow-visible"
         >
           <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blue-500 group-hover:before:block group-hover:before:size-10 group-hover:before:bg-blue-500 group-hover:before:opacity-30 group-hover:before:content-['']">
-            <OutlineHome size={24} />
+            <OutlineChat size={24} />
           </div>
           <span className="lining-nums transition-colors group-hover:text-blue-500">
             {data.comments !== 0 ? formatNumber(data.comments) : ''}
