@@ -3,7 +3,10 @@ import type { Config } from 'tailwindcss'
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 const config: Config = {
-  content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './src/**/*.{js,ts,jsx,tsx}',
+    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
+  ],
   darkMode: 'class',
   theme: {
     extend: {
@@ -42,6 +45,19 @@ const config: Config = {
           800: '#464646',
           900: '#3d3d3d',
           950: '#292929',
+        },
+        blue: {
+          '50': '#f0f5fe',
+          '100': '#dde8fc',
+          '200': '#c3d8fa',
+          '300': '#9ac0f6',
+          '400': '#6a9ef0',
+          '500': '#487ce9',
+          '600': '#2856dc',
+          '700': '#2a4bcb',
+          '800': '#283ea5',
+          '900': '#253883',
+          '950': '#1b2450',
         },
       },
 
@@ -172,6 +188,9 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }
 export default config
