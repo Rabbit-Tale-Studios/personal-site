@@ -22,7 +22,13 @@ const Page = () => (
         Bruh, how did you get here?
       </h2>
       <div className="animate-rotate">
-        <Button text={`Take me home`} as="a" href={'./'} type="primary" />
+        <Button
+          text={`Take me home`}
+          as="a"
+          href={'./'}
+          type="primary"
+          className="h-12 place-content-center"
+        />
       </div>
     </Section>
   </Layout>
