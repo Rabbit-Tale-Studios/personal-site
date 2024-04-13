@@ -28,6 +28,7 @@
     "react-spltjs": "^1.0.0",
     "react-syntax-highlighter": "^15.5.0",
     "react-twemoji": "^0.5.0",
+    "react-use": "^17.5.0",
     "slugify": "^1.6.6",
     "tailwind-merge": "^2.2.1",
     "tailwind-variants": "^0.2.1",

@@ -9,6 +9,7 @@ import {
 } from 'icons/Icons'
 import { cn } from 'utils/tw'
 import { PostStats, PostStatsProps } from './Post'
+import { useMeasure } from 'react-use'
 
 const Modal = (props: {
   children?: React.ReactNode
@@ -17,9 +18,44 @@ const Modal = (props: {
   setOpen: (arg: boolean) => void
   stats: PostStatsProps
 }) => {
+  const [imageDimensions, setImageDimensions] = useState({
+    width: 0,
+    height: 0,
+    aspectRatio: '16/9',
+  })
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const { images, open, setOpen, stats } = props
   const menuRef = useRef<HTMLDivElement | null>(null)
   const [lastColor, setLastColor] = useState('rgba(0, 0, 0, .8)')
+
+  function gcd(a: number, b: number) {
+    if (b === 0) {
+      return a
+    } else {
+      return gcd(b, a % b)
+    }
+  }
+
+  function calculateAspectRatio(width: number, height: number) {
+    const divisor = gcd(width, height)
+    return `${width / divisor}/${height / divisor}`
+  }
+
+  useEffect(() => {
+    const img = new window.Image()
+    img.src = images[currentImageIndex]
+    img.onload = () => {
+      const aspectRatio = calculateAspectRatio(
+        img.naturalWidth,
+        img.naturalHeight,
+      )
+      setImageDimensions({
+        width: img.naturalWidth,
+        height: img.naturalHeight,
+        aspectRatio,
+      })
+    }
+  }, [images, currentImageIndex])
 
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
@@ -43,8 +79,6 @@ const Modal = (props: {
       document.removeEventListener('click', handleClick)
     }
   }, [open])
-
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   const handlePrev = () => {
     setCurrentImageIndex((oldIndex) =>
@@ -121,18 +155,30 @@ const Modal = (props: {
 
               <article
                 className={cn(
-                  'after:rounded-3x group relative mx-2 my-2 h-full max-h-screen w-full max-w-screen-2xl overflow-hidden text-shark-800 shadow-shark-950/30 backdrop:shadow-xl after:absolute after:left-0 after:top-0 after:h-full after:w-full',
+                  'pointer-events-none relative mx-2 my-2 flex h-full max-h-screen w-full max-w-screen-2xl content-center items-center justify-center overflow-hidden shadow-shark-950/30 backdrop:shadow-xl',
                   {
                     'animate-modalReveal': props.open,
                   },
                 )}
+                onClick={() => setOpen(false)}
               >
+                {/* <div
+                  style={{
+                    backgroundImage: `url(${images[currentImageIndex]})`,
+                    filter: 'blur(20px)',
+                    transform: 'scale(1.1)',
+                  }}
+                  className="absolute inset-0 bg-cover bg-center"
+                /> */}
                 <Image
                   src={images[currentImageIndex]}
                   alt="Post image"
-                  layout="fill"
+                  //layout="fill"
+                  height={imageDimensions.height}
+                  width={imageDimensions.width}
                   objectFit="contain"
-                  className="max-h-screen"
+                  className="pointer-events-auto h-full w-fit self-center"
+                  onClick={(e) => e.stopPropagation()}
                 />
               </article>
               <PostStats
