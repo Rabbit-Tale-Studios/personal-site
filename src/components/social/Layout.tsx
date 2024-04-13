@@ -56,16 +56,11 @@ const Layout = (props: {
           <ThemeWatcher />
           <div className="w-full pb-24 md:flex md:pb-0 xl:justify-center xl:gap-6">
             <LeftNav />
-            <main className="flex w-full flex-col gap-2 p-4 leading-none md:max-w-xl md:p-0 md:py-[2.5rem] lg:max-w-lg xl:max-w-xl">
+            <main className="flex w-full flex-col leading-none sm:gap-2 md:max-w-xl md:p-0 md:py-[2.5rem] lg:max-w-lg xl:max-w-xl">
               {props.children}
             </main>
             <Aside />
           </div>
-          {/* <Nav />
-          <main className="flex w-full flex-col items-center justify-center px-4 sm:px-10">
-            {props.children}
-          </main>
-          <Footer /> */}
           <SpeedInsights />
           <Analytics />
         </FontProvider>
