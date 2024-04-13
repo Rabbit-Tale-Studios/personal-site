@@ -4,6 +4,12 @@ export { SolidLogoText } from './assets/logo/logo_text'
 //User Inferface
 
 export {
+  OutlineStar,
+  SolidStar,
+  DuotoneStar,
+} from './assets/user_interface/Star'
+
+export {
   OutlineMenu,
   SolidMenu,
   DuotoneMenu,
@@ -186,6 +192,12 @@ export {
   SolidArrowLeft,
   DuotoneArrowLeft,
 } from './assets/arrows/ArrowLeft'
+
+export {
+  OutlineRepeat,
+  SolidRepeat,
+  DuotoneRepeat,
+} from './assets/arrows/Repeat'
 
 // Navigation and Travel
 
