@@ -198,7 +198,7 @@ const Nav = () => {
                 onClick={() => setTheme('system')}
                 href={'#'}
               />
-              <MenuItem text={'Bubbles!'} onClick={toggleBubble} href={'#'} />
+              {/* <MenuItem text={'Bubbles!'} onClick={toggleBubble} href={'#'} /> */}
             </ul>
           </div>
         </nav>

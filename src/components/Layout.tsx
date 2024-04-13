@@ -9,7 +9,7 @@ import CursorComponent from './Cursor'
 import BackToTop from './BackToTop'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/react'
-import ThemeSwitchBubble from './ThemeSwitchBubble'
+//import ThemeSwitchBubble from './ThemeSwitchBubble'
 import React from 'react'
 
 export const BubbleContext = React.createContext({
@@ -64,7 +64,7 @@ const Layout = (props: {
           </div>
           <BackToTop />
           <CursorComponent children={undefined} />
-          {showBubble && <ThemeSwitchBubble />}
+          {/* {showBubble && <ThemeSwitchBubble />} */}
           <SpeedInsights />
           <Analytics />
         </FontProvider>
