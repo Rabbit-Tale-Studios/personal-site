@@ -8,6 +8,8 @@ import {
   OutlineChevronRight,
   OutlineHome,
   OutlineMore,
+  OutlineRepeat,
+  OutlineStar,
   OutlineStars,
   SolidNestAlt,
 } from 'icons/Icons'
@@ -44,10 +46,7 @@ const postData = [
     },
     images: [
       'https://kris.starowl.social/og.png',
-      '/public/images/placeholder.jpg',
-      '/public/images/jan-2024/spltjs.jpg',
-      '/public/images/feb-2024/solarpunk.jpg',
-      '/public/images/feb-2024/ob-theme-switcher.jpg',
+      'https://pbs.twimg.com/media/F5KYC5XXUAAbFro?format=jpg&name=4096x4096',
     ],
   },
   {
@@ -99,25 +98,41 @@ const postData = [
 const Posts = () => {
   const [modalImages, setModalImages] = useState<string[]>([])
   const [modalOpen, setModalOpen] = useState(false)
+  const [currentPostStats, setCurrentPostStats] =
+    useState<PostStatsProps | null>(null)
 
-  const handleImageClick = (images: string[]) => {
+  const handleImageClick = (images: string[], stats: PostStatsProps) => {
     setModalImages(images)
+    setCurrentPostStats(stats)
     setModalOpen(true)
   }
 
   return (
     <React.Fragment>
       {postData.map((post, index) => (
-        <Post key={index} {...post} onImageClick={handleImageClick} />
+        <Post
+          key={index}
+          {...post}
+          onImageClick={() => handleImageClick(post.images, post.stats)}
+        />
       ))}
-      <Modal images={modalImages} open={modalOpen} setOpen={setModalOpen} />
+      {currentPostStats && (
+        <Modal
+          images={modalImages}
+          open={modalOpen}
+          setOpen={setModalOpen}
+          stats={currentPostStats}
+        />
+      )}
     </React.Fragment>
   )
 }
 
-interface PostStatsProps {
+export interface PostStatsProps {
   hasLiked: boolean
   data: { likes: number; comments: number; reposts: number; views: number }
+  className?: string
+  iconColor?: string
 }
 
 const Post = ({
@@ -232,21 +247,26 @@ const PostContent = ({
   )
 }
 
-const PostStats = ({ hasLiked, data }: PostStatsProps) => {
+export const PostStats = ({
+  hasLiked,
+  data,
+  className,
+  iconColor,
+}: PostStatsProps) => {
   return (
-    <div className="flex w-full">
+    <div className={`flex w-full ${className}`}>
       <div className="flex w-1/2 space-x-2">
         <Button
           type={'link'}
           hasIcon
           iconPosition={'left'}
-          className="group relative w-full justify-start overflow-visible"
+          className={`group relative w-full justify-start overflow-visible ${iconColor}`}
         >
-          <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blue-500 group-hover:before:block group-hover:before:size-10 group-hover:before:bg-blue-500 group-hover:before:opacity-30 group-hover:before:content-['']">
-            <OutlineHome size={24} />
+          <div className="group-hover:text-gold-600 group-hover:before:bg-gold-600 relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:before:block group-hover:before:size-10 group-hover:before:opacity-30 group-hover:before:content-['']">
+            <OutlineStar size={24} />
           </div>
           <span
-            className={`lining-nums transition-colors group-hover:text-blue-500 ${hasLiked ? 'text-color-star' : ''}`}
+            className={`group-hover:text-gold-600 lining-nums transition-colors ${hasLiked ? 'text-color-star' : ''}`}
           >
             {data.likes !== 0 ? formatNumber(data.likes) : ''}
           </span>
@@ -256,12 +276,12 @@ const PostStats = ({ hasLiked, data }: PostStatsProps) => {
           type={'link'}
           hasIcon
           iconPosition={'left'}
-          className="group relative w-full justify-start overflow-visible"
+          className={`group relative w-full justify-start overflow-visible ${iconColor}`}
         >
-          <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blue-500 group-hover:before:block group-hover:before:size-10 group-hover:before:bg-blue-500 group-hover:before:opacity-30 group-hover:before:content-['']">
+          <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blue-600 group-hover:before:block group-hover:before:size-10 group-hover:before:bg-blue-600 group-hover:before:opacity-30 group-hover:before:content-['']">
             <OutlineChat size={24} />
           </div>
-          <span className="lining-nums transition-colors group-hover:text-blue-500">
+          <span className="lining-nums transition-colors group-hover:text-blue-600">
             {data.comments !== 0 ? formatNumber(data.comments) : ''}
           </span>
         </Button>
@@ -269,12 +289,12 @@ const PostStats = ({ hasLiked, data }: PostStatsProps) => {
           type={'link'}
           hasIcon
           iconPosition={'left'}
-          className="group relative w-full justify-start overflow-visible"
+          className={`group relative w-full justify-start overflow-visible ${iconColor}`}
         >
-          <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blue-500 group-hover:before:block group-hover:before:size-10 group-hover:before:bg-blue-500 group-hover:before:opacity-30 group-hover:before:content-['']">
-            <OutlineHome size={24} />
+          <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-green-600 group-hover:before:block group-hover:before:size-10 group-hover:before:bg-green-600 group-hover:before:opacity-30 group-hover:before:content-['']">
+            <OutlineRepeat size={24} />
           </div>
-          <span className="lining-nums transition-colors group-hover:text-blue-500">
+          <span className="lining-nums transition-colors group-hover:text-green-600">
             {data.reposts !== 0 ? formatNumber(data.reposts) : ''}
           </span>
         </Button>
@@ -293,9 +313,20 @@ const PostStats = ({ hasLiked, data }: PostStatsProps) => {
         </Button> */}
       </div>
       <div className="flex w-full flex-1 justify-end">
-        <Button type={'icon'}>
-          <OutlineBookmark className="icon" size={24} />
+        <Button
+          type={'icon'}
+          className={`group relative justify-start overflow-visible ${iconColor}`}
+        >
+          <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blue-600 group-hover:before:block group-hover:before:size-10 group-hover:before:bg-blue-600 group-hover:before:opacity-30 group-hover:before:content-['']">
+            <OutlineBookmark size={24} />
+          </div>
         </Button>
+        {/* <Button
+          type={'icon'}
+          className={`hover:bg-blue-600 hover:text-blue-600 ${iconColor}`}
+        >
+          <OutlineBookmark size={24} />
+        </Button> */}
         {/* <Button type={'icon'}>
           <OutlineHome className="icon" size={24} />
         </Button> */}
