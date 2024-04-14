@@ -213,7 +213,7 @@ const PostContent = ({
                     ],
                   )
                 }
-                className={`pointer-events-auto bg-shark-950/30 text-shark-50 backdrop-blur-xl ${images.indexOf(currentImage) <= 0 ? 'invisible' : ''}`}
+                className={`pointer-events-auto bg-shark-950/30 text-shark-50 backdrop-blur-xl transition-all duration-300 ease-bounce active:-rotate-12 active:scale-90 sm:hover:!scale-90 sm:active:!-rotate-12 sm:active:!scale-75 sm:group-hover:rotate-0 sm:group-hover:scale-100 sm:group-hover:opacity-100 ${images.indexOf(currentImage) <= 0 ? 'invisible' : ''}`}
                 type={'icon'}
               >
                 <OutlineChevronLeft size={24} />
@@ -225,7 +225,7 @@ const PostContent = ({
                   )
                 }
                 type={'icon'}
-                className={`pointer-events-auto bg-shark-950/30 text-shark-50 backdrop-blur-xl ${images.indexOf(currentImage) >= images.length - 1 ? 'invisible' : ''}`}
+                className={`pointer-events-auto bg-shark-950/30 text-shark-50 backdrop-blur-xl transition-all duration-300 ease-bounce active:-rotate-12 active:scale-90 sm:hover:!scale-90 sm:active:!rotate-12 sm:active:!scale-75 sm:group-hover:rotate-0 sm:group-hover:scale-100 sm:group-hover:opacity-100 ${images.indexOf(currentImage) >= images.length - 1 ? 'invisible' : ''}`}
               >
                 <OutlineChevronRight size={24} />
               </Button>
@@ -262,11 +262,11 @@ export const PostStats = ({
           iconPosition={'left'}
           className={`group relative w-full justify-start overflow-visible ${iconColor}`}
         >
-          <div className="group-hover:text-gold-600 group-hover:before:bg-gold-600 relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:before:block group-hover:before:size-10 group-hover:before:opacity-30 group-hover:before:content-['']">
-            <OutlineStar size={24} />
+          <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-gold-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-gold-600 group-hover:before:opacity-30 group-hover:before:content-['']">
+            <OutlineStar size={20} />
           </div>
           <span
-            className={`group-hover:text-gold-600 lining-nums transition-colors ${hasLiked ? 'text-color-star' : ''}`}
+            className={`text-sm lining-nums transition-colors group-hover:text-gold-600 ${hasLiked ? 'text-color-star' : ''}`}
           >
             {data.likes !== 0 ? formatNumber(data.likes) : ''}
           </span>
@@ -278,10 +278,10 @@ export const PostStats = ({
           iconPosition={'left'}
           className={`group relative w-full justify-start overflow-visible ${iconColor}`}
         >
-          <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blue-600 group-hover:before:block group-hover:before:size-10 group-hover:before:bg-blue-600 group-hover:before:opacity-30 group-hover:before:content-['']">
-            <OutlineChat size={24} />
+          <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blue-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blue-600 group-hover:before:opacity-30 group-hover:before:content-['']">
+            <OutlineChat size={20} />
           </div>
-          <span className="lining-nums transition-colors group-hover:text-blue-600">
+          <span className="text-sm lining-nums transition-colors group-hover:text-blue-600">
             {data.comments !== 0 ? formatNumber(data.comments) : ''}
           </span>
         </Button>
@@ -291,10 +291,10 @@ export const PostStats = ({
           iconPosition={'left'}
           className={`group relative w-full justify-start overflow-visible ${iconColor}`}
         >
-          <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-green-600 group-hover:before:block group-hover:before:size-10 group-hover:before:bg-green-600 group-hover:before:opacity-30 group-hover:before:content-['']">
-            <OutlineRepeat size={24} />
+          <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-green-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-green-600 group-hover:before:opacity-30 group-hover:before:content-['']">
+            <OutlineRepeat size={20} />
           </div>
-          <span className="lining-nums transition-colors group-hover:text-green-600">
+          <span className="text-sm lining-nums transition-colors group-hover:text-green-600">
             {data.reposts !== 0 ? formatNumber(data.reposts) : ''}
           </span>
         </Button>
@@ -317,8 +317,8 @@ export const PostStats = ({
           type={'icon'}
           className={`group relative justify-start overflow-visible ${iconColor}`}
         >
-          <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blue-600 group-hover:before:block group-hover:before:size-10 group-hover:before:bg-blue-600 group-hover:before:opacity-30 group-hover:before:content-['']">
-            <OutlineBookmark size={24} />
+          <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blue-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blue-600 group-hover:before:opacity-30 group-hover:before:content-['']">
+            <OutlineBookmark size={20} />
           </div>
         </Button>
         {/* <Button

@@ -145,7 +145,7 @@ const Modal = (props: {
                     </button>
                     <button
                       onClick={handleNext}
-                      className={`pointer-events-auto absolute right-4 top-1/2 z-20 -translate-y-1/2 transform rounded-full bg-shark-950/30 p-2 text-white-50 backdrop-blur-md transition-all duration-300 ease-bounce active:-rotate-12 active:scale-90 sm:scale-75 sm:hover:!scale-90 sm:active:!-rotate-12 sm:active:!scale-75 sm:group-hover:rotate-0 sm:group-hover:scale-100 sm:group-hover:opacity-100`} //${currentImageIndex >= images.length - 1 ? 'invisible' : ''}
+                      className={`pointer-events-auto absolute right-4 top-1/2 z-20 -translate-y-1/2 transform rounded-full bg-shark-950/30 p-2 text-white-50 backdrop-blur-md transition-all duration-300 ease-bounce active:-rotate-12 active:scale-90 sm:scale-75 sm:hover:!scale-90 sm:active:!rotate-12 sm:active:!scale-75 sm:group-hover:rotate-0 sm:group-hover:scale-100 sm:group-hover:opacity-100`} //${currentImageIndex >= images.length - 1 ? 'invisible' : ''}
                     >
                       <OutlineChevronRight size={32} />
                     </button>
@@ -155,7 +155,7 @@ const Modal = (props: {
 
               <article
                 className={cn(
-                  'pointer-events-none relative mx-2 my-2 flex h-full max-h-screen w-full max-w-screen-2xl content-center items-center justify-center overflow-hidden shadow-shark-950/30 backdrop:shadow-xl',
+                  'relative mx-2 my-2 flex max-h-screen w-full max-w-screen-2xl content-center items-center justify-center overflow-hidden shadow-shark-950/30 backdrop:shadow-xl',
                   {
                     'animate-modalReveal': props.open,
                   },
@@ -177,7 +177,7 @@ const Modal = (props: {
                   height={imageDimensions.height}
                   width={imageDimensions.width}
                   objectFit="contain"
-                  className="pointer-events-auto h-full w-fit self-center"
+                  className="h-full w-fit self-center"
                   onClick={(e) => e.stopPropagation()}
                 />
               </article>
