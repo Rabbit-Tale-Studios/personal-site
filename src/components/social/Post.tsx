@@ -162,7 +162,7 @@ const Post = ({
   onImageClick,
 }: (typeof postData)[0] & { onImageClick: (image: string[]) => void }) => {
   return (
-    <article className="w-full cursor-pointer space-y-4 bg-white-50 p-3 pb-1.5 shadow-sm transition-colors hover:bg-shark-950/5 max-sm:border-b sm:rounded-2xl">
+    <article className="w-full cursor-pointer space-y-4 bg-white-50 p-3 pb-1.5 transition-colors max-sm:border-b sm:rounded-2xl sm:shadow-sm sm:hover:bg-shark-950/5">
       <header className="flex items-center">
         <User
           classNames={{
