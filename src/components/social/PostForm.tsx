@@ -17,8 +17,6 @@ import {
   FormLabel,
   FormMessage,
 } from 'components/Form'
-import { Input } from '@nextui-org/react'
-import CircleProgress from 'components/CircleProgress'
 
 const formSchema = z.object({
   username: z.string().min(2).max(500),
