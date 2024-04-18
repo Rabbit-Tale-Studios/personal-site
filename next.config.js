@@ -2,7 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['kris.starowl.social', 'pbs.twimg.com'],
+    domains: [
+      'kris.starowl.social',
+      'pbs.twimg.com',
+      'https://twemoji.maxcdn.com',
+    ],
   },
 }
 
