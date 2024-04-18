@@ -136,21 +136,21 @@ const Page = () => {
           <div className="inline-flex space-x-3 whitespace-nowrap">
             <Button
               onClick={() => setFilter('all')}
-              type={filter === 'all' ? 'primary' : 'secondary'}
+              variant={filter === 'all' ? 'primary' : 'ghost'}
               size="sm"
             >
               All
             </Button>
             <Button
               onClick={() => setFilter('life')}
-              type={filter === 'life' ? 'primary' : 'secondary'}
+              variant={filter === 'life' ? 'primary' : 'ghost'}
               size="sm"
             >
               Life Blogs
             </Button>
             <Button
               onClick={() => setFilter('dev')}
-              type={filter === 'dev' ? 'primary' : 'secondary'}
+              variant={filter === 'dev' ? 'primary' : 'ghost'}
               size="sm"
             >
               Dev Blogs

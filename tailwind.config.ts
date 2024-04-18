@@ -1,3 +1,4 @@
+import { nextui } from '@nextui-org/react'
 import type { Config } from 'tailwindcss'
 
 const defaultTheme = require('tailwindcss/defaultTheme')
@@ -45,6 +46,19 @@ const config: Config = {
           800: '#464646',
           900: '#3d3d3d',
           950: '#292929',
+        },
+        blueberry: {
+          50: '#ecefff',
+          100: '#dde2ff',
+          200: '#c2caff',
+          300: '#9ca6ff',
+          400: '#7576ff',
+          500: '#4d41ff',
+          600: '#5136f5',
+          700: '#462ad8',
+          800: '#3925ae',
+          900: '#312689',
+          950: '#1f1650',
         },
         blue: {
           50: '#f0f5fe',
@@ -188,6 +202,12 @@ const config: Config = {
           '0%': { transform: 'translateX(100%)' },
           '100%': { transform: 'translateX(-100%)' },
         },
+
+        shake: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '10%, 30%, 50%, 70%, 90%': { transform: 'translateX(-1px)' },
+          '20%, 40%, 60%, 80%': { transform: 'translateX(1px)' },
+        },
       },
 
       animation: {
@@ -211,10 +231,12 @@ const config: Config = {
         rotateAlt: 'rotateAlt 1s cubic-bezier(0.5,1,0.1,1.8) forwards',
 
         marquee: 'marquee 10s linear infinite',
+        shake: 'shake 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97) both',
       },
     },
   },
   plugins: [
+    nextui(),
     require('@tailwindcss/typography'),
     require('@tailwindcss/aspect-ratio'),
   ],

@@ -1,4 +1,3 @@
-// In your Modal.tsx
 import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Color from 'color-thief-react'

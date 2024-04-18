@@ -54,7 +54,7 @@ const BackToTop = () => {
             dataHover
             aria-label="Back to top"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            type={'icon'}
+            variant={'icon'}
             as={'button'}
             className={`bg-white-50 !p-3 ring-2 ring-white-200 hover:text-shark-950 lg:bg-transparent lg:hover:!bg-transparent lg:hover:ring-0 ${!isAtTop ? 'animate-revealSm' : 'animate-scaleOutFade'}`}
           >

@@ -26,7 +26,7 @@ const Page = () => (
           text={`Take me home`}
           as="a"
           href={'./'}
-          type="primary"
+          variant="primary"
           className="h-12 place-content-center"
         />
       </div>

@@ -21,6 +21,7 @@ import Button from 'components/Button'
 const NavItem = ({ active = false, link, children, onClick, badge }: Props) => {
   return (
     <Link
+      tabIndex={-1}
       onClick={onClick}
       className={
         'group flex w-1/5 flex-1 cursor-pointer items-center justify-center md:w-auto md:justify-center lg:w-full xl:justify-between'
@@ -31,8 +32,8 @@ const NavItem = ({ active = false, link, children, onClick, badge }: Props) => {
         <Button
           hasIcon
           //  rounded={'xl'}
-          iconPosition={'left'}
-          type={`${active ? 'primary' : 'ghost'}`}
+          iconPosition="left"
+          variant={`${active ? 'primary' : 'ghost'}`}
           className={`h-12 max-xl:p-3 ${active ? 'group-hover:bg-shark-900' : 'group-hover:bg-shark-950/5'}`}
         >
           {children}

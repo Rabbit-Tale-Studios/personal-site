@@ -128,7 +128,13 @@ const Nav = () => {
           /> */}
         </Link>
         <nav className="flex space-x-2">
-          <Button aria="Blog" text="Blog" type="ghost" as="a" href={'/blog'} />
+          <Button
+            aria="Blog"
+            text="Blog"
+            variant="ghost"
+            as="a"
+            href={'/blog'}
+          />
           <div className="relative z-50" ref={menuContactRef}>
             <Button
               aria="Contact"
@@ -137,7 +143,7 @@ const Nav = () => {
               }}
               state={openContact}
               text="Contact"
-              type="ghost"
+              variant="ghost"
             />
             <ul
               className={cn(
@@ -165,7 +171,7 @@ const Nav = () => {
                 setOpenContact(false)
               }}
               state={openTheme}
-              type={'icon'}
+              variant={'icon'}
               as={'button'}
             >
               <OutlineClearNight size={24} />

@@ -93,9 +93,9 @@ const LeftNav = () => {
   }
 
   return (
-    <nav className="sticky top-0 hidden h-screen max-w-[8rem] flex-1 flex-col items-end justify-between px-10 py-10 md:flex lg:ml-0 xl:ml-0 xl:max-w-[14rem] xl:items-start xl:px-0">
+    <nav className="sticky top-0 hidden h-screen max-w-[8rem] flex-1 flex-col items-end justify-between p-10 md:flex lg:ml-0 xl:ml-0 xl:max-w-[14rem] xl:items-start xl:px-0">
       <ScrollShadow className="flex h-full flex-col justify-between overflow-auto lg:w-full lg:px-0">
-        <section className="rounded-2x flex w-full flex-col gap-6">
+        <section className="rounded-2x flex w-full flex-col gap-6 px-4">
           <ul className="flex flex-col items-end space-y-2">
             {NavLinkItem.map(
               ({ active, href, text, icon, notification, badge }, i) => (
@@ -130,8 +130,10 @@ const LeftNav = () => {
             )}
           </ul>
           <Button
-            type={'accent'}
-            className="h-12 max-xl:self-center max-xl:p-3 xl:w-full"
+            variant={'accent'}
+            aria="Hoot"
+            size="lg"
+            className="max-xl:self-center max-xl:p-3 xl:w-full"
           >
             <span className="hidden xl:inline">Hoot</span>
             <SolidChevronRight className="hidden max-xl:inline" size={24} />
@@ -148,7 +150,7 @@ const LeftNav = () => {
             )}
           </Button> */}
         </section>
-        <section className="flex overflow-hidden rounded-2xl xl:bg-shark-950/5 xl:p-3">
+        <section className="flex overflow-hidden rounded-2xl shadow-sm xl:bg-white-50 xl:p-3">
           {/* <div className="flex space-x-4">
             <Avatar
               className="!size-12 ring-1 ring-shark-950/30"
@@ -165,22 +167,22 @@ const LeftNav = () => {
             classNames={{
               base: 'xl:flex-1 justify-start',
               wrapper: 'max-xl:hidden',
-              name: 'text-sm font-bold',
-              description: 'text-sm',
+              name: 'text-base font-bold leading-tight',
+              description: 'text-sm leading-tight',
             }}
-            name="Hasira"
+            name="Hasira 🥃🪴"
             description={
               <Link href="https://twitter.com/hasiradoo">@Hasiradoo</Link>
             }
             avatarProps={{
               name: 'Junior Garcia',
               src: 'https://pbs.twimg.com/profile_images/1777614638261080064/H9iQD24q_400x400.jpg',
-              className: 'sm:size-12',
+              className: 'max-xl:size-12',
               showFallback: true,
               fallback: <SolidNestAlt size={24} />,
             }}
           />
-          <Button type={'icon'} className="max-xl:hidden">
+          <Button variant={'icon'} className="max-xl:hidden">
             <OutlineMore size={24} />
           </Button>
         </section>
