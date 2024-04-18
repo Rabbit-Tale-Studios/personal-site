@@ -179,6 +179,7 @@ const PostForm = () => {
             />
             <Button
               variant="ghost"
+              disabled={!watch}
               type="button"
               aria="draft"
               text="Draft"
