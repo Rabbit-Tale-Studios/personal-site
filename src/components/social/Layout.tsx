@@ -44,7 +44,7 @@ const Layout = (props: {
         <MetaTags {...(props.metaTagsProps ?? {})} />
         <ThemeWatcher />
         <NextUIProvider>
-          <div className="flex bg-shark-50 pb-24 md:pb-0 lg:justify-center xl:gap-6">
+          <div className="flex bg-shark-50 lg:justify-center xl:gap-6">
             <LeftNav />
             <main className="flex w-full flex-col leading-none sm:space-y-4 md:max-w-xl md:p-0 md:py-[2.5rem] lg:max-w-lg xl:max-w-xl">
               {props.children}
