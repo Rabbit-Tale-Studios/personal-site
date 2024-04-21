@@ -131,6 +131,12 @@ export {
   DuotoneChevronRight,
 } from './assets/user_interface/ChevronRight'
 
+export {
+  OutlineFaceSmilling,
+  SolidFaceSmilling,
+  DuotoneFaceSmilling,
+} from './assets/user_interface/FaceSmiling'
+
 // Communication
 
 export {
@@ -206,3 +212,18 @@ export {
   SolidCompass,
   DuotoneCompass,
 } from './assets/navigation_and_travel/Compass'
+
+// Design
+
+export { OutlineImage, SolidImage, DuotoneImage } from './assets/design/Image'
+
+// Charts and Graphs
+export {
+  OutlineBar01Up,
+  SolidBar01Up,
+  DuotoneBar01Up,
+} from './assets/charts_and_graphs/Bar01Up'
+
+// Formating
+
+export { OutlineBold, SolidBold, DuotoneBold } from './assets/formatting/Bold'
