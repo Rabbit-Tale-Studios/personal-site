@@ -181,7 +181,10 @@ const Modal = (props: {
                 />
               </article>
               <PostStats
-                hasLiked={stats.hasLiked}
+                liked={stats.liked}
+                commented={stats.commented}
+                reposted={stats.reposted}
+                bookmarked={stats.bookmarked}
                 data={stats.data}
                 className="max-w-2xl"
                 iconColor="text-shark-50"
