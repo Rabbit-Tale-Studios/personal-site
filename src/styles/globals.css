@@ -52,11 +52,11 @@ img.emoji:not(:last-of-type) {
 }
 
 .light {
-  @apply bg-white-50 text-shark-900;
+  @apply bg-white-50 text-default-900;
 }
 
 .dark {
-  @apply bg-shark-950 text-white-50;
+  @apply bg-default-900 text-white-50;
 }
 
 .dark ::selection {
