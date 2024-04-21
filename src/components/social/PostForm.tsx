@@ -1,6 +1,12 @@
 import { Avatar, Textarea, Divider } from '@nextui-org/react'
 import Button from 'components/Button'
-import { OutlineMore } from 'icons/Icons'
+import {
+  OutlineBar01Up,
+  OutlineBold,
+  OutlineFaceSmilling,
+  OutlineImage,
+  OutlineMore,
+} from 'icons/Icons'
 import React, { useState } from 'react'
 import { CircularProgress } from '@nextui-org/react'
 
@@ -17,6 +23,7 @@ import {
   FormLabel,
   FormMessage,
 } from 'components/Form'
+import { OutlineItalic } from 'icons/assets/formatting/Italic'
 
 const formSchema = z.object({
   username: z.string().min(2).max(500),
@@ -112,37 +119,46 @@ const PostForm = () => {
           Submit
         </Button> */}
         <div className="flex justify-between">
-          <div className="flex space-x-2">
+          <div className="ml-12 flex items-end space-x-1">
             <Button
               variant={'icon'}
-              className={`group relative justify-start overflow-visible text-blueberry-600`}
+              className={`group relative justify-start overflow-visible text-blueberry-600 hover:!bg-transparent`}
             >
-              <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-30 group-hover:before:content-['']">
-                <OutlineMore size={20} />
+              <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
+                <OutlineImage size={20} />
               </div>
             </Button>
             <Button
               variant={'icon'}
-              className={`group relative justify-start overflow-visible text-blueberry-600`}
+              className={`group relative justify-start overflow-visible text-blueberry-600 hover:!bg-transparent`}
             >
-              <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-30 group-hover:before:content-['']">
-                <OutlineMore size={20} />
+              <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
+                <OutlineBar01Up size={20} />
               </div>
             </Button>
             <Button
               variant={'icon'}
-              className={`group relative justify-start overflow-visible text-blueberry-600`}
+              className={`group relative justify-start overflow-visible text-blueberry-600 hover:!bg-transparent`}
             >
-              <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-30 group-hover:before:content-['']">
-                <OutlineMore size={20} />
+              <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
+                <OutlineFaceSmilling size={20} />
+              </div>
+            </Button>
+            <Divider orientation="vertical" className="h-3/4 self-center" />
+            <Button
+              variant={'icon'}
+              className={`group relative justify-start overflow-visible text-blueberry-600 hover:!bg-transparent`}
+            >
+              <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
+                <OutlineBold size={20} />
               </div>
             </Button>
             <Button
               variant={'icon'}
-              className={`group relative justify-start overflow-visible text-blueberry-600`}
+              className={`group relative justify-start overflow-visible text-blueberry-600 hover:!bg-transparent`}
             >
-              <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-30 group-hover:before:content-['']">
-                <OutlineMore size={20} />
+              <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
+                <OutlineItalic size={20} />
               </div>
             </Button>
             {/* <Divider orientation="vertical" />
@@ -183,7 +199,6 @@ const PostForm = () => {
               type="button"
               aria="draft"
               text="Draft"
-              size="sm"
             />
             {/* <Button variant="icon" type="button" size="sm">
               <OutlineMore size={24} />
@@ -194,7 +209,6 @@ const PostForm = () => {
               variant="accent"
               type="submit"
               aria="hoot"
-              size="sm"
             />
           </div>
         </div>
