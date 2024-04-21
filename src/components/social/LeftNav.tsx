@@ -22,8 +22,28 @@ import NavItem from './Nav/NavItem'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { Badge } from 'components/Badges'
+import UserIdentifier from './UserIdentifier'
 
-const LeftNav = () => {
+type Story = {
+  id: number
+  title: string
+}
+
+type User = {
+  displayName: string
+  username: string
+  avatarUrl: string
+  stories?: Story[]
+}
+
+type LeftNavProps = User
+
+const LeftNav = ({
+  displayName,
+  username,
+  avatarUrl,
+  stories,
+}: LeftNavProps) => {
   const router = useRouter()
   const pathname = router.pathname
   const isAuthenticated = true
@@ -93,9 +113,9 @@ const LeftNav = () => {
   }
 
   return (
-    <nav className="sticky top-0 hidden h-screen max-w-[8rem] flex-1 flex-col items-end justify-between p-10 md:flex lg:ml-0 xl:ml-0 xl:max-w-[14rem] xl:items-start xl:px-0">
-      <ScrollShadow className="flex h-full flex-col justify-between overflow-auto lg:w-full lg:px-0">
-        <section className="rounded-2x flex w-full flex-col gap-6 px-4">
+    <nav className="sticky top-0 hidden h-screen max-w-[8rem] flex-1 flex-col items-end justify-between p-8 md:flex lg:ml-0 xl:ml-0 xl:max-w-[14rem] xl:items-start xl:px-0">
+      <ScrollShadow className="flex h-full flex-col items-center justify-between overflow-auto lg:w-full lg:px-0">
+        <section className="rounded-2x flex w-full flex-col gap-6 p-2">
           <ul className="flex flex-col items-end space-y-2">
             {NavLinkItem.map(
               ({ active, href, text, icon, notification, badge }, i) => (
@@ -138,53 +158,19 @@ const LeftNav = () => {
             <span className="hidden xl:inline">Hoot</span>
             <SolidChevronRight className="hidden max-xl:inline" size={24} />
           </Button>
-          {/* <Button
-            size={windowWidth ? 'lg-icon' : 'lg'}
-            className="w-full"
-            disabled
-          >
-            {windowWidth !== null && windowWidth < 1366 ? (
-              <OutlineEdit size={24} />
-            ) : (
-              'Hoot'
-            )}
-          </Button> */}
         </section>
-        <section className="flex overflow-hidden rounded-2xl shadow-sm xl:bg-white-50 xl:p-3">
-          {/* <div className="flex space-x-4">
-            <Avatar
-              className="!size-12 ring-1 ring-shark-950/30"
-              showFallback
-              src="https://i.pravatar.cc/150?u=a04258114e29026708c"
-              fallback={<SolidUser size={24} />}
-            />
-            <div>
-              <h6>Hasiradoo</h6>
-              <Link href="https://twitter.com/jrgarciadev">@Hasiradoo</Link>
-            </div>
-          </div> */}
-          <User
-            classNames={{
-              base: 'xl:flex-1 justify-start',
-              wrapper: 'max-xl:hidden',
-              name: 'text-base font-bold leading-tight',
-              description: 'text-sm leading-tight',
-            }}
-            name="Hasira 🥃🪴"
-            description={
-              <Link href="https://twitter.com/hasiradoo">@Hasiradoo</Link>
-            }
-            avatarProps={{
-              name: 'Junior Garcia',
-              src: 'https://pbs.twimg.com/profile_images/1777614638261080064/H9iQD24q_400x400.jpg',
-              className: 'max-xl:size-12',
-              showFallback: true,
-              fallback: <SolidNestAlt size={24} />,
-            }}
+        <section className="flex w-full cursor-pointer items-center justify-between overflow-hidden rounded-2xl p-2 shadow-sm transition-colors xl:bg-default-900/5 xl:p-3 xl:hover:bg-default-900/10">
+          <UserIdentifier
+            displayName={displayName}
+            username={username}
+            avatarUrl={avatarUrl}
+            stories={stories}
+            canCollapse
           />
-          <Button variant={'icon'} className="max-xl:hidden">
-            <OutlineMore size={24} />
-          </Button>
+          <OutlineMore
+            size={20}
+            className="mr-1 text-default-500 max-xl:hidden"
+          />
         </section>
       </ScrollShadow>
     </nav>
