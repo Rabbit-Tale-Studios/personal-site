@@ -101,13 +101,25 @@ const Page = () => {
           <div className="group/tooltip relative w-full">
             <Tooltip text="Coming soon" position="right" />
             <Item
-              title="Tiny Buddies"
+              title="Star Owl Social"
               comingSoon
               // offset={
               //   filter === 'all' && lastFilter === 'life' ? undefined : '0.6'
               // }
 
               offset={'0.6'}
+            />
+          </div>
+          <div className="group/tooltip relative w-full">
+            <Tooltip text="Coming soon" position="right" />
+            <Item
+              title="Tiny Buddies"
+              comingSoon
+              // offset={
+              //   filter === 'all' && lastFilter === 'life' ? undefined : '0.6'
+              // }
+
+              offset={'0.8'}
             />
           </div>
           {/* <Item
@@ -133,7 +145,7 @@ const Page = () => {
           hideScrollBar
           className="mb-6 max-w-lg animate-revealSm self-start"
         >
-          <div className="inline-flex space-x-3 whitespace-nowrap">
+          <div className="inline-flex space-x-2 whitespace-nowrap">
             <Button
               onClick={() => setFilter('all')}
               variant={filter === 'all' ? 'primary' : 'ghost'}
