@@ -160,9 +160,13 @@ const Nav = () => {
                 href="https://bsky.app/profile/starowl.social"
               />
               <MenuItem text="Telegram" href="https://t.me/hasiradoo" />
+              <MenuItem
+                text="Discord"
+                href="https://discord.com/users/569975072417251378"
+              />
             </ul>
           </div>
-          <div className={'relative z-50'} ref={menuThemeRef}>
+          {/* <div className={'relative z-50'} ref={menuThemeRef}>
             <Button
               aria="Change theme"
               dataHover
@@ -204,9 +208,8 @@ const Nav = () => {
                 onClick={() => setTheme('system')}
                 href={'#'}
               />
-              {/* <MenuItem text={'Bubbles!'} onClick={toggleBubble} href={'#'} /> */}
             </ul>
-          </div>
+          </div> */}
         </nav>
       </nav>
     </header>
