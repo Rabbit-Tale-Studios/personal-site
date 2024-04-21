@@ -143,19 +143,19 @@ const Button = React.forwardRef<
     ref,
   ) => {
     const style = cn(
-      'overflow-hidden relative w-max px-4 py-2 font-medium sm:transition-all block',
+      'overflow-hidden relative w-max px-4 py-2 sm:transition-all block',
       {
         'active:scale-95': props.variant !== 'link' && !props.disabled,
 
-        'bg-shark-950 text-shark-50 dark:bg-shark-50 dark:text-shark-950 sm:hover:bg-shark-900 dark:sm:hover:bg-shark-100':
+        'bg-default-900 text-default-50 dark:bg-default-50 dark:text-default-900 sm:hover:bg-default-900 dark:sm:hover:bg-default-100':
           props.variant === 'primary',
 
-        'bg-shark-950/5': props.variant === 'primary' && props.state,
+        'bg-default-900/5': props.variant === 'primary' && props.state,
 
-        'bg-shark-950/5 dark:bg-shark-50/5 text-shark-950 dark:text-white-50 sm:hover:bg-shark-100 dark:sm:hover:bg-shark-50/10':
+        'bg-default-900/5 dark:bg-default-50/5 text-default-950 dark:text-white-50 sm:hover:bg-default-100 dark:sm:hover:bg-default-50/10':
           props.variant === 'secondary',
 
-        'ring ring-shark-100 hover:ring-shark-950/10 hover:bg-shark-950/5':
+        'ring-2 ring-shark-100 hover:ring-shark-950/10 hover:bg-shark-950/5':
           props.variant === 'outline',
 
         '!px-2 sm:hover:bg-white': props.variant === 'icon',
@@ -178,7 +178,7 @@ const Button = React.forwardRef<
         // 'text-sm sm:text-base': size === 'md',
         // 'text-base sm:text-lg py-2.5 px-5': size === 'lg',
 
-        'text-sm': size === 'sm',
+        'text-xs': size === 'sm',
         'text-base': size === 'md',
         'text-lg py-2.5 px-5': size === 'lg',
 
