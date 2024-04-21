@@ -1,4 +1,4 @@
-import { Image, User } from '@nextui-org/react'
+import { Image } from '@nextui-org/react'
 import placeholder from 'public/images/placeholder.jpg'
 import Button from 'components/Button'
 import {
@@ -6,42 +6,49 @@ import {
   OutlineChat,
   OutlineChevronLeft,
   OutlineChevronRight,
-  OutlineHome,
   OutlineMore,
   OutlineRepeat,
   OutlineStar,
-  OutlineStars,
-  SolidNestAlt,
+  SolidStar,
 } from 'icons/Icons'
 import { formatNumber } from 'lib/formatNumber'
-import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import useClickOutside from 'hooks/useClickOutside'
-import { useInView } from 'react-intersection-observer'
-import { StaticImageData } from 'next/image'
 import Modal from 'components/social/Modal'
-// function getRandomNumber(min: number, max: number): number {
-//   return Math.floor(Math.random() * (max - min + 1) + min)
-// }
+import HoverCard from './HoverCard'
+import { formatDistanceToNow, differenceInSeconds } from 'date-fns'
 
 const postData = [
   {
     user: {
-      name: 'Hasira 🥃🪴',
-      description: '@Hasiradoo',
-      avatarSrc:
+      id: 1,
+      displayName: 'Hasira 🥃🪴',
+      username: 'hasiradoo',
+      bio: '🪴 № 22 🪴 Bi | Ace  🪴 🇵🇱 / 🇺🇸 🪴 Aspiring Game dev / UI/UX designer / Front-end dev 🪴 Founder of @StarOwl_social & @poker_cats_cr',
+      avatarUrl:
         'https://pbs.twimg.com/profile_images/1777614638261080064/H9iQD24q_400x400.jpg',
+      coverUrl: 'https://i.pravatar.cc/150?u=a04258114e29026702e',
+      followers: [
+        {
+          id: 4,
+        },
+      ],
+      following: [],
+      stories: [],
     },
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nunc sollicitudin lacinia.',
     stats: {
-      hasLiked: false,
+      liked: false,
+      commented: false,
+      reposted: false,
+      bookmarked: false,
       data: {
         likes: 1_233,
         comments: 10_666,
         reposts: 644_666,
         views: 422_345,
       },
+      timeStamp: { date: '2024-04-21', time: '17:56' },
     },
     images: [
       'https://kris.starowl.social/og.png',
@@ -50,21 +57,35 @@ const postData = [
   },
   {
     user: {
-      name: 'User',
-      description: '@User_id',
-      avatarSrc:
-        'https://pbs.twimg.com/profile_images/1777614638261080064/H9iQD24q_400x400.jpg',
+      id: 2,
+      displayName: 'User',
+      username: 'User_id',
+      bio: 'Full-stack developer, @getnextui lover she/her 🎉',
+      avatarUrl: 'https://i.pravatar.cc/150?u=a04658114e23026772e',
+      coverUrl: 'https://i.pravatar.cc/150?u=a04258114e29026702e',
+      followers: [],
+      following: [],
+      stories: [
+        {
+          id: 1,
+          title: 'Story 1',
+        },
+      ],
     },
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nunc sollicitudin lacinia.',
     stats: {
-      hasLiked: false,
+      liked: true,
+      commented: false,
+      reposted: false,
+      bookmarked: false,
       data: {
         likes: 634,
         comments: 34,
         reposts: 0,
         views: 0,
       },
+      timeStamp: { date: '2023-12-01', time: '12:00' },
     },
     images: [
       'https://pbs.twimg.com/profile_images/1777614638261080064/H9iQD24q_400x400.jpg',
@@ -73,45 +94,64 @@ const postData = [
   },
   {
     user: {
-      name: 'User',
-      description: '@User_id',
-      avatarSrc:
-        'https://pbs.twimg.com/profile_images/1777614638261080064/H9iQD24q_400x400.jpg',
+      id: 3,
+      displayName: 'User',
+      username: 'User_id',
+      avatarUrl: 'https://i.pravatar.cc/150?u=a0425311453026702e',
+      coverUrl: 'https://i.pravatar.cc/150?u=a04258114e29026702e',
+      followers: [],
+      following: [],
+      stories: [],
     },
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nunc sollicitudin lacinia.',
     stats: {
-      hasLiked: false,
+      liked: false,
+      commented: true,
+      reposted: false,
+      bookmarked: false,
       data: {
         likes: 2,
         comments: 1_234,
         reposts: 5_555_555,
         views: 0,
       },
+      timeStamp: { date: '2023-08-01', time: '12:00' },
     },
     images: ['https://kris.starowl.social/og.png'],
   },
   {
     user: {
-      name: 'User',
-      description: '@User_id',
-      avatarSrc:
-        'https://pbs.twimg.com/profile_images/1777614638261080064/H9iQD24q_400x400.jpg',
+      id: 4,
+      displayName: 'User',
+      username: 'User_id',
+      avatarUrl: 'https://i.pravatar.cc/150?u=a04258114e29026702e',
+      coverUrl: 'https://i.pravatar.cc/150?u=a04258114e29026702e',
+      followers: [],
+      following: [
+        {
+          id: 1,
+        },
+      ],
+      stories: [],
     },
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus nec nunc sollicitudin lacinia.',
     stats: {
-      hasLiked: false,
+      liked: false,
+      commented: false,
+      reposted: true,
+      bookmarked: true,
       data: {
         likes: 0,
         comments: 0,
         reposts: 0,
         views: 0,
       },
+      timeStamp: { date: '2021-08-01', time: '12:00' },
     },
     images: [],
   },
-  // Add more post data here...
 ]
 
 const Posts = () => {
@@ -148,7 +188,10 @@ const Posts = () => {
 }
 
 export interface PostStatsProps {
-  hasLiked: boolean
+  liked: boolean
+  commented: boolean
+  reposted: boolean
+  bookmarked: boolean
   data: { likes: number; comments: number; reposts: number; views: number }
   className?: string
   iconColor?: string
@@ -161,38 +204,66 @@ const Post = ({
   images,
   onImageClick,
 }: (typeof postData)[0] & { onImageClick: (image: string[]) => void }) => {
+  const [postedTimeAgo, setPostedTimeAgo] = useState('')
+
+  useEffect(() => {
+    const updatePostedTimeAgo = () => {
+      const postDate = new Date(
+        stats.timeStamp.date + ' ' + stats.timeStamp.time,
+      )
+      const now = new Date()
+      const diffInSeconds = differenceInSeconds(postDate, now)
+
+      if (diffInSeconds >= 0 && diffInSeconds < 60) {
+        setPostedTimeAgo(
+          diffInSeconds === 0
+            ? 'just now'
+            : `in ${diffInSeconds} ${diffInSeconds === 1 ? 'second' : 'seconds'}`,
+        )
+      } else {
+        setPostedTimeAgo(formatDistanceToNow(postDate, { addSuffix: true }))
+      }
+    }
+
+    updatePostedTimeAgo() // Update immediately on component mount
+    const intervalId = setInterval(updatePostedTimeAgo, 1000) // Update every second
+
+    return () => clearInterval(intervalId) // Clean up on component unmount
+  }, [stats.timeStamp])
+
   return (
-    <article className="w-full cursor-pointer space-y-4 bg-white-50 p-3 pb-1.5 transition-colors max-sm:border-b sm:rounded-2xl sm:shadow-sm sm:hover:bg-shark-950/5">
-      <header className="flex items-center">
-        <User
-          classNames={{
-            base: 'flex-1 justify-start',
-            name: 'text-base font-bold leading-tight',
-            description: 'text-sm leading-tight',
-          }}
-          name={user.name}
-          description={
-            <Link href={`https://twitter.com/${user.description.slice(1)}`}>
-              {user.description}
-            </Link>
-          }
-          avatarProps={{
-            name: user.name,
-            src: user.avatarSrc,
-            showFallback: true,
-            fallback: <SolidNestAlt size={24} />,
-          }}
+    <article className="w-full cursor-pointer space-y-4 p-3 pb-1.5 transition-colors max-sm:border-b sm:rounded-2xl sm:hover:bg-default-600/5">
+      {/* sm:bg-default-600/5 */}
+      <header className="flex items-center justify-between">
+        <HoverCard
+          avatarUrl={user.avatarUrl}
+          displayName={user.displayName}
+          username={user.username}
+          following={user.following?.length.toString() ?? '0'}
+          followers={user.followers?.length.toString() ?? '0'}
+          bio={user.bio}
         />
-        <Button variant={'icon'}>
-          <OutlineMore size={24} />
-        </Button>
+        <div className="flex items-center space-x-2">
+          <p className="text-xs lining-nums text-default-500">
+            {postedTimeAgo}
+          </p>
+          <Button variant={'icon'} className="text-default-500">
+            <OutlineMore size={20} />
+          </Button>
+        </div>
       </header>
       <PostContent
         content={content}
         images={images}
         onImageClick={onImageClick}
       />
-      <PostStats hasLiked={stats.hasLiked} data={stats.data} />
+      <PostStats
+        liked={stats.liked}
+        commented={stats.commented}
+        reposted={stats.reposted}
+        bookmarked={stats.bookmarked}
+        data={stats.data}
+      />
     </article>
   )
 }
@@ -210,7 +281,7 @@ const PostContent = ({
 
   return (
     <div className="flex flex-col space-y-4">
-      <p>{content}</p>
+      <p className="text-small text-default-600">{content}</p>
       {images.length > 0 && (
         <div className="relative overflow-hidden rounded-2xl">
           {images.length > 1 && (
@@ -270,7 +341,14 @@ const PostContent = ({
   )
 }
 
-export const PostStats = ({ hasLiked, data, iconColor }: PostStatsProps) => {
+export const PostStats = ({
+  liked,
+  commented,
+  reposted,
+  bookmarked,
+  data,
+  iconColor,
+}: PostStatsProps) => {
   return (
     <div className={`flex w-full`}>
       <div className="flex w-2/3 space-x-2 sm:w-1/2">
@@ -278,14 +356,16 @@ export const PostStats = ({ hasLiked, data, iconColor }: PostStatsProps) => {
           variant={'link'}
           hasIcon
           iconPosition={'left'}
-          className={`relative w-full justify-start overflow-visible ${iconColor}`}
+          className={`relative w-full justify-start overflow-visible  text-default-500 ${iconColor}`}
         >
           <div className="group flex space-x-2">
-            <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-gold-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-gold-600 group-hover:before:opacity-30 group-hover:before:content-['']">
-              <OutlineStar size={20} />
+            <div
+              className={`relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-gold-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-gold-600 group-hover:before:opacity-[.12] group-hover:before:content-[''] ${liked && 'text-gold-600'}`}
+            >
+              {liked ? <SolidStar size={20} /> : <OutlineStar size={20} />}
             </div>
             <span
-              className={`text-sm lining-nums transition-colors group-hover:text-gold-600 ${hasLiked ? 'text-color-star' : ''}`}
+              className={`text-sm lining-nums transition-colors group-hover:text-gold-600 ${liked ? 'text-gold-600' : ''}`}
             >
               {data.likes !== 0 ? formatNumber(data.likes) : ''}
             </span>
@@ -296,10 +376,10 @@ export const PostStats = ({ hasLiked, data, iconColor }: PostStatsProps) => {
           variant={'link'}
           hasIcon
           iconPosition={'left'}
-          className={`relative w-full justify-start overflow-visible ${iconColor}`}
+          className={`relative w-full justify-start overflow-visible  text-default-500 ${iconColor}`}
         >
           <div className="group flex space-x-2">
-            <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-30 group-hover:before:content-['']">
+            <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
               <OutlineChat size={20} />
             </div>
             <span className="text-sm lining-nums transition-colors group-hover:text-blueberry-600">
@@ -311,10 +391,10 @@ export const PostStats = ({ hasLiked, data, iconColor }: PostStatsProps) => {
           variant={'link'}
           hasIcon
           iconPosition={'left'}
-          className={`relative w-full justify-start overflow-visible ${iconColor}`}
+          className={`relative w-full justify-start overflow-visible text-default-500 ${iconColor}`}
         >
           <div className="group flex space-x-2">
-            <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-green-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-green-600 group-hover:before:opacity-30 group-hover:before:content-['']">
+            <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-green-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-green-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
               <OutlineRepeat size={20} />
             </div>
             <span className="text-sm lining-nums transition-colors group-hover:text-green-600">
@@ -339,9 +419,9 @@ export const PostStats = ({ hasLiked, data, iconColor }: PostStatsProps) => {
       <div className="flex w-full flex-1 justify-end">
         <Button
           variant={'icon'}
-          className={`group relative justify-start overflow-visible ${iconColor}`}
+          className={`group relative justify-start overflow-visible  text-default-500 ${iconColor} hover:!bg-transparent`}
         >
-          <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-30 group-hover:before:content-['']">
+          <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
             <OutlineBookmark size={20} />
           </div>
         </Button>
