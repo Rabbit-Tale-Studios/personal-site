@@ -28,7 +28,7 @@ const UserIdentifier = ({
         isBordered
         color={stories?.length ? 'primary' : 'default'}
         radius="full"
-        className={`${canCollapse && 'max-xl:h-12 max-xl:w-12'}`}
+        className={`${canCollapse && 'max-xl:h-12 max-xl:w-12'} max-sm:h-9 max-sm:w-9`}
         src={avatarUrl}
         alt={displayName}
         fallback={<SolidNestAlt size={24} />}
