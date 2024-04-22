@@ -147,26 +147,23 @@ const Page = () => {
         >
           <div className="inline-flex space-x-2 whitespace-nowrap">
             <Button
+              text="All"
               onClick={() => setFilter('all')}
               variant={filter === 'all' ? 'primary' : 'ghost'}
               size="sm"
-            >
-              All
-            </Button>
+            />
             <Button
+              text="Life Blogs"
               onClick={() => setFilter('life')}
               variant={filter === 'life' ? 'primary' : 'ghost'}
               size="sm"
-            >
-              Life Blogs
-            </Button>
+            />
             <Button
+              text="Dev Blogs"
               onClick={() => setFilter('dev')}
               variant={filter === 'dev' ? 'primary' : 'ghost'}
               size="sm"
-            >
-              Dev Blogs
-            </Button>
+            />
             {/* <Skeleton className="h-9 w-24 rounded-full bg-shark-950/5" />
             <Skeleton className="h-9 w-24 rounded-full bg-shark-950/5" />
             <Skeleton className="h-9 w-24 rounded-full bg-shark-950/5" /> */}

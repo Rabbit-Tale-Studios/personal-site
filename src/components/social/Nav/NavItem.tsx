@@ -4,6 +4,7 @@ type Props = {
   active?: boolean
   link?: string
   children: ReactNode
+  aria?: string
   onClick?: () => void
   isDisabled?: boolean
   badge?: {
@@ -18,19 +19,30 @@ import { cn } from 'utils/tw'
 import Link from 'next/link'
 import Button from 'components/Button'
 
-const NavItem = ({ active = false, link, children, onClick, badge }: Props) => {
+const NavItem = ({
+  active = false,
+  link,
+  children,
+  onClick,
+  badge,
+  aria,
+}: Props) => {
   return (
-    <Link
-      tabIndex={-1}
-      onClick={onClick}
+    <li
       className={
         'group flex flex-1 cursor-pointer items-center justify-center lg:w-full xl:justify-between'
       }
-      href={link || '#'}
     >
-      <li>
+      <Link
+        aria-label={aria}
+        tabIndex={-1}
+        onClick={onClick}
+        href={link || '#'}
+        className="w-full"
+      >
         <Button
           hasIcon
+          aria={aria}
           //  rounded={'xl'}
           iconPosition="left"
           variant={`${active ? 'primary' : 'ghost'}`}
@@ -38,10 +50,10 @@ const NavItem = ({ active = false, link, children, onClick, badge }: Props) => {
         >
           {children}
         </Button>
-      </li>
 
-      {/* {badge && badge.active && <InfoBadge children={badge.content} />} */}
-    </Link>
+        {/* {badge && badge.active && <InfoBadge children={badge.content} />} */}
+      </Link>
+    </li>
   )
 }
 

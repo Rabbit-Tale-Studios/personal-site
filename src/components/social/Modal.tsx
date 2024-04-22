@@ -186,7 +186,7 @@ const Modal = (props: {
                 reposted={stats.reposted}
                 bookmarked={stats.bookmarked}
                 data={stats.data}
-                className="max-w-2xl"
+                className="max-w-2xl &[>]"
                 iconColor="text-shark-50"
               />
             </section>

@@ -6,7 +6,7 @@ import { februaryData } from 'lib/activity/2024/feb'
 import { aprilData } from 'lib/activity/2024/apr'
 //import { mayData } from 'lib/activity/2024/may'
 
-const Page = () => (
+const Page = ({ page }: { page: any }) => (
   <Layout>
     {/* <SolidLogoText
       size={256}

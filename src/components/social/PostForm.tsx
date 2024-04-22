@@ -59,13 +59,12 @@ const PostForm = () => {
         className=" bg-white-50 px-3 pb-3 max-sm:border-b sm:rounded-2xl"
       >
         <div className="flex justify-between sm:hidden">
-          <Button variant="ghost" type="button" aria="Cancel" text="Cancel" />
+          <Button variant="ghost" type="button" text="Cancel" />
           <div className="flex space-x-2 max-sm:space-x-3">
             <Button
               variant="outline"
               disabled={!watch}
               type="button"
-              aria="Drafts"
               text="Drafts"
             />
             {/* <Button variant="icon" type="button" size="sm">
@@ -76,7 +75,6 @@ const PostForm = () => {
               disabled={!watch}
               variant="accent"
               type="submit"
-              aria="Hoot"
             />
           </div>
         </div>
@@ -261,7 +259,6 @@ const PostForm = () => {
               disabled={!watch}
               variant="accent"
               type="submit"
-              aria="Hoot"
               className="max-sm:hidden"
             />
           </div>

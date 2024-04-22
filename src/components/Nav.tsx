@@ -1,15 +1,11 @@
 import Button from 'components/Button'
 import useClickOutside from 'hooks/useClickOutside'
-import { OutlineClearNight, SolidLogoText } from 'icons/Icons'
 import { useTheme } from 'next-themes'
-import Link, { LinkProps } from 'next/link'
-import { useContext, useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
+import { useContext, useState } from 'react'
 import { cn } from 'utils/tw'
-import gsap from 'gsap'
 import Splt from 'react-spltjs'
 import { BubbleContext } from './Layout'
-
-const myArray = [['text-blue-500'], ['text-indigo-500'], ['text-violet-500']]
 
 type MenuItemProps = {
   aria?: string
@@ -59,66 +55,22 @@ export const MenuItem = ({
 }
 
 const Nav = () => {
-  let [openContact, setOpenContact] = useState(false)
-  let [openTheme, setOpenTheme] = useState(false)
-  const { toggleBubble } = useContext(BubbleContext)
+  let [open, setOpen] = useState(false)
+  // let [openTheme, setOpenTheme] = useState(false)
+  // const { toggleBubble } = useContext(BubbleContext)
 
-  const menuContactRef = useClickOutside(() => {
-    setOpenContact(false)
+  const menuRef = useClickOutside(() => {
+    setOpen(false)
   })
-  const menuThemeRef = useClickOutside(() => {
-    setOpenTheme(false)
-  })
+  // const menuThemeRef = useClickOutside(() => {
+  //   setOpenTheme(false)
+  // })
 
-  const { setTheme } = useTheme()
-
-  // const SplitLink = () => {
-  //   const text = 'Kris German'
-  //   const characters = text.split('')
-  //   const refs = characters.map(() => useRef<HTMLElement>(null))
-
-  //   useEffect(() => {
-  //     refs.forEach((ref) => {
-  //       if (ref.current) {
-  //         ref.current.addEventListener('mouseenter', () => {
-  //           gsap.to(ref.current, {
-  //             y: -6,
-  //             duration: 0.3,
-  //             //ease: 'bounce.out',
-  //             //ease: 'sine.out',
-  //           })
-  //         })
-
-  //         ref.current.addEventListener('mouseleave', () => {
-  //           gsap.to(ref.current, {
-  //             y: 0,
-  //             duration: 0.3,
-  //             //ease: 'sine.in',
-  //           })
-  //         })
-  //       }
-  //     })
-  //   }, [refs])
-
-  //   return (
-  //     <Link className="text-xl" href="/">
-  //       {characters.map((char, index) => (
-  //         <span
-  //           className="bouncy-little inline-block"
-  //           ref={refs[index]}
-  //           key={index}
-  //         >
-  //           {char === ' ' ? '\u00A0' : char}
-  //         </span>
-  //       ))}
-  //     </Link>
-  //   )
-  // }
+  // const { setTheme } = useTheme()
 
   return (
     <header className="relative z-20 mt-6 flex w-full items-center justify-center px-4 sm:mt-16 sm:px-10">
       <nav className="flex w-full max-w-lg items-center justify-between">
-        {/* <SplitLink /> */}
         <Link className="text-xl" href={'/'}>
           <Splt
             //array={myArray}
@@ -134,20 +86,13 @@ const Nav = () => {
           /> */}
         </Link>
         <nav className="flex space-x-2">
-          <Button
-            aria="Blog"
-            text="Blog"
-            variant="ghost"
-            as="a"
-            href={'/blog'}
-          />
-          <div className="relative z-50" ref={menuContactRef}>
+          <Button text="Blog" variant="ghost" as="a" href={'/blog'} />
+          <div className="relative z-50" ref={menuRef}>
             <Button
-              aria="Contact"
               onClick={() => {
-                setOpenContact(!openContact)
+                setOpen(!open)
               }}
-              state={openContact}
+              state={open}
               text="Contact"
               variant="ghost"
             />
@@ -155,10 +100,10 @@ const Nav = () => {
               className={cn(
                 'invisible absolute right-0 top-14 block w-36 min-w-max origin-top-right scale-75 rounded-2xl bg-white-50 p-1 opacity-0 shadow-lg duration-150 ease-in-out dark:bg-[#2b2b2b]',
                 {
-                  'visible scale-100 opacity-100': openContact,
+                  'visible scale-100 opacity-100': open,
                 },
               )}
-              onClick={() => setOpenContact(!openContact)}
+              onClick={() => setOpen(!open)}
             >
               <MenuItem text="Twitter" href="https://twitter.com/Hasiradoo" />
               <MenuItem

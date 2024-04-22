@@ -127,6 +127,7 @@ const LeftNav = ({
                   badge={typeof badge === 'object' ? badge : undefined}
                   active={active}
                   link={href}
+                  aria={text}
                   //onClick={onClick}
                 >
                   {icon &&

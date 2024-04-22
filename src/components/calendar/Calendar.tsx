@@ -96,7 +96,7 @@ const Calendar = (props: { data: MonthDataType[] }) => {
       </Modal>
       <section
         className={cn(
-          'reveal relative mx-auto my-10 flex w-full max-w-sm flex-col gap-4 overflow-y-scroll rounded-3xl bg-shark-950 p-6 shadow-xl dark:bg-white-50 min-[400px]:p-7',
+          'reveal relative mx-auto my-10 flex w-full max-w-sm flex-col gap-4 overflow-x-clip overflow-y-scroll rounded-3xl bg-shark-950 p-6 shadow-xl dark:bg-white-50 min-[400px]:p-7',
           bgColors(calBgColor),
           {
             'animate-rotate': props.data[0].month % 2 !== 0 && inView,

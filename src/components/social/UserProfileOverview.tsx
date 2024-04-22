@@ -40,13 +40,12 @@ const UserProfileOverview = ({
           <Avatar isBordered radius="full" size="lg" src={avatarUrl} />
         </div>
         <Button
+          text={isFollowed ? 'Unfollow' : 'Follow'}
           rounded="full"
           size="sm"
           variant={isFollowed ? 'outline' : 'primary'}
           onClick={() => setIsFollowed(!isFollowed)}
-        >
-          {isFollowed ? 'Unfollow' : 'Follow'}
-        </Button>
+        />
       </CardHeader>
       <CardBody className="space-y-4 px-3 py-0">
         <div className="flex flex-col items-start justify-center">

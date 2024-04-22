@@ -250,7 +250,11 @@ const Post = ({
           <p className="text-xs lining-nums text-default-500">
             {postedTimeAgo}
           </p>
-          <Button variant={'icon'} className="text-default-500">
+          <Button
+            aria="Show more"
+            variant={'icon'}
+            className="text-default-500"
+          >
             <OutlineMore size={20} />
           </Button>
         </div>
@@ -300,6 +304,7 @@ const PostContent = ({
               </div>
               <div className="pointer-events-none absolute left-0 right-0 top-1/2 z-20 flex -translate-y-1/2 items-center justify-between px-4">
                 <Button
+                  aria="Previous image"
                   onClick={() =>
                     setCurrentImage(
                       images[
@@ -314,6 +319,7 @@ const PostContent = ({
                   <OutlineChevronLeft size={24} />
                 </Button>
                 <Button
+                  aria="Next image"
                   onClick={() =>
                     setCurrentImage(
                       images[
@@ -357,6 +363,7 @@ export const PostStats = ({
     <div className={`flex w-full ${className}`}>
       <div className="flex w-2/3 space-x-2 sm:w-1/2">
         <Button
+          aria="Star hoot"
           variant={'link'}
           hasIcon
           iconPosition={'left'}
@@ -377,6 +384,7 @@ export const PostStats = ({
         </Button>
         <Button
           //onClick={onComment}
+          aria="Comment hoot"
           variant={'link'}
           hasIcon
           iconPosition={'left'}
@@ -396,6 +404,7 @@ export const PostStats = ({
           </div>
         </Button>
         <Button
+          aria="Repost hoot"
           variant={'link'}
           hasIcon
           iconPosition={'left'}
@@ -434,6 +443,7 @@ export const PostStats = ({
       </div>
       <div className="flex w-full flex-1 justify-end">
         <Button
+          aria="Bookmark hoot"
           variant={'icon'}
           className={`group relative justify-start overflow-visible  text-default-500 ${iconColor} hover:!bg-transparent`}
         >

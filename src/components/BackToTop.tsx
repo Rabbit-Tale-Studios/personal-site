@@ -1,8 +1,7 @@
 import Button from 'components/Button'
-import { OutlineArrowLeft, OutlineClearNight, SolidLogoText } from 'icons/Icons'
+import { OutlineArrowLeft } from 'icons/Icons'
 import Tooltip from './Tooltip'
 import { useState, useEffect, useRef } from 'react'
-//import { cn } from 'utils/tw'
 
 const BackToTop = () => {
   const [isAtTop, setIsAtTop] = useState(true)
@@ -50,12 +49,11 @@ const BackToTop = () => {
         <div className="group/tooltip pointer-events-auto relative transition-transform hover:scale-90">
           <Tooltip text="Back To Top" position="right" />
           <Button
-            ref={buttonRef}
-            dataHover
             aria-label="Back to top"
+            ref={buttonRef}
+            isStickyHover
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             variant={'icon'}
-            as={'button'}
             className={`bg-white-50 !p-3 ring-2 ring-white-200 hover:text-shark-950 lg:bg-transparent lg:hover:!bg-transparent lg:hover:ring-0 ${!isAtTop ? 'animate-revealSm' : 'animate-scaleOutFade'}`}
           >
             <OutlineArrowLeft className="rotate-90" size={24} />

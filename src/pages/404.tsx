@@ -23,7 +23,7 @@ const Page = () => (
       </h2>
       <div className="animate-rotate">
         <Button
-          text={`Take me home`}
+          text="Take me home"
           as="a"
           href={'./'}
           variant="primary"
