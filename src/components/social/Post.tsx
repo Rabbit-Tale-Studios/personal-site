@@ -9,6 +9,9 @@ import {
   OutlineMore,
   OutlineRepeat,
   OutlineStar,
+  SolidBookmark,
+  SolidChat,
+  SolidRepeat,
   SolidStar,
 } from 'icons/Icons'
 import { formatNumber } from 'lib/formatNumber'
@@ -48,7 +51,7 @@ const postData = [
         reposts: 644_666,
         views: 422_345,
       },
-      timeStamp: { date: '2024-04-21', time: '17:56' },
+      timeStamp: { date: '2024-04-21', time: '21:12' },
     },
     images: [
       'https://kris.starowl.social/og.png',
@@ -108,7 +111,7 @@ const postData = [
     stats: {
       liked: false,
       commented: true,
-      reposted: false,
+      reposted: true,
       bookmarked: false,
       data: {
         likes: 2,
@@ -140,7 +143,7 @@ const postData = [
     stats: {
       liked: false,
       commented: false,
-      reposted: true,
+      reposted: false,
       bookmarked: true,
       data: {
         likes: 0,
@@ -348,9 +351,10 @@ export const PostStats = ({
   bookmarked,
   data,
   iconColor,
+  className,
 }: PostStatsProps) => {
   return (
-    <div className={`flex w-full`}>
+    <div className={`flex w-full ${className}`}>
       <div className="flex w-2/3 space-x-2 sm:w-1/2">
         <Button
           variant={'link'}
@@ -360,12 +364,12 @@ export const PostStats = ({
         >
           <div className="group flex space-x-2">
             <div
-              className={`relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-gold-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-gold-600 group-hover:before:opacity-[.12] group-hover:before:content-[''] ${liked && 'text-gold-600'}`}
+              className={`relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-gold-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-gold-600 group-hover:before:content-[''] sm:group-hover:before:opacity-[.12] ${liked && 'text-gold-600'}`}
             >
               {liked ? <SolidStar size={20} /> : <OutlineStar size={20} />}
             </div>
             <span
-              className={`text-sm lining-nums transition-colors group-hover:text-gold-600 ${liked ? 'text-gold-600' : ''}`}
+              className={`text-sm lining-nums transition-colors group-hover:text-gold-600 ${liked && 'text-gold-600'}`}
             >
               {data.likes !== 0 ? formatNumber(data.likes) : ''}
             </span>
@@ -379,10 +383,14 @@ export const PostStats = ({
           className={`relative w-full justify-start overflow-visible  text-default-500 ${iconColor}`}
         >
           <div className="group flex space-x-2">
-            <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
-              <OutlineChat size={20} />
+            <div
+              className={`relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] sm:group-hover:before:content-[''] ${commented && 'text-blueberry-600'}`}
+            >
+              {commented ? <SolidChat size={20} /> : <OutlineChat size={20} />}
             </div>
-            <span className="text-sm lining-nums transition-colors group-hover:text-blueberry-600">
+            <span
+              className={`text-sm lining-nums transition-colors group-hover:text-blueberry-600 ${commented && 'text-blueberry-600'}`}
+            >
               {data.comments !== 0 ? formatNumber(data.comments) : ''}
             </span>
           </div>
@@ -394,10 +402,18 @@ export const PostStats = ({
           className={`relative w-full justify-start overflow-visible text-default-500 ${iconColor}`}
         >
           <div className="group flex space-x-2">
-            <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-green-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-green-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
-              <OutlineRepeat size={20} />
+            <div
+              className={`relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-green-600 group-hover:before:block group-hover:before:size-8 group-hover:before:opacity-[.12] group-hover:before:content-[''] sm:group-hover:before:bg-green-600 ${reposted && 'text-green-600'}`}
+            >
+              {reposted ? (
+                <SolidRepeat size={20} />
+              ) : (
+                <OutlineRepeat size={20} />
+              )}
             </div>
-            <span className="text-sm lining-nums transition-colors group-hover:text-green-600">
+            <span
+              className={`text-sm lining-nums transition-colors group-hover:text-green-600 ${reposted && 'text-green-600'}`}
+            >
               {data.reposts !== 0 ? formatNumber(data.reposts) : ''}
             </span>
           </div>
@@ -421,8 +437,14 @@ export const PostStats = ({
           variant={'icon'}
           className={`group relative justify-start overflow-visible  text-default-500 ${iconColor} hover:!bg-transparent`}
         >
-          <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
-            <OutlineBookmark size={20} />
+          <div
+            className={`relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] sm:group-hover:before:content-[''] ${bookmarked && 'text-blueberry-600'}`}
+          >
+            {bookmarked ? (
+              <SolidBookmark size={20} />
+            ) : (
+              <OutlineBookmark size={20} />
+            )}
           </div>
         </Button>
         {/* <Button
