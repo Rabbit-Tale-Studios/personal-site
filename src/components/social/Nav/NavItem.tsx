@@ -24,7 +24,7 @@ const NavItem = ({ active = false, link, children, onClick, badge }: Props) => {
       tabIndex={-1}
       onClick={onClick}
       className={
-        'group flex w-1/5 flex-1 cursor-pointer items-center justify-center md:w-auto md:justify-center lg:w-full xl:justify-between'
+        'group flex flex-1 cursor-pointer items-center justify-center lg:w-full xl:justify-between'
       }
       href={link || '#'}
     >
@@ -34,7 +34,7 @@ const NavItem = ({ active = false, link, children, onClick, badge }: Props) => {
           //  rounded={'xl'}
           iconPosition="left"
           variant={`${active ? 'primary' : 'ghost'}`}
-          className={`h-12 max-xl:p-3 ${active ? 'group-hover:bg-shark-900' : 'group-hover:bg-shark-950/5'}`}
+          className={`h-12 max-xl:p-3 sm:group-hover:translate-x-2 ${active ? 'sm:group-hover:bg-default-800' : 'sm:group-hover:bg-default-900/5'}`}
         >
           {children}
         </Button>
