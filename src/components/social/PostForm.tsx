@@ -55,7 +55,7 @@ const PostForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-4 bg-white-50 px-3 pb-3 max-sm:border-b sm:rounded-2xl"
+        className=" bg-white-50 px-3 pb-3 max-sm:border-b sm:rounded-2xl"
       >
         <div className="flex justify-between sm:hidden">
           <Button variant="ghost" type="button" aria="Cancel" text="Cancel" />
