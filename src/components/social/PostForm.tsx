@@ -6,6 +6,7 @@ import {
   OutlineFaceSmilling,
   OutlineImage,
   OutlineMore,
+  OutlinePlus,
 } from 'icons/Icons'
 import React, { useState } from 'react'
 import { CircularProgress } from '@nextui-org/react'
@@ -75,7 +76,7 @@ const PostForm = () => {
               disabled={!watch}
               variant="accent"
               type="submit"
-              aria="hoot"
+              aria="Hoot"
             />
           </div>
         </div>
@@ -147,8 +148,9 @@ const PostForm = () => {
               variant={'icon'}
               className={`group relative justify-start overflow-visible text-blueberry-600 hover:!bg-transparent`}
               type="button"
+              aria="Images"
             >
-              <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
+              <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:opacity-[.12] group-hover:before:content-[''] sm:group-hover:before:bg-blueberry-600">
                 <OutlineImage size={20} />
               </div>
             </Button>
@@ -156,8 +158,9 @@ const PostForm = () => {
               variant={'icon'}
               className={`group relative justify-start overflow-visible text-blueberry-600 hover:!bg-transparent`}
               type="button"
+              aria="Pools"
             >
-              <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
+              <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:opacity-[.12] group-hover:before:content-[''] sm:group-hover:before:bg-blueberry-600">
                 <OutlineBar01Up size={20} />
               </div>
             </Button>
@@ -165,8 +168,9 @@ const PostForm = () => {
               variant={'icon'}
               className={`group relative justify-start overflow-visible text-blueberry-600 hover:!bg-transparent`}
               type="button"
+              aria="Emojis"
             >
-              <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
+              <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:opacity-[.12] group-hover:before:content-[''] sm:group-hover:before:bg-blueberry-600">
                 <OutlineFaceSmilling size={20} />
               </div>
             </Button>
@@ -175,8 +179,9 @@ const PostForm = () => {
               variant={'icon'}
               className={`group relative justify-start overflow-visible text-blueberry-600 hover:!bg-transparent`}
               type="button"
+              aria="Bold"
             >
-              <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
+              <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:opacity-[.12] group-hover:before:content-[''] sm:group-hover:before:bg-blueberry-600">
                 <OutlineBold size={20} />
               </div>
             </Button>
@@ -184,8 +189,9 @@ const PostForm = () => {
               variant={'icon'}
               className={`group relative justify-start overflow-visible text-blueberry-600 hover:!bg-transparent`}
               type="button"
+              aria="Italicize"
             >
-              <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
+              <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:opacity-[.12] group-hover:before:content-[''] sm:group-hover:before:bg-blueberry-600">
                 <OutlineItalic size={20} />
               </div>
             </Button>
@@ -229,12 +235,12 @@ const PostForm = () => {
                 />
                 <Button
                   variant={'icon'}
-                  aria="Add next Hoot (nest)"
                   className={`group relative justify-start overflow-visible text-blueberry-600 hover:!bg-transparent ${!watch && 'hidden'}`}
                   type="button"
+                  aria="Add next Hoot (nest)"
                 >
-                  <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-[''] ">
-                    <OutlineItalic size={20} />
+                  <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:opacity-[.12] group-hover:before:content-[''] sm:group-hover:before:bg-blueberry-600 ">
+                    <OutlinePlus size={20} />
                   </div>
                 </Button>
               </React.Fragment>

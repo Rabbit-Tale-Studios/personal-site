@@ -137,6 +137,12 @@ export {
   DuotoneFaceSmilling,
 } from './assets/user_interface/FaceSmiling'
 
+export {
+  OutlinePlus,
+  SolidPlus,
+  DuotonePlus,
+} from './assets/user_interface/Plus'
+
 // Communication
 
 export {

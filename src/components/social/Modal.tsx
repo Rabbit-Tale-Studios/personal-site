@@ -154,7 +154,7 @@ const Modal = (props: {
 
               <article
                 className={cn(
-                  'relative mx-2 my-2 flex max-h-screen w-full max-w-screen-2xl content-center items-center justify-center overflow-hidden shadow-shark-950/30 backdrop:shadow-xl',
+                  'relative mx-2 my-2 flex h-dvh w-full max-w-screen-2xl content-center items-center justify-center overflow-hidden shadow-shark-950/30 backdrop:shadow-xl',
                   {
                     'animate-modalReveal': props.open,
                   },
@@ -176,7 +176,7 @@ const Modal = (props: {
                   height={imageDimensions.height}
                   width={imageDimensions.width}
                   objectFit="contain"
-                  className="h-full w-fit self-center"
+                  className="h-dvh w-fit self-center"
                   onClick={(e) => e.stopPropagation()}
                 />
               </article>
