@@ -83,7 +83,7 @@ const PostForm = () => {
           control={form.control}
           name="username"
           render={({ field }) => (
-            <FormItem className="flex items-start justify-between space-x-4">
+            <FormItem className="flex items-start justify-between space-x-4 max-sm:mt-2">
               <div className="flex flex-1 flex-col space-y-4">
                 <div className="flex space-x-4">
                   <div className="flex flex-1 space-x-2">
@@ -141,7 +141,7 @@ const PostForm = () => {
         {/* <Button variant="accent" type="submit">
           Submit
         </Button> */}
-        <div className="flex justify-between">
+        <div className="mt-2 flex justify-between">
           <div className="flex items-end space-x-1 sm:ml-12">
             <Button
               variant={'icon'}
