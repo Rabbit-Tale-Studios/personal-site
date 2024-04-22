@@ -114,7 +114,7 @@ const LeftNav = ({
 
   return (
     <nav className="sticky top-0 hidden h-dvh max-w-[8rem] flex-1 flex-col items-end justify-between p-8 sm:flex lg:ml-0 xl:ml-0 xl:max-w-[14rem] xl:items-start xl:px-0">
-      <ScrollShadow className="flex h-full flex-col items-center justify-between overflow-auto lg:w-full lg:px-0">
+      <ScrollShadow className="mb-4 flex h-full flex-col items-center justify-between overflow-auto lg:w-full lg:px-0">
         <section className="rounded-2x flex w-full flex-col gap-6 p-2">
           <ul className="flex flex-col items-end space-y-2">
             {NavLinkItem.map(
