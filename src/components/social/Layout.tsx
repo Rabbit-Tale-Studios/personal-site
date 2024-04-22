@@ -87,7 +87,7 @@ const Layout = (props: {
               avatarUrl={user.avatarUrl}
               stories={user.stories}
             />
-            <main className="flex w-full flex-col leading-none sm:space-y-2 md:max-w-xl md:p-0 md:py-[2.5rem] lg:max-w-lg xl:max-w-xl">
+            <main className="flex w-full flex-col space-y-2 py-[2.5rem] leading-none md:max-w-xl lg:max-w-lg xl:max-w-xl">
               {props.children}
             </main>
             <Aside />
