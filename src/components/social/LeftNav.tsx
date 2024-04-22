@@ -113,7 +113,7 @@ const LeftNav = ({
   }
 
   return (
-    <nav className="sticky top-0 hidden h-screen max-w-[8rem] flex-1 flex-col items-end justify-between p-8 sm:flex lg:ml-0 xl:ml-0 xl:max-w-[14rem] xl:items-start xl:px-0">
+    <nav className="sticky top-0 hidden h-dvh max-w-[8rem] flex-1 flex-col items-end justify-between p-8 sm:flex lg:ml-0 xl:ml-0 xl:max-w-[14rem] xl:items-start xl:px-0">
       <ScrollShadow className="flex h-full flex-col items-center justify-between overflow-auto lg:w-full lg:px-0">
         <section className="rounded-2x flex w-full flex-col gap-6 p-2">
           <ul className="flex flex-col items-end space-y-2">
@@ -159,20 +159,20 @@ const LeftNav = ({
             <SolidChevronRight className="hidden max-xl:inline" size={24} />
           </Button>
         </section>
-        <section className="flex w-full cursor-pointer items-center justify-between overflow-hidden rounded-2xl p-2 shadow-sm transition-colors xl:bg-default-900/5 xl:p-3 xl:hover:bg-default-900/10">
-          <UserIdentifier
-            displayName={displayName}
-            username={username}
-            avatarUrl={avatarUrl}
-            stories={stories}
-            canCollapse
-          />
-          <OutlineMore
-            size={20}
-            className="mr-1 text-default-500 max-xl:hidden"
-          />
-        </section>
       </ScrollShadow>
+      <section className="flex w-full cursor-pointer items-center justify-between overflow-hidden rounded-2xl p-2 shadow-sm transition-colors xl:bg-default-900/5 xl:p-3 xl:hover:bg-default-900/10">
+        <UserIdentifier
+          displayName={displayName}
+          username={username}
+          avatarUrl={avatarUrl}
+          stories={stories}
+          canCollapse
+        />
+        <OutlineMore
+          size={20}
+          className="mr-1 text-default-500 max-xl:hidden"
+        />
+      </section>
     </nav>
   )
 }

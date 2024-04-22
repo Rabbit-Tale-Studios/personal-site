@@ -34,7 +34,7 @@ const NavItem = ({ active = false, link, children, onClick, badge }: Props) => {
           //  rounded={'xl'}
           iconPosition="left"
           variant={`${active ? 'primary' : 'ghost'}`}
-          className={`h-12 max-xl:p-3 sm:group-hover:translate-x-2 ${active ? 'sm:group-hover:bg-default-800' : 'sm:group-hover:bg-default-900/5'}`}
+          className={`h-12 max-xl:p-3 lg:group-hover:translate-x-2 ${active ? 'lg:group-hover:bg-default-800' : 'lg:group-hover:bg-default-900/5'}`}
         >
           {children}
         </Button>
