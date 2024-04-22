@@ -364,7 +364,7 @@ export const PostStats = ({
         >
           <div className="group flex space-x-2">
             <div
-              className={`relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-gold-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-gold-600 group-hover:before:content-[''] sm:group-hover:before:opacity-[.12] ${liked && 'text-gold-600'}`}
+              className={`relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-gold-600 group-hover:before:block group-hover:before:size-8 group-hover:before:opacity-[.12] group-hover:before:content-[''] sm:group-hover:before:bg-gold-600 ${liked && 'text-gold-600'}`}
             >
               {liked ? <SolidStar size={20} /> : <OutlineStar size={20} />}
             </div>
@@ -384,7 +384,7 @@ export const PostStats = ({
         >
           <div className="group flex space-x-2">
             <div
-              className={`relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] sm:group-hover:before:content-[''] ${commented && 'text-blueberry-600'}`}
+              className={`relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:opacity-[.12] group-hover:before:content-[''] sm:group-hover:before:bg-blueberry-600 ${commented && 'text-blueberry-600'}`}
             >
               {commented ? <SolidChat size={20} /> : <OutlineChat size={20} />}
             </div>
@@ -438,7 +438,7 @@ export const PostStats = ({
           className={`group relative justify-start overflow-visible  text-default-500 ${iconColor} hover:!bg-transparent`}
         >
           <div
-            className={`relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] sm:group-hover:before:content-[''] ${bookmarked && 'text-blueberry-600'}`}
+            className={`relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:opacity-[.12] group-hover:before:content-[''] sm:group-hover:before:bg-blueberry-600 ${bookmarked && 'text-blueberry-600'}`}
           >
             {bookmarked ? (
               <SolidBookmark size={20} />
