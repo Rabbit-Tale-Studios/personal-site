@@ -57,6 +57,28 @@ const PostForm = () => {
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-4 bg-white-50 px-3 pb-3 max-sm:border-b sm:rounded-2xl"
       >
+        <div className="flex justify-between sm:hidden">
+          <Button variant="ghost" type="button" aria="Cancel" text="Cancel" />
+          <div className="flex space-x-2 max-sm:space-x-3">
+            <Button
+              variant="outline"
+              disabled={!watch}
+              type="button"
+              aria="Drafts"
+              text="Drafts"
+            />
+            {/* <Button variant="icon" type="button" size="sm">
+              <OutlineMore size={24} />
+            </Button> */}
+            <Button
+              text="hoot"
+              disabled={!watch}
+              variant="accent"
+              type="submit"
+              aria="hoot"
+            />
+          </div>
+        </div>
         <FormField
           control={form.control}
           name="username"
@@ -179,33 +201,52 @@ const PostForm = () => {
           </div>
           <div className="flex h-10 items-center space-x-2">
             {/* <CircleProgress size={24} progress={progress} /> */}
-            <CircularProgress
-              aria-label="max hoot characters"
-              size="md"
-              value={progress}
-              showValueLabel={500 - watch.length <= 20}
-              valueLabel={
-                500 - watch.length <= 20 ? `${500 - watch.length}` : ''
-              }
-              classNames={{
-                base: 500 - watch.length === 0 && 'animate-shake',
-                svg: `transition-all !size-8 ${500 - watch.length <= 20 && 'scale-[1.125]'}`,
-                value: `text-xs text-shark-500 ${progress >= 100 && 'text-red-500'}`,
-                indicator:
-                  progress >= 100 || 500 - watch.length <= 0
-                    ? 'text-red-600'
-                    : 500 - watch.length <= 20
-                      ? 'text-orange-600'
-                      : 'text-blueberry-600',
-              }}
-            />
-            <Button
-              variant="ghost"
+            {watch && (
+              <React.Fragment>
+                <CircularProgress
+                  aria-label="max hoot characters"
+                  size="md"
+                  value={progress}
+                  showValueLabel={500 - watch.length <= 20}
+                  valueLabel={
+                    500 - watch.length <= 20 ? `${500 - watch.length}` : ''
+                  }
+                  classNames={{
+                    base: 500 - watch.length === 0 && 'animate-shake',
+                    svg: `transition-all !size-8 ${500 - watch.length <= 20 && 'scale-[1.125]'}`,
+                    value: `text-xs text-shark-500 ${progress >= 100 && 'text-red-500'}`,
+                    indicator:
+                      progress >= 100 || 500 - watch.length <= 0
+                        ? 'text-red-600'
+                        : 500 - watch.length <= 20
+                          ? 'text-orange-600'
+                          : 'text-blueberry-600',
+                  }}
+                />
+                <Divider
+                  orientation="vertical"
+                  className={`h-3/4 self-center ${!watch && 'hidden'}`}
+                />
+                <Button
+                  variant={'icon'}
+                  aria="Add next Hoot (nest)"
+                  className={`group relative justify-start overflow-visible text-blueberry-600 hover:!bg-transparent ${!watch && 'hidden'}`}
+                  type="button"
+                >
+                  <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-[''] ">
+                    <OutlineItalic size={20} />
+                  </div>
+                </Button>
+              </React.Fragment>
+            )}
+            {/* <Button
+              variant="outline"
               disabled={!watch}
               type="button"
-              aria="draft"
+              aria="Draft"
               text="Draft"
-            />
+              className="max-sm:hidden"
+            /> */}
             {/* <Button variant="icon" type="button" size="sm">
               <OutlineMore size={24} />
             </Button> */}
@@ -214,7 +255,8 @@ const PostForm = () => {
               disabled={!watch}
               variant="accent"
               type="submit"
-              aria="hoot"
+              aria="Hoot"
+              className="max-sm:hidden"
             />
           </div>
         </div>

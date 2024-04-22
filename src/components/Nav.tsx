@@ -19,7 +19,13 @@ type MenuItemProps = {
   onClick?: () => void
 }
 
-const MenuItem = ({ aria, external, href, text, onClick }: MenuItemProps) => {
+export const MenuItem = ({
+  aria,
+  external,
+  href,
+  text,
+  onClick,
+}: MenuItemProps) => {
   if (onClick) {
     return (
       <li>

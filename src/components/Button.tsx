@@ -179,8 +179,8 @@ const Button = React.forwardRef<
         // 'text-base sm:text-lg py-2.5 px-5': size === 'lg',
 
         'text-xs': size === 'sm',
-        'text-base': size === 'md',
-        'text-lg py-2.5 px-5': size === 'lg',
+        'text-sm sm:text-base': size === 'md',
+        'text-base sm:text-lg py-2.5 px-5': size === 'lg',
 
         'pl-5': hasIcon && iconPosition === 'right' && props.variant !== 'link',
         'pr-5': hasIcon && iconPosition === 'left' && props.variant !== 'link',
