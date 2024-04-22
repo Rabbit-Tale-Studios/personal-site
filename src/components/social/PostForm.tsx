@@ -55,7 +55,7 @@ const PostForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-4 bg-white-50 p-3 max-sm:border-b sm:rounded-2xl"
+        className="space-y-4 bg-white-50 px-3 pb-3 max-sm:border-b sm:rounded-2xl"
       >
         <FormField
           control={form.control}
@@ -68,6 +68,7 @@ const PostForm = () => {
                     <Avatar
                       src="https://pbs.twimg.com/profile_images/1777614638261080064/H9iQD24q_400x400.jpg"
                       alt="avatar"
+                      className="max-sm:h-9 max-sm:w-9"
                     />
                     <FormControl>
                       {/* <Input
@@ -86,13 +87,13 @@ const PostForm = () => {
                         //onChange={(e) => setInputValue(e.target.value)}
                         className="w-fit flex-1"
                         classNames={{
-                          // inputWrapper: [
-                          //   'bg-transparent shadow-none group-data-[hover]:bg-transparent group-data-[focus=true]:bg-transparent',
-                          //   //  !!errors.username &&
-                          //   //    'ring-2 ring-offset-2 group-data-[focus=true]:ring-red-500 ring-red-500',
-                          // ]
-                          //   .filter(Boolean)
-                          //   .join(' '),
+                          inputWrapper: [
+                            'bg-transparent shadow-none group-data-[hover]:bg-transparent group-data-[focus=true]:bg-transparent',
+                            //  !!errors.username &&
+                            //    'ring-2 ring-offset-2 group-data-[focus=true]:ring-red-500 ring-red-500',
+                          ]
+                            .filter(Boolean)
+                            .join(' '),
                           //   input: !!errors.username && '!placeholder-red-500',
                           input: 'text-base',
                         }}
@@ -119,10 +120,11 @@ const PostForm = () => {
           Submit
         </Button> */}
         <div className="flex justify-between">
-          <div className="ml-12 flex items-end space-x-1">
+          <div className="flex items-end space-x-1 sm:ml-12">
             <Button
               variant={'icon'}
               className={`group relative justify-start overflow-visible text-blueberry-600 hover:!bg-transparent`}
+              type="button"
             >
               <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
                 <OutlineImage size={20} />
@@ -131,6 +133,7 @@ const PostForm = () => {
             <Button
               variant={'icon'}
               className={`group relative justify-start overflow-visible text-blueberry-600 hover:!bg-transparent`}
+              type="button"
             >
               <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
                 <OutlineBar01Up size={20} />
@@ -139,6 +142,7 @@ const PostForm = () => {
             <Button
               variant={'icon'}
               className={`group relative justify-start overflow-visible text-blueberry-600 hover:!bg-transparent`}
+              type="button"
             >
               <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
                 <OutlineFaceSmilling size={20} />
@@ -148,6 +152,7 @@ const PostForm = () => {
             <Button
               variant={'icon'}
               className={`group relative justify-start overflow-visible text-blueberry-600 hover:!bg-transparent`}
+              type="button"
             >
               <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
                 <OutlineBold size={20} />
@@ -156,6 +161,7 @@ const PostForm = () => {
             <Button
               variant={'icon'}
               className={`group relative justify-start overflow-visible text-blueberry-600 hover:!bg-transparent`}
+              type="button"
             >
               <div className="relative before:absolute before:inset-1/2 before:size-0 before:-translate-x-1/2 before:-translate-y-1/2 before:transform before:rounded-full before:transition-all group-hover:text-blueberry-600 group-hover:before:block group-hover:before:size-8 group-hover:before:bg-blueberry-600 group-hover:before:opacity-[.12] group-hover:before:content-['']">
                 <OutlineItalic size={20} />
