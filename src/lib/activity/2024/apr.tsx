@@ -60,9 +60,9 @@ export const aprilData: MonthDataType[] = [
           {
             type: 'TextBlock',
             text: {
-              title: 'Star Owl Social',
+              title: 'Rabbit Hole Social',
               body: [
-                "I've been working on a new side project called Star Owl Social. It's a social media platform for arists. I'm really excited about this project and I can't wait to launch it (someday). Stay tuned for more updates!",
+                "I've been working on a new side project called Rabbit Hole. It's a social media platform for arists. I'm really excited about this project and I can't wait to launch it (someday). Stay tuned for more updates!",
               ],
             },
           },
