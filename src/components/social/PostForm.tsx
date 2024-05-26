@@ -25,7 +25,7 @@ import {
   FormMessage,
 } from 'components/Form'
 import { OutlineItalic } from 'icons/assets/formatting/Italic'
-import { Gauge } from 'components/gauge'
+import { Gauge } from 'components/Gauge'
 
 const formSchema = z.object({
   username: z.string().min(2).max(500),
