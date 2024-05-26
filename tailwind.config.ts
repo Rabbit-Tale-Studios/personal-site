@@ -21,6 +21,9 @@ const config: Config = {
       },
 
       colors: {
+        primary: {
+          DEFAULT: '#4d41ff',
+        },
         shark: {
           50: '#f6f6f6',
           100: '#e7e7e7',
