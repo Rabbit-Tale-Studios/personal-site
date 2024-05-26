@@ -92,7 +92,7 @@ const Button = React.forwardRef<
     return props.as === 'a' ? (
       <Link
         aria-label={props.aria ?? props.text}
-        //{...dataHoverProp}
+        {...dataHoverProp}
         ref={ref as React.Ref<HTMLAnchorElement>}
         className={cn(style, props.className)}
         href={props.href || '/'}

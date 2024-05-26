@@ -25,6 +25,7 @@ import {
   FormMessage,
 } from 'components/Form'
 import { OutlineItalic } from 'icons/assets/formatting/Italic'
+import { Gauge } from 'components/gauge'
 
 const formSchema = z.object({
   username: z.string().min(2).max(500),
@@ -207,7 +208,18 @@ const PostForm = () => {
             {/* <CircleProgress size={24} progress={progress} /> */}
             {watch && (
               <React.Fragment>
-                <CircularProgress
+                <Gauge
+                  value={progress}
+                  gapPercent={5}
+                  strokeWidth={8}
+                  displayMode="countdown"
+                  max={500}
+                  className={{
+                    svgClassName: `size-8 transition-transform ${500 - watch.length <= 20 && 'scale-[1.125]'}`,
+                    textClassName: '',
+                  }}
+                />
+                {/* <CircularProgress
                   aria-label="max hoot characters"
                   size="md"
                   value={progress}
@@ -226,7 +238,7 @@ const PostForm = () => {
                           ? 'text-orange-600'
                           : 'text-blueberry-600',
                   }}
-                />
+                /> */}
                 <Divider
                   orientation="vertical"
                   className={`h-3/4 self-center ${!watch && 'hidden'}`}
