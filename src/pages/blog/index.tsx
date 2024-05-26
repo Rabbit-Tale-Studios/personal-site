@@ -5,8 +5,7 @@ import Tooltip from 'components/Tooltip'
 import { OutlineChevronRight } from 'icons/Icons'
 import moment from 'moment'
 import Link from 'next/link'
-import React from 'react'
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import slugify from 'slugify'
 import { cn } from 'utils/tw'
 import { Skeleton, ScrollShadow } from '@nextui-org/react'
@@ -35,17 +34,13 @@ const Item = (props: {
     >
       <div className="flex w-fit overflow-hidden">
         <h2 className="truncate whitespace-nowrap font-medium duration-300 ease-bounce">
-          {/* animate-marquee truncate */}
           {props.title}
         </h2>
       </div>
-      {/* <h2 className="truncate font-medium duration-300 ease-bounce">
-        {props.title}
-      </h2> */}
       <div
         className={cn(
           'flex w-1/2 items-center justify-end gap-2 transition-transform duration-300 ease-bounce lg:translate-x-6 lg:group-hover:translate-x-0',
-          { 'translate-x-6 lg:group-hover:translate-x-6': props.comingSoon }, //lg:group-hover:translate-x-6
+          { 'translate-x-6 lg:group-hover:translate-x-6': props.comingSoon },
         )}
       >
         <p className="text-sm opacity-70">
@@ -58,7 +53,6 @@ const Item = (props: {
           className={cn(
             'opacity-70 transition duration-300 ease-bounce lg:translate-x-4 lg:opacity-0 lg:group-hover:translate-x-0 lg:group-hover:opacity-70',
             {
-              //lg:group-hover:opacity-0
               'opacity-0 lg:group-hover:translate-x-4 lg:group-hover:opacity-0':
                 props.comingSoon,
             },
@@ -71,75 +65,58 @@ const Item = (props: {
 
 const Page = () => {
   const [filter, setFilter] = useState('all')
+  const [key, setKey] = useState(0)
+  const [lastFilter, setLastFilter] = useState('all')
+
+  useEffect(() => {
+    setKey((prevKey) => prevKey + 1)
+    setLastFilter(filter)
+  }, [filter])
 
   const blogs = [
     {
       title: 'Life Blogs',
       type: 'life',
-      content: (
-        <React.Fragment>
-          <div className="group/tooltip relative w-full">
-            <Tooltip text="Coming soon" position="right" />
-            <Item title="The Cats Brand" comingSoon />
-          </div>
-
-          <Item
-            title="Embracing Quiet Holidays"
-            date="2024-03-30"
-            offset="0.2"
-          />
-
-          <Item title="My Design Journey" date="2024-03-26" offset="0.4" />
-        </React.Fragment>
-      ),
+      content: [
+        { title: 'Our Tiny Company', date: '2024-05-26' },
+        { title: 'Embracing Quiet Holidays', date: '2024-03-30' },
+        { title: 'My Design Journey', date: '2024-03-28' },
+      ],
     },
     {
       title: 'Dev Blogs',
       type: 'dev',
-      content: (
-        <React.Fragment>
-          <div className="group/tooltip relative w-full">
-            <Tooltip text="Coming soon" position="right" />
-            <Item
-              title="Star Owl Social"
-              comingSoon
-              // offset={
-              //   filter === 'all' && lastFilter === 'life' ? undefined : '0.6'
-              // }
-
-              offset={'0.6'}
-            />
-          </div>
-          <div className="group/tooltip relative w-full">
-            <Tooltip text="Coming soon" position="right" />
-            <Item
-              title="Tiny Buddies"
-              comingSoon
-              // offset={
-              //   filter === 'all' && lastFilter === 'life' ? undefined : '0.6'
-              // }
-
-              offset={'0.8'}
-            />
-          </div>
-          {/* <Item
-            title="My Design Journey"
-            date="2024-03-26"
-            offset={filter === 'dev' ? '0' : '0.6'}
-          /> */}
-        </React.Fragment>
-      ),
+      content: [
+        { title: 'Rabbit Hole Social', comingSoon: true },
+        { title: 'Tiny Buddies', date: '2024-05-26' },
+      ],
     },
   ]
 
-  const filteredBlogs = blogs.filter(
-    (blog) => filter === 'all' || blog.type === filter,
-  )
+  const getFilteredBlogs = () => {
+    return blogs
+      .filter((blog) => filter === 'all' || blog.type === filter)
+      .map((blog) => ({
+        ...blog,
+        content: blog.content.map((item, index) => {
+          let offset = '0'
+          if (filter === 'all') {
+            offset =
+              blog.type === 'dev' ? `${0.6 + index * 0.2}` : `${index * 0.2}`
+          } else {
+            offset = `${index * 0.2}`
+          }
+          return {
+            ...item,
+            offset: offset,
+          }
+        }),
+      }))
+  }
 
   return (
     <Layout>
       <Section>
-        {/* <div className="mb-6 flex w-full animate-revealSm space-x-3 self-start overflow-hidden"> */}
         <ScrollShadow
           orientation="horizontal"
           hideScrollBar
@@ -164,16 +141,17 @@ const Page = () => {
               variant={filter === 'dev' ? 'primary' : 'ghost'}
               size="sm"
             />
-            {/* <Skeleton className="h-9 w-24 rounded-full bg-shark-950/5" />
-            <Skeleton className="h-9 w-24 rounded-full bg-shark-950/5" />
-            <Skeleton className="h-9 w-24 rounded-full bg-shark-950/5" /> */}
           </div>
         </ScrollShadow>
-        {/* </div> */}
-        {filteredBlogs.map((blog, index) => (
-          <article key={index} className="prose mb-6 w-full dark:prose-invert">
+        {getFilteredBlogs().map((blog, index) => (
+          <article
+            key={`${key}-${index}`}
+            className="prose mb-6 w-full dark:prose-invert"
+          >
             <h3 className="animate-revealSm self-start">{blog.title}</h3>
-            {blog.content}
+            {blog.content.map((item, idx) => (
+              <Item key={`${key}-${idx}`} {...item} />
+            ))}
           </article>
         ))}
       </Section>
