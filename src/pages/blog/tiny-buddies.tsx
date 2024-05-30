@@ -26,7 +26,7 @@ const Page = () => (
           <h2>Exciting News: Tiny Buddies is Here!</h2>
           <p>
             Today is the day I've finally found the strength to share our latest
-            project with you—<strong>Tiny Buddies</strong>! Tiny Buddies is a
+            project with you — <strong>Tiny Buddies</strong>! Tiny Buddies is a
             mobile pixel pet game where you take care of your pet. You can play
             with it, dress it up to your liking, buy new toys, food, and
             clothes, and even decorate its home!
