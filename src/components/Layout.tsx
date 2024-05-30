@@ -12,64 +12,64 @@ import { Analytics } from '@vercel/analytics/react'
 //import ThemeSwitchBubble from './ThemeSwitchBubble'
 import React from 'react'
 
-export const BubbleContext = React.createContext({
-  showBubble: false,
-  toggleBubble: () => {},
-})
+// export const BubbleContext = React.createContext({
+//   showBubble: false,
+//   toggleBubble: () => {},
+// })
 
-function ThemeWatcher() {
-  let { resolvedTheme, setTheme } = useTheme()
+// function ThemeWatcher() {
+//   let { resolvedTheme, setTheme } = useTheme()
 
-  useEffect(() => {
-    let media = window.matchMedia('(prefers-color-scheme: dark)')
+//   useEffect(() => {
+//     let media = window.matchMedia('(prefers-color-scheme: dark)')
 
-    function onMediaChange() {
-      let systemTheme = media.matches ? 'dark' : 'light'
-      if (resolvedTheme === systemTheme) {
-        setTheme('system')
-      }
-    }
+//     function onMediaChange() {
+//       let systemTheme = media.matches ? 'dark' : 'light'
+//       if (resolvedTheme === systemTheme) {
+//         setTheme('system')
+//       }
+//     }
 
-    onMediaChange()
-    media.addEventListener('change', onMediaChange)
+//     onMediaChange()
+//     media.addEventListener('change', onMediaChange)
 
-    return () => {
-      media.removeEventListener('change', onMediaChange)
-    }
-  }, [resolvedTheme, setTheme])
+//     return () => {
+//       media.removeEventListener('change', onMediaChange)
+//     }
+//   }, [resolvedTheme, setTheme])
 
-  return null
-}
+//   return null
+// }
 
 const Layout = (props: {
   children?: React.ReactNode
   metaTagsProps?: React.ComponentProps<typeof MetaTags>
 }) => {
-  const [showBubble, setShowBubble] = useState(false)
+  //const [showBubble, setShowBubble] = useState(false)
 
   return (
-    <BubbleContext.Provider
-      value={{ showBubble, toggleBubble: () => setShowBubble(!showBubble) }}
-    >
-      <ThemeProvider attribute="class" defaultTheme="light">
-        <FontProvider>
-          <MetaTags {...(props.metaTagsProps ?? {})} />
-          <ThemeWatcher />
-          <div className="relative z-10">
-            <Nav />
-            <main className="flex w-full flex-col items-center justify-center px-4 sm:px-10">
-              {props.children}
-            </main>
-            <Footer />
-          </div>
-          <BackToTop />
-          <CursorComponent children={undefined} />
-          {/* {showBubble && <ThemeSwitchBubble />} */}
-          <SpeedInsights />
-          <Analytics />
-        </FontProvider>
-      </ThemeProvider>
-    </BubbleContext.Provider>
+    // <BubbleContext.Provider
+    //   value={{ showBubble, toggleBubble: () => setShowBubble(!showBubble) }}
+    // >
+    //   <ThemeProvider attribute="class" defaultTheme="light">
+    <FontProvider>
+      <MetaTags {...(props.metaTagsProps ?? {})} />
+      {/* <ThemeWatcher /> */}
+      <div className="relative z-10">
+        <Nav />
+        <main className="flex w-full flex-col items-center justify-center px-4 sm:px-10">
+          {props.children}
+        </main>
+        <Footer />
+      </div>
+      <BackToTop />
+      <CursorComponent children={undefined} />
+      {/* {showBubble && <ThemeSwitchBubble />} */}
+      <SpeedInsights />
+      <Analytics />
+    </FontProvider>
+    //   </ThemeProvider>
+    // </BubbleContext.Provider>
   )
 }
 
