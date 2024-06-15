@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react'
+//import { useEffect, useState } from 'react'
 
 import FontProvider from 'components/FontProvider'
 import Footer from 'components/Footer'
 import MetaTags from 'components/MetaTags'
 import Nav from 'components/Nav'
-import { ThemeProvider, useTheme } from 'next-themes'
+//import { ThemeProvider, useTheme } from 'next-themes'
 import CursorComponent from './Cursor'
 import BackToTop from './BackToTop'
 import { SpeedInsights } from '@vercel/speed-insights/next'

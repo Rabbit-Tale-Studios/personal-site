@@ -1,9 +1,9 @@
+import CodeBlock from 'components/CodeSytax'
 import Layout from 'components/Layout'
 import Section from 'components/Section'
 //import TextLink from 'components/TextLink'
 import BackButton from 'components/blog/BackButton'
 //import Image from 'next/image'
-import Twemoji from 'react-twemoji'
 
 const Page = () => (
   <Layout
@@ -27,6 +27,22 @@ const Page = () => (
             of this season for me lies in the opportunity to spend quality time
             with someone special.
           </p>
+          {/* <CodeBlock
+            codeString={`function greet(name: string): string {
+  return \`Hello, \${name}!\`;
+}
+
+// This will work correctly.
+let message: string = greet('123');`}
+            language={'typescript'}
+          />
+          <h3>Details</h3>
+          <ul>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+            <li>test</li>
+          </ul> */}
           {/* <Image src={idea} alt="Image" placeholder="blur" /> */}
           <h2>The Essence of the Season</h2>
           <p>
