@@ -13,8 +13,8 @@ const MetaTags = ({
     <meta charSet="utf-8" />
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
-    <link rel="icon" href="public/favicon.svg" />
-    <link rel="shortcut icon" href="public/favicon.svg" />
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.svg" />
 
     {/* Primary Meta Tags */}
     <title>{title}</title>
