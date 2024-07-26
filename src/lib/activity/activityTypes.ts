@@ -6,12 +6,10 @@ type ImageContent = {
 };
 
 type TextBlockContent = {
-	title: string;
-	body: string;
 	type: "TextBlock";
 	text: {
-		title?: string;
-		body: React.ReactNode;
+		title: string;
+		body: string | object;
 	};
 };
 

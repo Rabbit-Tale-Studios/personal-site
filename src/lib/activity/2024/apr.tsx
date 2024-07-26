@@ -1,7 +1,4 @@
-import type {
-	MonthDataType,
-	TextBlockContent,
-} from "lib/activity/activityTypes";
+import type { MonthDataType } from "lib/activity/activityTypes";
 
 export const aprilData: MonthDataType[] = [
 	{
@@ -20,7 +17,7 @@ export const aprilData: MonthDataType[] = [
 								"I have a little secret project I've been working on for a while now. It's a personal project that I'm really excited about and I can't wait to share it with you all. Stay tuned for more updates!",
 							],
 						},
-					} as unknown as TextBlockContent,
+					},
 					{
 						type: "LinkButton",
 						link: {
@@ -44,7 +41,7 @@ export const aprilData: MonthDataType[] = [
 								"I've just updated my blog page with a new features and improvements. I've added a new filter option that allows you to filter blogs by category. I've also made some design changes to make the page more user-friendly. Check it out and let me know what you think!",
 							],
 						},
-					} as unknown as TextBlockContent,
+					},
 					{
 						type: "LinkButton",
 						link: {
@@ -67,7 +64,7 @@ export const aprilData: MonthDataType[] = [
 								"I've been working on a new side project called Rabbit Hole. It's a social media platform for arists. I'm really excited about this project and I can't wait to launch it (someday). Stay tuned for more updates!",
 							],
 						},
-					} as unknown as TextBlockContent,
+					},
 					{
 						type: "LinkButton",
 						link: {

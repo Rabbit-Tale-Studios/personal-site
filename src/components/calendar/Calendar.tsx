@@ -199,8 +199,8 @@ const Calendar = (props: { data: MonthDataType[] }) => {
 															<TextBlock
 																data={{
 																	id: `${dayData.day}-${contentIndex}`, // or contentItem.id if it exists
-																	title: contentItem.title, // Ensure title is passed
-																	body: contentItem.body, // Ensure body is passed
+																	title: contentItem.text.title, // Ensure title is passed
+																	body: contentItem.text.body.toString(), // Ensure body is passed as a string
 																}}
 																themeData={dayData?.type}
 															/>
