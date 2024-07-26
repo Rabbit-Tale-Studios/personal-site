@@ -10,7 +10,7 @@ import BackToTop from './BackToTop'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Analytics } from '@vercel/analytics/react'
 //import ThemeSwitchBubble from './ThemeSwitchBubble'
-import React from 'react'
+import type React from 'react'
 
 // export const BubbleContext = React.createContext({
 //   showBubble: false,
@@ -42,35 +42,35 @@ import React from 'react'
 // }
 
 const Layout = (props: {
-  children?: React.ReactNode
-  metaTagsProps?: React.ComponentProps<typeof MetaTags>
+	children?: React.ReactNode
+	metaTagsProps?: React.ComponentProps<typeof MetaTags>
 }) => {
-  //const [showBubble, setShowBubble] = useState(false)
+	//const [showBubble, setShowBubble] = useState(false)
 
-  return (
-    // <BubbleContext.Provider
-    //   value={{ showBubble, toggleBubble: () => setShowBubble(!showBubble) }}
-    // >
-    //   <ThemeProvider attribute="class" defaultTheme="light">
-    <FontProvider>
-      <MetaTags {...(props.metaTagsProps ?? {})} />
-      {/* <ThemeWatcher /> */}
-      <div className="relative z-10">
-        <Nav />
-        <main className="flex w-full flex-col items-center justify-center px-4 sm:px-10">
-          {props.children}
-        </main>
-        <Footer />
-      </div>
-      <BackToTop />
-      <CursorComponent children={undefined} />
-      {/* {showBubble && <ThemeSwitchBubble />} */}
-      <SpeedInsights />
-      <Analytics />
-    </FontProvider>
-    //   </ThemeProvider>
-    // </BubbleContext.Provider>
-  )
+	return (
+		// <BubbleContext.Provider
+		//   value={{ showBubble, toggleBubble: () => setShowBubble(!showBubble) }}
+		// >
+		//   <ThemeProvider attribute="class" defaultTheme="light">
+		<FontProvider>
+			<MetaTags {...(props.metaTagsProps ?? {})} />
+			{/* <ThemeWatcher /> */}
+			<div className='relative z-10'>
+				<Nav />
+				<main className='flex w-full flex-col items-center justify-center px-4 sm:px-10'>
+					{props.children}
+				</main>
+				<Footer />
+			</div>
+			<BackToTop />
+			<CursorComponent />
+			{/* {showBubble && <ThemeSwitchBubble />} */}
+			<SpeedInsights />
+			<Analytics />
+		</FontProvider>
+		//   </ThemeProvider>
+		// </BubbleContext.Provider>
+	)
 }
 
 export default Layout

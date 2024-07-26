@@ -1,4 +1,4 @@
-import { SVGProps } from 'react'
+import type { SVGProps } from 'react'
 
 /**
  * Interface `IconProps` extends standard SVG properties with two optional additional properties.
@@ -10,6 +10,6 @@ import { SVGProps } from 'react'
  * @property {number} size - Optional. A number that can be used to set the size of the SVG icon component.
  */
 export interface IconProps extends SVGProps<SVGSVGElement> {
-   className?: string
-   size?: number
+	className?: string
+	size?: number
 }
