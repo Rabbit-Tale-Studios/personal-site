@@ -1,4 +1,7 @@
-import type { MonthDataType } from 'lib/activity/activityTypes'
+import type {
+	MonthDataType,
+	TextBlockContent,
+} from "lib/activity/activityTypes";
 
 export const februaryData: MonthDataType[] = [
 	{
@@ -7,19 +10,19 @@ export const februaryData: MonthDataType[] = [
 		days: [
 			{
 				day: 3,
-				type: 'Life',
+				type: "Life",
 				content: [
 					{
-						type: 'TextBlock',
+						type: "TextBlock",
 						text: {
-							title: 'Good vibes ❤️',
+							title: "Good vibes ❤️",
 							body: [
-								'Good vibes today. Feeling grateful for the people in my life and the opportunities I have.',
+								"Good vibes today. Feeling grateful for the people in my life and the opportunities I have.",
 							],
 						},
-					},
+					} as unknown as TextBlockContent,
 				],
 			},
 		],
 	},
-]
+];
